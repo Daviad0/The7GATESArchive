@@ -1,5 +1,5 @@
 # The7GATESArchive
-###The project that is ALMOST a waste of time!
+The project that is ALMOST a waste of time!
 
 Welcome to The 7GATES Archive! This is a place of happiness and easy organizati---
 
