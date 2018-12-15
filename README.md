@@ -19,10 +19,10 @@ Pfft... you didn't have to say it out loud!
 
 No please! I'll do anything!
 
-*YOU MUST DO ALL OF THE FOLLOWING TO REGAIN CONTROL OF YOUR SITE
+*YOU MUST DO ALL OF THE FOLLOWING TO REGAIN CONTROL OF YOUR SITE*
 - Make a leaderboard that has data for ALL of the gates
 - Make a status page for thetheoristgateway.com
-- Credit the Master Tracker because it's amazing*
+- Credit the Master Tracker because it's amazing
 
 Y-you monster!
 
