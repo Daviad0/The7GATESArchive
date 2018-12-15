@@ -1,0 +1,39 @@
+﻿@model The7GATESArchive.Models.UserViewModel
+
+@{
+
+}
+
+
+<div>
+    <h2 style="border:2px dashed #FF0000;border-radius:4px">> Theorist Details</h2>
+    <h3 style="font-family:'Courier New';padding:1px">@Html.DisplayFor(model => model.Username)</h3>
+    <dl>
+        <dt>
+            Place
+        </dt>
+            
+        <dd style="color:white">
+            NaN
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Keys)
+        </dt>
+
+        <dd style="color:white">
+            @Html.DisplayFor(model => model.Keys)
+        </dd>
+
+        <dt>
+            Total Time
+        </dt>
+
+        <dd style="color:white">
+            @Html.DisplayFor(model => model.TimeForAllGates)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to Leaderboard", "Index")
+</p>

@@ -1,0 +1,147 @@
+﻿<style>
+    .gate1 {
+        background-color: #e6335a;
+        color: white;
+        text-align: center;
+        border: 2px solid #e6335a;
+        border-radius: 8px;
+    }
+
+    .gate2 {
+        background-color: #3fba84;
+        color: white;
+        text-align: center;
+        border: 2px solid #3fba84;
+        border-radius: 8px;
+    }
+
+    .gate3 {
+        background-color: #34a9f6;
+        color: white;
+        text-align: center;
+        border: 2px solid #34a9f6;
+        border-radius: 8px;
+    }
+
+    .gate4 {
+        background-color: #fe7b51;
+        color: white;
+        text-align: center;
+        border: 2px solid #fe7b51;
+        border-radius: 8px;
+    }
+
+    .gate5 {
+        background-color: #f0be37;
+        color: white;
+        text-align: center;
+        border: 2px solid #f0be37;
+        border-radius: 8px;
+    }
+
+    .gate6 {
+        background-color: #a74cc1;
+        color: white;
+        text-align: center;
+        border: 2px solid #a74cc1;
+        border-radius: 8px;
+    }
+
+    .gate7 {
+        background-color: #282828;
+        color: white;
+        text-align: center;
+        border: 2px solid #282828;
+        border-radius: 8px;
+    }
+
+    .g1button {
+        color: #e6335a;
+        background-color: lightgray;
+        text-align: center;
+        border: 4px solid #e6335a;
+        font-family: Courier New, Courier, monospace;
+        border-radius: 4px;
+        font-size: 20px;
+    }
+
+    .g2button {
+        color: #3fba84;
+        background-color: lightgray;
+        text-align: center;
+        border: 4px solid #3fba84;
+        font-family: Courier New, Courier, monospace;
+        border-radius: 4px;
+        font-size: 20px;
+    }
+
+    .g3button {
+        color: #34a9f6;
+        background-color: lightgray;
+        text-align: center;
+        border: 4px solid #34a9f6;
+        font-family: Courier New, Courier, monospace;
+        border-radius: 4px;
+        font-size: 20px;
+    }
+
+    .g4button {
+        color: #fe7b51;
+        background-color: lightgray;
+        text-align: center;
+        border: 4px solid #fe7b51;
+        font-family: Courier New, Courier, monospace;
+        border-radius: 4px;
+        font-size: 20px;
+    }
+
+    .g5button {
+        color: #f0be37;
+        background-color: lightgray;
+        text-align: center;
+        border: 4px solid #f0be37;
+        font-family: Courier New, Courier, monospace;
+        border-radius: 4px;
+        font-size: 20px;
+    }
+
+    .g6button {
+        color: #a74cc1;
+        background-color: lightgray;
+        text-align: center;
+        border: 4px solid #a74cc1;
+        font-family: Courier New, Courier, monospace;
+        border-radius: 4px;
+        font-size: 20px;
+    }
+
+    .g7button {
+        color: #282828;
+        background-color: lightgray;
+        text-align: center;
+        border: 4px solid #282828;
+        font-family: Courier New, Courier, monospace;
+        border-radius: 4px;
+        font-size: 20px;
+    }
+</style>
+<h4></h4>
+<div class="gate3">
+    <h1 class="gate3"><strong>GATE 3</strong></h1>
+    <img src="~/Assets/gate3.png" alt="Gate 3 Image" />
+    <h3></h3>
+</div>
+<h4></h4>
+<div class="gate3" style="background-color:#34a9f6;border:2px solid #34a9f6">
+    <h2><strong>>>> LOCKED <<<</strong></h2>
+    <h4></h4>
+    <h3>THEME: UNKNOWN</h3>
+    <h3>OPENS/ED ON: UNKNOWN</h3>
+    <h3>NUMBER OF KEYS: UNKNOWN</h3>
+    <h3>AMOUNT COMPLETED: 0</h3>
+    <h3>@Html.ActionLink("<<< Back to List", "Index", "Gates")</h3>
+    <h3></h3>
+</div>
+<h4></h4>
+<div class="gate3" style="float:right;border-radius:4px">@Html.ActionLink("Gate 4 >>>", "Gate4", "Gates")</div>
+<div class="gate3" style="float:left;border-radius:4px">@Html.ActionLink("<<< Gate 2", "Gate2", "Gates")</div>

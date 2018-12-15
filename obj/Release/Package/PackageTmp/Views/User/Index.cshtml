@@ -1,0 +1,81 @@
+﻿@model IEnumerable<The7GATESArchive.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "Leaderboard";
+}
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 12%;
+
+    }
+
+</style>
+<body style="background-color:black;font-family:Courier New, Courier, monospace">
+    <h4></h4>
+    <img src="~/Assets/ArchiveLeaderboard.png" width="128px" height="128px" class="center" />
+    <h2 style="color:red;text-align:center">Leaderboard</h2>
+    @using (Html.BeginForm("Index", "User", FormMethod.Get))
+    {
+        <p style="text-align:center;color:red">Search for a user!</p>
+        <center>
+            <input type="text" name="filter" placeholder=" Username" style="background-color:black;color:white;border: 2px solid #FF0000;border-radius:8px" />
+            <input type="submit" name="Search" style="background-color:black;color:white;border: 2px solid #FF0000;border-radius:8px" />
+            <p style="text-align:center;color:red">A quick peek at what this website will be! Hang tight as we get things sorted out!</p>
+        </center>
+    }
+    @Html.ActionLink("Clear Search", "Index", "User")
+
+    <table class="table table-condensed" style="color:red;padding-top:10px">
+        <tr>
+            <th>
+                <p style="border-radius:4px;border:2px solid #FF0000">> Rank</p>
+            </th>
+            <th>
+                <p style="border-radius:4px;border:2px solid #FF0000">> Username</p>
+            </th>
+            <th>
+                <p style="border-radius:4px;border:2px solid #FF0000">> Keys</p>
+            </th>
+            <th>
+                <p style="border-radius:4px;border:2px solid #FF0000">> Time</p>
+            </th>
+            <th>
+                <p style="border-radius:4px;border:2px solid #00a1ff;color:#00a1ff">> Options</p>
+            </th>
+        </tr>
+
+        @{ var i = 0; }
+        @foreach (var item in Model)
+        {
+            i++;
+
+            <tr>
+                <td>
+                    <p>@Html.DisplayFor(modelItem => i)</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Keys)
+                </td>
+                <td>
+                    @{
+                        string timeValue = new TimeSpan(0, 0, (int)item.TimeForAllGates).ToString();
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValue)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @Html.ActionLink("Test Search", "Index", "User", new { id = "Dav" }, null)
+</body>

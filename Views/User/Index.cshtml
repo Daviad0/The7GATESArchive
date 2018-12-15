@@ -1,0 +1,98 @@
+﻿@model IEnumerable<The7GATESArchive.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "Leaderboard";
+}
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 12%;
+
+    }
+    .top {
+        border: 2px solid rgba(255, 76, 249,1);
+        background-color: rgba(183, 0, 177,0.45);
+        color: white;
+    }
+    .topnorm {
+        border: 2px solid rgba(255, 76, 249,1);
+        background-color: rgba(183, 0, 177,0.05);
+        color: white;
+    }
+    .top2 {
+        color: white;
+    }
+   
+
+</style>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
+<body style="background-color:black;font-family:Courier New, Courier, monospace">
+    <h1></h1>
+    <img src="~/Assets/ArchiveLeaderboard.png" width="128px" height="128px" class="center" />
+    <h2></h2>
+    @using (Html.BeginForm("Index", "User", FormMethod.Get))
+    {
+        <p style="text-align:center;color:red">Search for a user!</p>
+        <center>
+            <input type="text" name="filter" placeholder=" Username" style="background-color:black;color:white;border: 2px solid #FF0000;border-radius:8px" />
+            <input type="submit" name="Search" style="background-color:black;color:white;border: 2px solid #FF0000;border-radius:8px" />
+            @Html.ActionLink(" Clear Search", "Index", "User")
+            <h5></h5>
+            <p style="text-align:center;color:red">A quick peek at what this website will be! Hang tight as we get things sorted out!</p>
+        </center>
+    }
+    
+
+    <table class="table table-condensed" style="color:red;padding-top:10px">
+        <caption class="top" style="font-size:xx-large;text-align:center"><strong>ALL THEORISTS</strong></caption>
+        <tr class="top">
+            <th>
+                <p class="top2"><strong>@Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm })</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>@Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm })</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>@Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm })</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>Time</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>Options</strong></p>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            
+
+            <tr class="topnorm">
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Keys)
+                </td>
+                <td>
+                    @{
+                        string timeValue = new TimeSpan(0, 0, (int)item.TimeForAllGates).ToString();
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValue)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @Html.ActionLink("Test Search", "Index", "User", new { id = "Dav" }, null)
+</body>

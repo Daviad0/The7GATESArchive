@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    .gate1 {
+        background-color: #e6335a;
+        color: white;
+    }
+    .gate2 {
+        background-color: #3fba84;
+        color: white;
+    }
+    .gate3 {
+        background-color: #34a9f6;
+        color: white;
+    }
+    .gate4 {
+        background-color: #fe7b51;
+        color: white;
+    }
+    .gate5 {
+        background-color: #f0be37;
+        color: white;
+    }
+    .gate6 {
+        background-color: #a74cc1;
+        color: white;
+    }
+    .gate7 {
+        background-color: #282828;
+        color: white;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 12%;
+
+    }
+
+</style>
+
+<body style="background-color:black">
+    <div class="row">
+        <div class="carousel">
+            <h4></h4>
+            <img src="~/Assets/ArchiveLogo.png" width="140px" height="128px" class="center" />
+            <h1 style="color:red;text-align:center;border:2px solid red;font-family:Courier New, Courier, monospace;border-radius:8px"><strong>Welcome to the Gateway Archives</strong></h1>
+            <h5 style="text-align:center;border: 1px solid red;border-radius:8px"><a style="color:red">OFFICIAL GAME THEORY GATEWAY WEBSITE: thetheoristgateway.com</a></h5>
+            <div style="text-align:center;border:4px solid red;border-radius:8px">
+                <h3>@Html.ActionLink("THETHEORISTGATEWAY STATUS", "Status", "Home")</h3>
+            </div>
+            <h5 style="color:red;text-align:center;font-family:Consolas">Welcome to the Gateway Archives!<br />At the moment, this website is used for archiving the leaderboard data for the 7GATES. You will be able to search your leaderboard information throughout EACH of the gates. This is a fairly new website, so please be patient as we try to get everything working.</h5>
+            <p style="text-align:center;color:crimson;font-family:Consolas">
+                The Gateway Archives are for the 7 GATES Game Theory Merch Mystery. This site is not run by anyone at Game Theory. This is a privately owned project! All credit for ARG artwork goes to their credited creators and credit for websites and official information goes to CreatorINK and MatPatGT. All credit to ARG related information from the Master Tracker goes to retrocraft and/or the editors of the document that created the entry that contained the information. All information on this website can be copied and distributed to others.
+            </p>
+            <p style="text-align:center;color:crimson;font-family:Consolas">
+                Information that is uploaded to this website is the official results of each gateway for the ARG. No data will be changed <strong>UNLESS</strong> the data contains clearly inaccurate information or a username contains information that should not be shown. If information has been changed, a disclaimer will be provided with each data entry changed.
+            </p>
+        </div>
+    </div>
+</body>
