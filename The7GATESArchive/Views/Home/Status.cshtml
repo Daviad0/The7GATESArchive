@@ -2,18 +2,84 @@
     ViewBag.Title = "Status";
 }
 
-
+<style>
+    .down {
+        background-color: rgba(175, 0, 0, 0.25);
+        color: white;
+        text-align: center;
+        border: 2px solid #ff0000;
+        border-radius: 4px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .up {
+        background-color: rgba(0, 181, 135, 0.25);
+        color: white;
+        text-align: center;
+        border: 2px solid #00ffbf;
+        border-radius: 4px;
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+    .between {
+        background-color: rgba(186, 145, 0, 0.25);
+        color: white;
+        text-align: center;
+        border: 2px solid #ffc700;
+        border-radius: 4px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .known {
+        color: white;
+        text-align: center;
+        border: 4px solid #e900ff;
+        border-radius: 4px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+</style>
 <body style="text-align:center">
-    <div id="result"></div>
-    <h1 style="text-align:center">THETHEORISTGATEWAY.COM STATUSES</h1>
-    <p style="text-align:center">The theoristgateway is currently down from the Gate 2 release. No fix date has been given, but they claimed to be able to fix it by 12/14. Nothing yet has been reported on any of the statuses.</p>
-    <h4 style="background-color:red;padding:2px;color:white;font-family:Calibri;text-align:center"></h4>
-    <h2 style="background-color:green;padding:5px;color:white;font-family:Calibri;text-align:center">SERVERS: Functional</h2>
-    <h2 style="background-color:red;padding:5px;color:white;font-family:Calibri;text-align:center">HOME PAGE: DOWN</h2>
-    <h2 style="background-color:red;padding:5px;color:white;font-family:Calibri;text-align:center">GATES PAGE: DOWN</h2>
-    <h2 style="background-color:green;padding:5px;color:white;font-family:Calibri;text-align:center">TOOLBOX AND FAQ: Functional</h2>
-    <h2 style="background-color:red;padding:5px;color:white;font-family:Calibri;text-align:center">API: RESTRICTED</h2>
-    <h2 style="background-color:green;padding:5px;color:white;font-family:Calibri;text-align:center">CREATORINK NEW ACCOUNTS: Functional</h2>
-    <h4 style="background-color:red;padding:2px;color:white;font-family:Calibri;text-align:center"></h4>
-    <h2 style="background-color:red;padding:5px;color:white;font-family:Calibri;text-align:center">KNOWN WEBSITE FIX TIME: Unknown</h2>
+    <br />
+    <div class="between">
+        <h2>GATE 2 STATUS</h2>
+        <h3 style="padding-bottom:7px">POSTPONED UNTIL AFTER BETA GATES</h3>
+    </div>
+    <br />
+    <div class="up">
+        <h2>SERVERS</h2>
+        <h3 style="padding-bottom:7px">Functional</h3>
+    </div>
+    <br />
+    <div class="down">
+        <h2>HOME PAGE</h2>
+        <h3 style="padding-bottom:7px">Down For Maintenence</h3>
+    </div>
+    <br />
+    <div class="down">
+        <h2>GATES PAGE</h2>
+        <h3 style="padding-bottom:7px">Down For Maintenence</h3>
+    </div>
+    <br />
+    <div class="up">
+        <h2>TOOLBOX AND FAQ</h2>
+        <h3 style="padding-bottom:7px">Functional</h3>
+    </div>
+    <br />
+    <div class="between">
+        <h2>API</h2>
+        <h3 style="padding-bottom:7px">Token Restricted</h3>
+    </div>
+    <br />
+    <div class="up">
+        <h2>CREATION OF NEW CREATORINK ACCOUNTS</h2>
+        <h3 style="padding-bottom:7px">Functional</h3>
+    </div>
+    <br />
+    <div class="known">
+        <img src="~/Assets/ArchiveClock.png" width="114px" height="114px" style="float:right" />
+        <img src="~/Assets/ArchiveClock.png" width="114px" height="114px" style="float:left" />
+        <h2>KNOWN WEBSITE UPDATE TIME</h2>
+        <h3 style="padding-bottom:7px">December 20th, 2018</h3>
+    </div>
 </body>
