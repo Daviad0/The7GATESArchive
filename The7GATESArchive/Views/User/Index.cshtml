@@ -1,0 +1,116 @@
+﻿@model PagedList.IPagedList<The7GATESArchive.Models.UserViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Leaderboard";
+}
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 12%;
+    }
+
+    .top {
+        border: 2px solid rgba(255, 76, 249,1);
+        background-color: rgba(183, 0, 177,0.45);
+        color: white;
+    }
+
+    .topnorm {
+        border: 2px solid rgba(255, 76, 249,1);
+        background-color: rgba(183, 0, 177,0.05);
+        color: white;
+    }
+
+    .top2 {
+        color: white;
+    }
+    .form {
+        background-color:black;
+        color:red;
+        border:2px solid red
+
+    }
+    .notice {
+        border: 2px solid red;
+        background-color: rgba(188, 0, 0,0.35);
+        color: white;
+        text-align:center;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
+<body style="background-color:black;font-family:Courier New, Courier, monospace">
+<br />
+    <div class="notice">
+        <h3>(!!!) Please Note (!!!)</h3>
+        <p>This is a demo! The Archive Leaderboard will look like this, but this is not complete or real data!</p>
+    </div>
+    <br />
+
+    <table class="table table-condensed" style="color:red;padding-top:10px">
+        <caption class="top" style="font-size:large;text-align:center">
+
+            <h1 style="font-size:60px">ALL THEORISTS</h1>
+            @using (Html.BeginForm())
+            {
+                <p style="text-align:center;color:red">
+                    <p style="color:white">Find by Username:</p> <p style="color:red">@Html.TextBox("SearchString", ViewBag.CurrentFilter as string)</p>
+                    <input style="color:white;background-color:rgba(183, 0, 177,0);border:2px solid rgba(255, 76, 249,1);border-radius:3px"type="submit" value="Search The Archives" />
+                </p>
+            }
+        </caption>
+        <tr class="top">
+            <th>
+                <p class="top2"><strong>@Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>@Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>@Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>Time</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>Options</strong></p>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+
+            <tr class="topnorm">
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Keys)
+                </td>
+                <td>
+                    @{
+                        string timeValue = new TimeSpan(0, 0, (int)item.TimeForAllGates).ToString();
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValue)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div style="text-align:center">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</body>

@@ -1,0 +1,92 @@
+﻿@model The7GATESArchive.Models.UserViewModel
+@{
+
+}
+<style>
+    .data {
+        color:white
+    }
+    .title {
+        border: 4px solid rgba(84, 237, 255,1);
+        text-align: center;
+        background-color: rgba(75, 185, 198,0.3);
+        border-radius: 10px
+    }
+    .table {
+        border: 2px solid rgba(84, 237, 255,1);
+        text-align: center;
+        border-radius: 8px;
+    }
+    .notice {
+        border: 2px solid red;
+        background-color: rgba(188, 0, 0,0.35);
+        color: white;
+        text-align: center;
+    }
+</style>
+
+<div>
+    <br />
+    <div class="notice">
+        <h3>(!!!) Please Note (!!!)</h3>
+        <p>This is a demo! The Archive User Details will look like this, but this is not complete or real data!</p>
+    </div>
+    <br />
+    <div class="data">
+        <div class="title">
+            <br />
+
+            <h1 style="font-size:60px"><strong>USER INFO</strong></h1>
+            <h3 style="font-family:'Courier New';padding:1px">@Html.DisplayFor(model => model.Username)</h3>
+            <br />
+        </div>
+        <br />
+        <dl>
+
+            <div class="table">
+                <img src="~/Assets/ArchiveTrophy.png" style="float:right" height="80px" width="80px" />
+                <img src="~/Assets/ArchiveTrophy.png" style="float:left" height="80px" width="80px" />
+                <dt style="font-size:30px">
+                    Place
+                </dt>
+
+                <dd style="color:rgba(84, 237, 255,1);font-size:30px">
+                    #@Html.DisplayFor(model => model.Rank)
+                </dd>
+            </div>
+            <div class="table">
+                <img src="~/Assets/ArchiveKeys.png" style="float:left" height="80px" width="80px" />
+                <img src="~/Assets/ArchiveKeys.png" style="float:right" height="80px" width="80px" />
+                <dt style="font-size:30px">
+                    Number of Keys
+                </dt>
+
+                <dd style="color:rgba(84, 237, 255,1);font-size:30px">
+                    @Html.DisplayFor(model => model.Keys)
+                </dd>
+            </div>
+            <div class="table">
+                <img src="~/Assets/ArchiveClock.png" style="float:left" height="80px" width="80px" />
+                <img src="~/Assets/ArchiveClock.png" style="float:right" height="80px" width="80px" />
+                <dt style="font-size:30px">
+                    Time
+                </dt>
+
+                <dd style="color:rgba(84, 237, 255,1);font-size:30px">
+                    @{
+                        string timeValue = new TimeSpan(0, 0, (int)Model.TimeForAllGates).ToString();
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValue)
+                </dd>
+            </div>
+
+        </dl>
+    </div>
+
+    <p style="text-align:center">
+
+        @Html.ActionLink("<<< Back to Leaderboard", "Index")
+        <br />
+    </p>
+</div>
