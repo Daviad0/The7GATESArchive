@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="GatewayContext-Web.config Connection String" description="GatewayContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=The7GATESArchive2;Integrated Security=SSPI;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\djree\\source\\repos\\The7GATESArchive\\The7GATESArchive\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GatewayContext']/@connectionString" />
-  </parameter>
-  <parameter name="GatewayContext_DatabasePublish-Web.config Connection String" description="GatewayContext_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="GatewayContext_DatabasePublish.ConnetionString" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\djree\\source\\repos\\The7GATESArchive\\The7GATESArchive\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GatewayContext_DatabasePublish']/@connectionString" />
-  </parameter>
-</parameters>
