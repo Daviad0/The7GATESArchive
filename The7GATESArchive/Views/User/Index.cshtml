@@ -39,6 +39,33 @@
         color: white;
         text-align:center;
     }
+    .btn {
+        color: white;
+        background-color: rgba(183, 0, 177,0);
+        border: 2px solid rgba(255, 76, 249,1);
+        border-radius: 8px;
+    }
+        .btn:hover {
+            background: rgba(255, 76, 249,1)
+        }
+        .btn:disabled {
+            color: black;
+            background-color: lightgray;
+            border: 2px solid lightgray;
+            border-radius: 8px;
+        }
+    .clear {
+        color: white;
+        background-color: rgba(183, 0, 177,0);
+        border: 2px solid rgba(255, 76, 249,1);
+        border-radius: 8px;
+    }
+        .clear:hover {
+            color: white;
+            background-color: red;
+            border: 2px solid red;
+            border-radius: 8px;
+        }
 </style>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
 <body style="background-color:black;font-family:Courier New, Courier, monospace">
@@ -56,8 +83,8 @@
             @using (Html.BeginForm())
             {
                 <p style="text-align:center;color:red">
-                    <p style="color:white">Find by Username:</p> <p style="color:red">@Html.TextBox("SearchString", ViewBag.CurrentFilter as string)</p>
-                    <input style="color:white;background-color:rgba(183, 0, 177,0);border:2px solid rgba(255, 76, 249,1);border-radius:3px"type="submit" value="Search The Archives" />
+                    <p style="color:white">Find by Username:</p> <p style="color:red">@Html.Editor("SearchString", ViewBag.CurrentFilter as string)</p>
+                    <button class="btn">Search</button><button class="btn" style="margin-left:20px">@Html.ActionLink("Clear", "Index")</button>
                 </p>
             }
         </caption>
