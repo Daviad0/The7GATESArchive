@@ -16,6 +16,14 @@ namespace The7GATESArchive.Migrations
 
         protected override void Seed(The7GATESArchive.DAL.GatewayContext context)
         {
+            int currentgate = 2;
+            /*
+             * 0. For Each 100 users:
+             * 1. Make a web request to the API in code
+             * 2. Parse the JSON response
+             * 3. Add DB records for each user in response.
+             */
+            
             var students = new List<User>
             {
             new User{ID=new Guid("9b7a6663-009d-4563-a6ef-8934976547dd"), Username="This could be you <and your team>",Keys=3},
@@ -27,6 +35,7 @@ namespace The7GATESArchive.Migrations
             new User{ID=new Guid("70d78475-8ced-4f71-9c43-d6f99c7f1cd9"), Username="Daviado <Yes even in the mock i make myself this>",Keys=4},
             new User{ID=new Guid("164fdae4-5f69-455d-9ddd-bcaeaaa8b0a5"), Username="Retro <He's cool>",Keys=3},
             new User{ID=new Guid("b13f1525-00d3-4400-9f7a-3a23e64cf6be"), Username="Cara <Nice>",Keys=3},
+            new User{ID=new Guid("e2a14a15-335f-4d9b-ba3c-cd562f01fbec"), Username="The Lion",Keys=4},            
             new User{ID=new Guid("77727fb1-eb54-4967-9f16-8363705eceed"), Username="Silox <Gotta Put Him In>",Keys=2},
             new User{ID=new Guid("07951aac-53da-4ce0-abe0-b50b6788e077"), Username="CreatorINK <Fix thetheoristgateway plz>",Keys=4},
             new User{ID=new Guid("34d7b06d-f400-4966-9f74-1cda1e19074b"), Username="ARGTheorists <Wait I mixed this up>",Keys=1},
@@ -61,6 +70,7 @@ namespace The7GATESArchive.Migrations
 
             };
 
+            
             students.ForEach(s => context.Users.AddOrUpdate(s));
             context.SaveChanges();
             var courses = new List<Gate>
@@ -75,6 +85,8 @@ namespace The7GATESArchive.Migrations
             };
             courses.ForEach(s => context.Gates.AddOrUpdate(s));
             context.SaveChanges();
+            
+            
             var enrollments = new List<UserGate>
             {
             new UserGate{UserGateID=1,  GateID=1, UserID=new Guid("9b7a6663-009d-4563-a6ef-8934976547dd"), Time=new TimeSpan(0, 25, 30)},
@@ -85,7 +97,7 @@ namespace The7GATESArchive.Migrations
             new UserGate{UserGateID=6,  GateID=1, UserID=new Guid("d8be0f78-395c-444c-96a3-36ed2f27e360"), Time=new TimeSpan(23, 59, 59)},
             new UserGate{UserGateID=7,  GateID=1, UserID=new Guid("70d78475-8ced-4f71-9c43-d6f99c7f1cd9"), Time=new TimeSpan(0, 5, 1)},
             new UserGate{UserGateID=8,  GateID=1, UserID=new Guid("164fdae4-5f69-455d-9ddd-bcaeaaa8b0a5"), Time=new TimeSpan(2, 7, 1)},
-            new UserGate{UserGateID=9,  GateID=1, UserID=new Guid("b13f1525-00d3-4400-9f7a-3a23e64cf6be"), Time=new TimeSpan(5, 2, 43)},
+            new UserGate{UserGateID=9,  GateID=1, UserID=new Guid("b13f1525-00d3-4400-9f7a-3a23e64cf6be"), Time=new TimeSpan(5, 2, 43)},/*Lion */
             new UserGate{UserGateID=10,  GateID=1, UserID=new Guid("e2a14a15-335f-4d9b-ba3c-cd562f01fbec"), Time=new TimeSpan(0, 3, 12)},
             new UserGate{UserGateID=11,  GateID=1, UserID=new Guid("77727fb1-eb54-4967-9f16-8363705eceed"),Time=new TimeSpan(0, 21, 32)},
             new UserGate{UserGateID=12,  GateID=1, UserID=new Guid("07951aac-53da-4ce0-abe0-b50b6788e077"),Time=new TimeSpan(1, 4, 3)},
@@ -116,9 +128,10 @@ namespace The7GATESArchive.Migrations
             new UserGate{UserGateID=37,  GateID=1, UserID=new Guid("091fb91b-cca1-4711-a60b-f7072b5e7280"),Time=new TimeSpan(0, 5, 32)},
             new UserGate{UserGateID=38,  GateID=1, UserID=new Guid("d7899c57-100f-4978-aae9-f57792658c69"),Time=new TimeSpan(0, 10, 50)},
             new UserGate{UserGateID=39,  GateID=1, UserID=new Guid("a5407ee2-21a6-47ec-83bb-f0a956e3647c"),Time=new TimeSpan(0, 30, 0)},
-            new UserGate{UserGateID=40,  GateID=1, UserID=new Guid("b8f6e6b2-9606-4b72-a5be-938ebc987dcd"),Time=new TimeSpan(0, 54, 10)},
+            new UserGate{UserGateID=40,  GateID=1, UserID=new Guid("b8f6e6b2-9606-4b72-a5be-938ebc987dcd"),Time=new TimeSpan(0, 54, 10)}
             };
             enrollments.ForEach(s => context.UserGates.AddOrUpdate(s));
+            
             context.SaveChanges();
         }
     }
