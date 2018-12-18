@@ -35,7 +35,7 @@ namespace The7GATESArchive.Migrations
             new User{ID=new Guid("70d78475-8ced-4f71-9c43-d6f99c7f1cd9"), Username="Daviado <Yes even in the mock i make myself this>",Keys=4},
             new User{ID=new Guid("164fdae4-5f69-455d-9ddd-bcaeaaa8b0a5"), Username="Retro <He's cool>",Keys=3},
             new User{ID=new Guid("b13f1525-00d3-4400-9f7a-3a23e64cf6be"), Username="Cara <Nice>",Keys=3},
-            new User{ID=new Guid("e2a14a15-335f-4d9b-ba3c-cd562f01fbec"), Username="The Lion",Keys=4},            
+            new User{ID=new Guid("e2a14a15-335f-4d9b-ba3c-cd562f01fbec"), Username="The Lion <Destroying Demos Since 2018>",Keys=3},
             new User{ID=new Guid("77727fb1-eb54-4967-9f16-8363705eceed"), Username="Silox <Gotta Put Him In>",Keys=2},
             new User{ID=new Guid("07951aac-53da-4ce0-abe0-b50b6788e077"), Username="CreatorINK <Fix thetheoristgateway plz>",Keys=4},
             new User{ID=new Guid("34d7b06d-f400-4966-9f74-1cda1e19074b"), Username="ARGTheorists <Wait I mixed this up>",Keys=1},
