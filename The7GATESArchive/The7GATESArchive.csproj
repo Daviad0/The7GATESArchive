@@ -164,6 +164,13 @@
     <Content Include="Assets\ArchiveKeys.png" />
     <Content Include="Assets\ArchiveTrophy.png" />
     <Content Include="Assets\ArchiveLogo.png" />
+    <Content Include="Assets\Gate1Logo.png" />
+    <Content Include="Assets\Gate2Logo.png" />
+    <Content Include="Assets\Gate3Logo.png" />
+    <Content Include="Assets\Gate4Logo.png" />
+    <Content Include="Assets\Gate5Logo.png" />
+    <Content Include="Assets\Gate6Logo.png" />
+    <Content Include="Assets\Gate7Logo.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

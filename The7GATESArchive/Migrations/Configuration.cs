@@ -13,7 +13,7 @@ namespace The7GATESArchive.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(The7GATESArchive.DAL.GatewayContext context)

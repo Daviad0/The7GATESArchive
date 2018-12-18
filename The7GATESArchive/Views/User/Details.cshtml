@@ -41,47 +41,61 @@
             <br />
         </div>
         <br />
-        <dl>
+        <table class="table table-condensed" style="color:red;padding-top:10px">
+            <caption class="top" style="font-size:large;text-align:center">
+            </caption>
+            <tr class="top">
+                <th>
+                    <img src="~/Assets/Gate1Logo.png" width="64px" height="64px" style="float:none" />
+                </th>
+                <th>
+                    <img src="~/Assets/Gate2Logo.png" width="64px" height="64px" style="float:none" />
+                </th>
+                <th>
+                    <img src="~/Assets/Gate3Logo.png" width="64px" height="64px" style="float:none" />
+                </th>
+                <th>
+                    <img src="~/Assets/Gate4Logo.png" width="64px" height="64px" style="float:none;" />
+                </th>
+                <th>
+                    <img src="~/Assets/Gate5Logo.png" width="64px" height="64px" style="float:none" />
+                </th>
+                <th>
+                    <img src="~/Assets/Gate6Logo.png" width="64px" height="64px" style="float:none" />
+                </th>
+                <th>
+                    <img src="~/Assets/Gate7Logo.png" width="64px" height="64px" style="float:none" />
+                </th>
+            </tr>
 
-            <div class="table">
-                <img src="~/Assets/ArchiveTrophy.png" style="float:right" height="80px" width="80px" />
-                <img src="~/Assets/ArchiveTrophy.png" style="float:left" height="80px" width="80px" />
-                <dt style="font-size:30px">
-                    Place
-                </dt>
 
-                <dd style="color:rgba(84, 237, 255,1);font-size:30px">
-                    #@Html.DisplayFor(model => model.Rank)
-                </dd>
-            </div>
-            <div class="table">
-                <img src="~/Assets/ArchiveKeys.png" style="float:left" height="80px" width="80px" />
-                <img src="~/Assets/ArchiveKeys.png" style="float:right" height="80px" width="80px" />
-                <dt style="font-size:30px">
-                    Number of Keys
-                </dt>
 
-                <dd style="color:rgba(84, 237, 255,1);font-size:30px">
-                    @Html.DisplayFor(model => model.Keys)
-                </dd>
-            </div>
-            <div class="table">
-                <img src="~/Assets/ArchiveClock.png" style="float:left" height="80px" width="80px" />
-                <img src="~/Assets/ArchiveClock.png" style="float:right" height="80px" width="80px" />
-                <dt style="font-size:30px">
-                    Time
-                </dt>
+            <tr class="topnorm">
+                <td>
+                    a
+                </td>
+                <td>
+                    a
+                </td>
+                <td>
+                    a
+                </td>
+                <td>
+                    a
+                </td>
+                <td>
+                    a
+                </td>
+                <td>
+                    a
+                </td>
+                <td>
+                    a
+                </td>
 
-                <dd style="color:rgba(84, 237, 255,1);font-size:30px">
-                    @{
-                        string timeValue = new TimeSpan(0, 0, (int)Model.TimeForAllGates).ToString();
-                    }
+            </tr>
 
-                    @Html.DisplayFor(modelItem => timeValue)
-                </dd>
-            </div>
-
-        </dl>
+        </table>
     </div>
 
     <p style="text-align:center">
