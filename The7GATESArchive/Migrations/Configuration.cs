@@ -6,24 +6,26 @@ namespace The7GATESArchive.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using The7GATESArchive.Models;
+    using Newtonsoft;
+    using Newtonsoft.Json;
 
     internal sealed class Configuration : DbMigrationsConfiguration<The7GATESArchive.DAL.GatewayContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(The7GATESArchive.DAL.GatewayContext context)
         {
-            int currentgate = 2;
             /*
-             * 0. For Each 100 users:
-             * 1. Make a web request to the API in code
-             * 2. Parse the JSON response
-             * 3. Add DB records for each user in response.
-             */
-            
+            int currentgate = 2;
+            string json = @"";
+
+            sevengates m = JsonConvert.DeserializeObject<sevengates>(json);
+
+            string name = m.username_raw;
+            */
             var students = new List<User>
             {
             new User{ID=new Guid("9b7a6663-009d-4563-a6ef-8934976547dd"), Username="This could be you <and your team>",Keys=3},
@@ -35,7 +37,7 @@ namespace The7GATESArchive.Migrations
             new User{ID=new Guid("70d78475-8ced-4f71-9c43-d6f99c7f1cd9"), Username="Daviado <Yes even in the mock i make myself this>",Keys=4},
             new User{ID=new Guid("164fdae4-5f69-455d-9ddd-bcaeaaa8b0a5"), Username="Retro <He's cool>",Keys=3},
             new User{ID=new Guid("b13f1525-00d3-4400-9f7a-3a23e64cf6be"), Username="Cara <Nice>",Keys=3},
-            new User{ID=new Guid("e2a14a15-335f-4d9b-ba3c-cd562f01fbec"), Username="The Lion <Destroying Demos Since 2018>",Keys=3},
+            new User{ID=new Guid("e2a14a15-335f-4d9b-ba3c-cd562f01fbec"), Username="The Lion",Keys=4},            
             new User{ID=new Guid("77727fb1-eb54-4967-9f16-8363705eceed"), Username="Silox <Gotta Put Him In>",Keys=2},
             new User{ID=new Guid("07951aac-53da-4ce0-abe0-b50b6788e077"), Username="CreatorINK <Fix thetheoristgateway plz>",Keys=4},
             new User{ID=new Guid("34d7b06d-f400-4966-9f74-1cda1e19074b"), Username="ARGTheorists <Wait I mixed this up>",Keys=1},
