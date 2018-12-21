@@ -136,6 +136,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiUpdater.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -151,6 +152,14 @@
     <Compile Include="Migrations\201812132132509_InitialCreate.Designer.cs">
       <DependentUpon>201812132132509_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812182211418_Rank.cs" />
+    <Compile Include="Migrations\201812182211418_Rank.Designer.cs">
+      <DependentUpon>201812182211418_Rank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812190014554_Keys.cs" />
+    <Compile Include="Migrations\201812190014554_Keys.Designer.cs">
+      <DependentUpon>201812190014554_Keys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Gate.cs" />
     <Compile Include="Models\User.cs" />
@@ -164,6 +173,8 @@
     <Content Include="Assets\ArchiveKeys.png" />
     <Content Include="Assets\ArchiveTrophy.png" />
     <Content Include="Assets\ArchiveLogo.png" />
+    <Content Include="Assets\BetaGate2Official.png" />
+    <Content Include="Assets\BetaGate3Official.png" />
     <Content Include="Assets\Gate1Logo.png" />
     <Content Include="Assets\Gate2Logo.png" />
     <Content Include="Assets\Gate3Logo.png" />
@@ -202,6 +213,13 @@
     <Content Include="Assets\gate6.PNG" />
     <Content Include="Assets\gate7.PNG" />
     <Content Include="Assets\ArchiveLeaderboard.png" />
+    <Content Include="Assets\BetaGate2.gif" />
+    <Content Include="Assets\BetaGate3.gif" />
+    <Content Include="Assets\BetaGate1.gif" />
+    <Content Include="Assets\BetaGate1Official.gif" />
+    <Content Include="Assets\BetaGate3.png" />
+    <Content Include="Assets\BetaGate1.png" />
+    <Content Include="Assets\BetaGate2.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -227,6 +245,9 @@
     <Content Include="Views\Gates\Gate5.cshtml" />
     <Content Include="Views\Gates\Gate4.cshtml" />
     <Content Include="Views\Gates\Gate3.cshtml" />
+    <Content Include="Views\Gates\BetaGate3.cshtml" />
+    <Content Include="Views\Gates\BetaGate1.cshtml" />
+    <Content Include="Views\Gates\BetaGate2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -247,6 +268,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201812132132509_InitialCreate.resx">
       <DependentUpon>201812132132509_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812182211418_Rank.resx">
+      <DependentUpon>201812182211418_Rank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812190014554_Keys.resx">
+      <DependentUpon>201812190014554_Keys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

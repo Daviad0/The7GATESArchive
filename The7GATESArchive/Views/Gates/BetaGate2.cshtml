@@ -55,6 +55,30 @@
         border-radius: 8px;
     }
 
+    .bg1 {
+        background-color: #000000;
+        color: white;
+        text-align: center;
+        border: 2px solid #e6335a;
+        border-radius: 8px;
+    }
+
+    .bg2 {
+        background-color: #000000;
+        color: white;
+        text-align: center;
+        border: 2px solid #282828;
+        border-radius: 8px;
+    }
+
+    .bg3 {
+        background-color: #000000;
+        color: white;
+        text-align: center;
+        border: 2px solid #282828;
+        border-radius: 8px;
+    }
+
     .g1button {
         color: #e6335a;
         background-color: lightgray;
@@ -126,15 +150,15 @@
     }
 </style>
 <h4></h4>
-<div class="gate6">
-    <h1 class="gate6"><strong>GATE 6</strong></h1>
-
-    <img src="~/Assets/gate6.png" alt="Gate 6 Image" height="128px" width="128px" />
-    <img src="~/Assets/Gate6Logo.png" alt="Gate 6 Logo" height="128px" width="128px" style="border-radius:65px" />
+<div class="bg2" style="background-color:#3fba84">
+    <h1 class="gate2"><strong>BETA GATE 2</strong></h1>
+    <img src="~/Assets/BetaGate2Official.png" alt="Beta Gate 1" height="128px" width="128px" />
+    <img src="~/Assets/BetaGate2.png" alt="Beta Gate 2" height="128px" width="128px" style="border-radius:65px" />
     <h3></h3>
-    <div class="gate6">
+
+    <div class="gate2">
         <!--<h2 id="demo" style="font-size:40px;padding-bottom:10px"></h2>-->
-        <h2>Not Yet Released!</h2>
+        <h2>Not Yet Released</h2>
     </div>
     <br />
     <script>
@@ -169,17 +193,15 @@
         }, 1000);
     </script>
 </div>
-<h4></h4>
-<div class="gate6" style="background-color:#000000;border:2px solid #a74cc1">
-    <h2><strong>>>> LOCKED <<<</strong></h2>
+<br />
+<div class="bg1" style="border:2px solid #282828">
     <h4></h4>
     <h3>THEME: UNKNOWN</h3>
-    <h3>OPENS/ED ON: UNKNOWN</h3>
+    <h3>OPENS/ED ON: Dec 20th, 2018 8:00PM PST</h3>
     <h3>NUMBER OF KEYS: UNKNOWN</h3>
     <h3>AMOUNT COMPLETED: 0</h3>
+    <h3 color="red">Help Out CreatorINK With Bug Fixing!</h3>
     <h3>@Html.ActionLink("<<< Back to List", "Index", "Gates")</h3>
     <h3></h3>
 </div>
 <h4></h4>
-<div class="gate6" style="float:right;border-radius:4px">@Html.ActionLink("Gate 7 >>>", "Gate7", "Gates")</div>
-<div class="gate6" style="float:left;border-radius:4px">@Html.ActionLink("<<< Gate 5", "Gate5", "Gates")</div>

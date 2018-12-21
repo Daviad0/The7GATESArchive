@@ -7,7 +7,7 @@ namespace The7GATESArchive
 {
     public class sevengates
     {
-        public int rank;
+        public string rank;
         public Guid uuid;
         public int total_time;
         public int gates_solved;

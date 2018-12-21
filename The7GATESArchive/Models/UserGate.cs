@@ -1,12 +1,17 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace The7GATESArchive.Models
 {
 
     public class UserGate
     {
-        public int UserGateID { get; set; }
+        [Key]
+        [Column(Order = 1)]
         public int GateID { get; set; }
+        [Key]
+        [Column(Order = 2)]
         public Guid UserID { get; set; }
         public TimeSpan Time { get; set; }
         public int Rank { get; set; }

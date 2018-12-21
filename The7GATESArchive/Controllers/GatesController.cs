@@ -41,6 +41,19 @@ namespace The7GATESArchive.Controllers
         {
             return View();
         }
+        public ActionResult BetaGate1()
+        {
+            return View();
+        }
+        public ActionResult BetaGate2()
+        {
+            return View();
+        }
+        public ActionResult BetaGate3()
+        {
+            return View();
+        }
+
 
     }
 }

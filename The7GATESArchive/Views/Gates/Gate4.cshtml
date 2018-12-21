@@ -128,11 +128,49 @@
 <h4></h4>
 <div class="gate4">
     <h1 class="gate4"><strong>GATE 4</strong></h1>
-    <img src="~/Assets/gate4.png" alt="Gate 4 Image" />
+
+    <img src="~/Assets/gate4.png" alt="Gate 4 Image" height="128px" width="128px" />
+    <img src="~/Assets/Gate4Logo.png" alt="Gate 4 Logo" height="128px" width="128px" style="border-radius:65px" />
     <h3></h3>
+    <div class="gate4">
+        <!--<h2 id="demo" style="font-size:40px;padding-bottom:10px"></h2>-->
+        <h2>Not Yet Released!</h2>
+    </div>
+    <br />
+    <script>
+        // Set the date we're counting down to
+        var myDateObj = new Date("Fri Dec 21 2018 04:00:00 GMT-0000 (UTC)");
+        myDateObj.toString();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = myDateObj - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "GO GO GO! COMPLETE THAT GATE!";
+            }
+        }, 1000);
+    </script>
 </div>
 <h4></h4>
-<div class="gate4" style="background-color:#fe7b51;border:2px solid #fe7b51">
+<div class="gate4" style="background-color:#000000;border:2px solid #fe7b51">
     <h2><strong>>>> LOCKED <<<</strong></h2>
     <h4></h4>
     <h3>THEME: GAME THEORY MERCH</h3>

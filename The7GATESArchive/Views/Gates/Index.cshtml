@@ -96,8 +96,17 @@
 <body style="background-color:black">
     <div class="row">
         <div class="carousel">
-            <h1 style="color:red;text-align:center;border:8px solid red;font-family:Courier New, Courier, monospace;border-radius:8px"><strong>THE 7 GATES</strong></h1>
-            <div class="g1button">
+            <br />
+            <div style="color:red;text-align:center;border:8px solid red;font-family:Courier New, Courier, monospace;border-radius:8px">
+
+                <h1><strong>THE 7 GATES</strong></h1>
+                <h3><strong>!!! BETA GATE 1 OPENING !!!</strong></h3>
+
+            </div>
+            <br />
+                <div class="g1button">
+                <h4></h4>
+                <img src="~/Assets/Gate1Logo.png" height="64px" width="64px" />
                 <h3>
                     <strong>
                         @Html.ActionLink("Gate 1", "Gate1", "Gates")
@@ -109,6 +118,8 @@
             </div>
             <h4></h4>
             <div class="g2button">
+                <h4></h4>
+                <img src="~/Assets/Gate2Logo.png" height="64px" width="64px" />
                 <h3>
                     <strong>
                         @Html.ActionLink("Gate 2", "Gate2", "Gates")
@@ -120,6 +131,8 @@
             </div>
             <h4></h4>
             <div class="g3button">
+                <h4></h4>
+                <img src="~/Assets/Gate3Logo.png" height="64px" width="64px" />
                 <h3>
                     <strong>
                         @Html.ActionLink("Gate 3", "Gate3", "Gates")
@@ -131,6 +144,8 @@
             </div>
             <h4></h4>
             <div class="g4button">
+                <h4></h4>
+                <img src="~/Assets/Gate4Logo.png" height="64px" width="64px" />
                 <h3>
                     <strong>
                         @Html.ActionLink("Gate 4", "Gate4", "Gates")
@@ -142,6 +157,8 @@
             </div>
             <h4></h4>
             <div class="g5button">
+                <h4></h4>
+                <img src="~/Assets/Gate5Logo.png" height="64px" width="64px" />
                 <h3>
                     <strong>
                         @Html.ActionLink("Gate 5", "Gate5", "Gates")
@@ -153,6 +170,8 @@
             </div>
             <h4></h4>
             <div class="g6button">
+                <h4></h4>
+                <img src="~/Assets/Gate6Logo.png" height="64px" width="64px" />
                 <h3>
                     <strong>
                         @Html.ActionLink("Gate 6", "Gate6", "Gates")
@@ -164,6 +183,8 @@
             </div>
             <h4></h4>
             <div class="g7button">
+                <h4></h4>
+                <img src="~/Assets/Gate7Logo.png" height="64px" width="64px" />
                 <h3>
                     <strong>
                         @Html.ActionLink("Gate 7", "Gate7", "Gates")
@@ -173,8 +194,81 @@
                 <p>Unknown Date</p>
                 <p><strong>LOCKED</strong></p>
             </div>
+            <br />
+            <div class="g7button" style="background-color:white;border:7px solid white"></div>
+            <br />
+            <div class="g1button">
+                <h4></h4>
+                <img src="~/Assets/BetaGate1.gif" height="64px" width="64px" />
+                <h3>
+                    <strong>
+                        @Html.ActionLink("BETA GATE 1", "BetaGate1", "Gates")
+                    </strong>
+                </h3>
+                <p>Game Theory ARG Theme</p>
+                <p>Dec 20th, 2018 8:00PM PST</p>
+                <strong><p id="demo"></p></strong>
+
+            </div>
+            <br />
+            <div class="g2button">
+                <h4></h4>
+                <img src="~/Assets/BetaGate2.png" height="64px" width="64px" />
+                <h3>
+                    <strong>
+                        @Html.ActionLink("BETA GATE 2", "BetaGate2", "Gates")
+                    </strong>
+                </h3>
+                <p>Unknown Theme</p>
+                <p>Unknown Date</p>
+                <p><strong>LOCKED</strong></p>
+            </div>
+            <br />
+            <div class="g3button">
+                <h4></h4>
+                <img src="~/Assets/BetaGate3.png" height="64px" width="64px" />
+                <h3>
+                    <strong>
+                        @Html.ActionLink("BETA GATE 3", "BetaGate3", "Gates")
+                    </strong>
+                </h3>
+                <p>Unknown Theme</p>
+                <p>Unknown Date</p>
+                <p><strong>LOCKED</strong></p>
+            </div>
 
         </div>
 
-        </div>
+    </div>
+    <script>
+        // Set the date we're counting down to
+        var myDateObj = new Date("Fri Dec 21 2018 04:00:00 GMT-0000 (UTC)");
+        myDateObj.toString();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = myDateObj - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "GO GO GO! COMPLETE THAT GATE!";
+            }
+        }, 1000);
+    </script>
 </body>

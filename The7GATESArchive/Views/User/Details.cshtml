@@ -46,6 +46,10 @@
             </caption>
             <tr class="top">
                 <th>
+                    <br />
+                    <p></p>
+                </th>
+                <th>
                     <img src="~/Assets/Gate1Logo.png" width="64px" height="64px" style="float:none" />
                 </th>
                 <th>
@@ -55,7 +59,7 @@
                     <img src="~/Assets/Gate3Logo.png" width="64px" height="64px" style="float:none" />
                 </th>
                 <th>
-                    <img src="~/Assets/Gate4Logo.png" width="64px" height="64px" style="float:none;" />
+                    <img src="~/Assets/Gate4Logo.png" width="64px" height="64px" style="float:none" />
                 </th>
                 <th>
                     <img src="~/Assets/Gate5Logo.png" width="64px" height="64px" style="float:none" />
@@ -72,25 +76,59 @@
 
             <tr class="topnorm">
                 <td>
-                    a
+                    Place
                 </td>
                 <td>
-                    a
+                    #@Html.DisplayFor(model => model.Rank)
                 </td>
                 <td>
-                    a
+                    TBD
                 </td>
                 <td>
-                    a
+                    TBD
                 </td>
                 <td>
-                    a
+                    TBD
                 </td>
                 <td>
-                    a
+                    TBD
                 </td>
                 <td>
-                    a
+                    TBD
+                </td>
+                <td>
+                    TBD
+                </td>
+
+            </tr>
+            <tr class="topnorm">
+                <td>
+                    Time
+                </td>
+                <td>
+                    @{
+                        string timeValue = new TimeSpan(0, 0, (int)Model.TimeForAllGates).ToString();
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValue)
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
                 </td>
 
             </tr>
