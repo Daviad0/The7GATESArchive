@@ -17,7 +17,7 @@ namespace The7GATESArchive.Migrations
         {
             AutomaticMigrationsEnabled = false;
 
-            bool shouldUpdate = false;
+            bool shouldUpdate = true;
 
             if (shouldUpdate)
             {

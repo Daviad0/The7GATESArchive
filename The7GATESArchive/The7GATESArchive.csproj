@@ -169,12 +169,18 @@
     <Compile Include="sevengates.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\DiscordLogo.png" />
+    <Content Include="Assets\Error.png" />
     <Content Include="Assets\ArchiveClock.png" />
     <Content Include="Assets\ArchiveKeys.png" />
     <Content Include="Assets\ArchiveTrophy.png" />
     <Content Include="Assets\ArchiveLogo.png" />
     <Content Include="Assets\BetaGate2Official.png" />
     <Content Include="Assets\BetaGate3Official.png" />
+    <Content Include="Assets\TheTheoristGateway.gif" />
+    <Content Include="Assets\WaitingGate.gif" />
+    <Content Include="Assets\Gate1Logo.gif" />
+    <Content Include="Assets\gate1.gif" />
     <Content Include="Assets\Gate1Logo.png" />
     <Content Include="Assets\Gate2Logo.png" />
     <Content Include="Assets\Gate3Logo.png" />
@@ -248,6 +254,17 @@
     <Content Include="Views\Gates\BetaGate3.cshtml" />
     <Content Include="Views\Gates\BetaGate1.cshtml" />
     <Content Include="Views\Gates\BetaGate2.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\User\Gate1.cshtml" />
+    <Content Include="Views\User\Gate2.cshtml" />
+    <Content Include="Views\User\BGate3.cshtml" />
+    <Content Include="Views\User\BGate2.cshtml" />
+    <Content Include="Views\User\BGate1.cshtml" />
+    <Content Include="Views\User\Gate7.cshtml" />
+    <Content Include="Views\User\Gate6.cshtml" />
+    <Content Include="Views\User\Gate5.cshtml" />
+    <Content Include="Views\User\Gate4.cshtml" />
+    <Content Include="Views\User\Gate3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

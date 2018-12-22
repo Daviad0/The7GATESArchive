@@ -38,7 +38,7 @@ namespace The7GATESArchive
             var users = new List<User>();
             var searchPages = ProcessApiUsers(context, 0, users, usergates);
 
-            for (int i = 1; i < searchPages; i++)
+            for (int i = 1; i < 100; i++)
             {
                 searchPages = ProcessApiUsers(context, i, users, usergates);
             }
@@ -66,17 +66,20 @@ namespace The7GATESArchive
                     numPages = sevengates.total / 100;
                     foreach (var result in sevengates.results)
                     {
-                        var user = new User { ID = result.uuid, Username = result.username_raw, Keys = result.total_keys };
-                        int rank = 0;
-                        if (int.TryParse(result.rank, out rank) == false)
-                        {
-                            rank = sevengates.total;
-                        }
-                        var userGate = new UserGate { GateID = 1, Rank = rank, UserID = result.uuid, Time = new TimeSpan(0, 0, 0, 0, result.total_time) };
-                        users.Add(user);
-                        usergates.Add(userGate);
+                        
+                            var user = new User { ID = result.uuid, Username = result.username_raw, Keys = result.total_keys };
+                            int rank = 0;
+                            if (int.TryParse(result.rank, out rank) == false)
+                            {
+                                rank = sevengates.total;
+                            }
+                            var userGate = new UserGate { GateID = 1, Rank = rank, UserID = result.uuid, Time = new TimeSpan(0, 0, 0, 0, result.total_time) };
+                            users.Add(user);
+                            usergates.Add(userGate);
+                        
+
                     }
-                    
+
 
                 }
             }

@@ -37,5 +37,9 @@ namespace Gateway.Controllers
 
             return View();
         }
+        public ActionResult Help()
+        {
+            return View();
+        }
     }
 }

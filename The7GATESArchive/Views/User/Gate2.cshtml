@@ -1,0 +1,151 @@
+﻿@model PagedList.IPagedList<The7GATESArchive.Models.UserViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Leaderboard";
+}
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 12%;
+    }
+
+    .top {
+        border: 2px solid rgba(255, 76, 249,1);
+        background-color: rgba(183, 0, 177,0.45);
+        color: white;
+    }
+
+    .topnorm {
+        border: 2px solid rgba(255, 76, 249,1);
+        background-color: rgba(183, 0, 177,0.05);
+        color: white;
+    }
+
+    .top2 {
+        color: white;
+        text-align: center;
+    }
+
+    .form {
+        background-color: black;
+        color: red;
+        border: 2px solid red
+    }
+
+    .notice {
+        border: 2px solid red;
+        background-color: rgba(188, 0, 0,0.35);
+        color: white;
+        text-align: center;
+    }
+
+    .btn {
+        color: white;
+        background-color: rgba(183, 0, 177,0);
+        border: 2px solid rgba(255, 76, 249,1);
+        border-radius: 8px;
+    }
+
+        .btn:hover {
+            background: rgba(255, 76, 249,1)
+        }
+
+        .btn:disabled {
+            color: black;
+            background-color: lightgray;
+            border: 2px solid lightgray;
+            border-radius: 8px;
+        }
+
+    .clear {
+        color: white;
+        background-color: rgba(183, 0, 177,0);
+        border: 2px solid rgba(255, 76, 249,1);
+        border-radius: 8px;
+    }
+
+        .clear:hover {
+            color: white;
+            background-color: red;
+            border: 2px solid red;
+            border-radius: 8px;
+        }
+</style>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
+<body style="background-color:black;font-family:Courier New, Courier, monospace">
+    <br />
+    <table class="table table-condensed">
+        <tr class="top">
+            <th>
+                <a href="Gate1">
+                    <img src="~/Assets/Gate1Logo.gif" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="Gate2">
+                    <img src="~/Assets/Gate2Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="Gate3">
+                    <img src="~/Assets/Gate3Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="Gate4">
+                    <img src="~/Assets/Gate4Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="Gate5">
+                    <img src="~/Assets/Gate5Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="Gate6">
+                    <img src="~/Assets/Gate6Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="Gate7">
+                    <img src="~/Assets/Gate7Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="BGate1">
+                    <img src="~/Assets/BetaGate1.gif" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="BGate2">
+                    <img src="~/Assets/BetaGate2.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="BGate3">
+                    <img src="~/Assets/BetaGate3.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+
+        </tr>
+    </table>
+    <br />
+    <table class="table table-condensed" style="color:red;padding-top:10px">
+        <caption class="top" style="font-size:large;text-align:center">
+
+            <h1 style="font-size:60px">ALL THEORISTS</h1>
+            <h3>Gate 2</h3>
+        </caption>
+        <tr class="top" style="background-color:black">
+            <td>
+                <p class="top2"><strong>No Data To Display</strong></p>
+            </td>
+        </tr>
+
+       
+
+    </table>
+</body>
