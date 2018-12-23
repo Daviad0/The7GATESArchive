@@ -136,15 +136,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiUpdater.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GatesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="DAL\GatewayContext.cs" />
-    <Compile Include="DAL\GatewayInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -160,13 +157,21 @@
     <Compile Include="Migrations\201812190014554_Keys.Designer.cs">
       <DependentUpon>201812190014554_Keys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812231537342_SpecificGate.cs" />
+    <Compile Include="Migrations\201812231537342_SpecificGate.Designer.cs">
+      <DependentUpon>201812231537342_SpecificGate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812231603541_UserTotalTimeAndKeys.cs" />
+    <Compile Include="Migrations\201812231603541_UserTotalTimeAndKeys.Designer.cs">
+      <DependentUpon>201812231603541_UserTotalTimeAndKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812232150267_WebsiteUpdate.cs" />
+    <Compile Include="Migrations\201812232150267_WebsiteUpdate.Designer.cs">
+      <DependentUpon>201812232150267_WebsiteUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Gate.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserGate.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sevengates.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\DiscordLogo.png" />
@@ -200,6 +205,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\The7GATESArchive - Web Deploy.pubxml" />
+    <Content Include="Properties\webjobs-list.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -265,9 +271,11 @@
     <Content Include="Views\User\Gate5.cshtml" />
     <Content Include="Views\User\Gate4.cshtml" />
     <Content Include="Views\User\Gate3.cshtml" />
+    <Content Include="Views\Home\Fallback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DAL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -292,6 +300,21 @@
     <EmbeddedResource Include="Migrations\201812190014554_Keys.resx">
       <DependentUpon>201812190014554_Keys.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812231537342_SpecificGate.resx">
+      <DependentUpon>201812231537342_SpecificGate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812231603541_UserTotalTimeAndKeys.resx">
+      <DependentUpon>201812231603541_UserTotalTimeAndKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812232150267_WebsiteUpdate.resx">
+      <DependentUpon>201812232150267_WebsiteUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\7GatesDatabase\7GatesDatabase.csproj">
+      <Project>{0af359dc-bcb6-49a9-8b96-0f605da62a59}</Project>
+      <Name>7GatesDatabase</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -326,7 +349,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

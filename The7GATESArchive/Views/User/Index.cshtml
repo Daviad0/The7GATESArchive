@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<The7GATESArchive.Models.UserViewModel>
+﻿@model PagedList.IPagedList<The7GATESArchive.Models.User>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
@@ -70,41 +70,61 @@
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
 <body style="background-color:black;font-family:Courier New, Courier, monospace">
     <br />
-        <table class="table table-condensed">
-            <tr class="top">
-                <th>
-                    <img src="~/Assets/Gate1Logo.gif" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
-                <th>
-                    <img src="~/Assets/Gate2Logo.png" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
-                <th>
-                    <img src="~/Assets/Gate3Logo.png" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
-                <th>
-                    <img src="~/Assets/Gate4Logo.png" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
-                <th>
-                    <img src="~/Assets/Gate5Logo.png" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
-                <th>
-                    <img src="~/Assets/Gate6Logo.png" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
-                <th>
-                    <img src="~/Assets/Gate7Logo.png" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
-                <th>
-                    <img src="~/Assets/BetaGate1.gif" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
-                <th>
-                    <img src="~/Assets/BetaGate2.png" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
-                <th>
-                    <img src="~/Assets/BetaGate3.png" height="64px" width="64px" style="border-radius:65px"/>
-                </th>
+    <table class="table table-condensed">
+        <tr class="top">
+            <th>
+                <a href="User/Gate1">
+                    <img src="~/Assets/Gate1Logo.gif" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="User/Gate2">
+                    <img src="~/Assets/Gate2Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="User/Gate3">
+                    <img src="~/Assets/Gate3Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="User/Gate4">
+                    <img src="~/Assets/Gate4Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="User/Gate5">
+                    <img src="~/Assets/Gate5Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="User/Gate6">
+                    <img src="~/Assets/Gate6Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="User/Gate7">
+                    <img src="~/Assets/Gate7Logo.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="User/BGate1">
+                    <img src="~/Assets/BetaGate1.gif" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="User/BGate2">
+                    <img src="~/Assets/BetaGate2.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
+            <th>
+                <a href="User/BGate3">
+                    <img src="~/Assets/BetaGate3.png" height="64px" width="64px" style="border-radius:65px" />
+                </a>
+            </th>
 
-            </tr>
-        </table>
+        </tr>
+    </table>
     <br />
     <table class="table table-condensed" style="color:red;padding-top:10px">
         <caption class="top" style="font-size:large;text-align:center">
@@ -159,7 +179,7 @@
                 </td>
                 <td>
                     @{
-                        string timeValue = new TimeSpan(0, 0, (int)item.TimeForAllGates).ToString();
+                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
                     }
 
                     @Html.DisplayFor(modelItem => timeValue)

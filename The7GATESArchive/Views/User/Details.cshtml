@@ -1,4 +1,4 @@
-﻿@model The7GATESArchive.Models.UserViewModel
+﻿@model The7GATESArchive.Models.User
 @{
 
 }
@@ -27,11 +27,6 @@
 
 <div>
     <br />
-    <div class="notice">
-        <h3>(!!!) Please Note (!!!)</h3>
-        <p>This is a demo! The Archive User Details will look like this, but this is not complete or real data!</p>
-    </div>
-    <br />
     <div class="data">
         <div class="title">
             <br />
@@ -41,7 +36,7 @@
             <br />
         </div>
         <br />
-        <table class="table table-condensed" style="color:red;padding-top:10px">
+        <table class="table table-condensed" style="color:red;padding-top:10px;text-align:left;border-radius:4px">
             <caption class="top" style="font-size:large;text-align:center">
             </caption>
             <tr class="top">
@@ -107,10 +102,37 @@
                 </td>
                 <td>
                     @{
-                        string timeValue = new TimeSpan(0, 0, (int)Model.TimeForAllGates).ToString();
+                        string timeValue = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
                     }
 
                     @Html.DisplayFor(modelItem => timeValue)
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
+                </td>
+                <td>
+                    00:00:00
+                </td>
+
+            </tr>
+            <tr class="topnorm">
+                <td>
+                    Keys
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Keys)
                 </td>
                 <td>
                     00:00:00
