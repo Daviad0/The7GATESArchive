@@ -21,12 +21,12 @@ namespace The7GATESArchive.Migrations
 
             if (shouldUpdate)
             {
-                var updater = new ApiUpdater();
+                /*var updater = new ApiUpdater();
                 using (var context = new GatewayContext())
                 {
                     updater.CreateGates(context);
                     updater.UpdateFromApi(context);
-                }
+                }*/
                 
             }
         }
@@ -47,8 +47,6 @@ namespace The7GATESArchive.Migrations
             };
             courses.ForEach(s => context.Gates.AddOrUpdate(s));
             context.SaveChanges();
-
-
         }
     }
 }

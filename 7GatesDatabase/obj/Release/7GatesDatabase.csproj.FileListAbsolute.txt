@@ -1,0 +1,11 @@
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\bin\Release\7GatesDatabase.dll.config
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\bin\Release\7GatesDatabase.dll
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\bin\Release\7GatesDatabase.pdb
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\bin\Release\EntityFramework.dll
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\bin\Release\EntityFramework.xml
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\obj\Release\7GatesDatabase.csproj.CoreCompileInputs.cache
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\obj\Release\7GatesDatabase.csproj.CopyComplete
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\obj\Release\7GatesDatabase.dll
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\obj\Release\7GatesDatabase.pdb

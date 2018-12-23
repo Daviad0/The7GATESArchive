@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "The7GATESArchive", "The7GATESArchive\The7GATESArchive.csproj", "{91BA33BE-E2D2-4448-8C4D-49BDF278F3E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apiupdater", "apiupdater\apiupdater.csproj", "{27AD9DE9-FD93-492B-B415-E55ACED74E94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7GatesDatabase", "7GatesDatabase\7GatesDatabase.csproj", "{0AF359DC-BCB6-49A9-8B96-0F605DA62A59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{91BA33BE-E2D2-4448-8C4D-49BDF278F3E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91BA33BE-E2D2-4448-8C4D-49BDF278F3E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91BA33BE-E2D2-4448-8C4D-49BDF278F3E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27AD9DE9-FD93-492B-B415-E55ACED74E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27AD9DE9-FD93-492B-B415-E55ACED74E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27AD9DE9-FD93-492B-B415-E55ACED74E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27AD9DE9-FD93-492B-B415-E55ACED74E94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF359DC-BCB6-49A9-8B96-0F605DA62A59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF359DC-BCB6-49A9-8B96-0F605DA62A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF359DC-BCB6-49A9-8B96-0F605DA62A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF359DC-BCB6-49A9-8B96-0F605DA62A59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

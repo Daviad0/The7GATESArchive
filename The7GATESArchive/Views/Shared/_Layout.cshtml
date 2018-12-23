@@ -27,7 +27,12 @@
                 @Html.ActionLink("The Gateway Projects", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li>Closed by Developer</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Users", "Index", "User")</li>
+                        <li>@Html.ActionLink("Status", "Status", "Home")</li>
+                        <li>@Html.ActionLink("Gates", "Index", "Gates")</li>
+                        <li>@Html.ActionLink("Find Help", "Help", "Home")</li>
                     </ul>
                 </div>
             </div>

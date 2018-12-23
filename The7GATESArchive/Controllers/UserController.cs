@@ -19,35 +19,12 @@ namespace Gateway.Controllers
         // GET: Students
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            List<UserViewModel> userTimes = new List<UserViewModel>();
-            IEnumerable<UserViewModel> filteredUsers;
             ViewBag.CurrentSort = sortOrder;
             ViewBag.KeySortParm = sortOrder == "Key" ? "key_desc" : "Key";
             ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
             ViewBag.RankSortParm = sortOrder == "Rank" ? "rank_desc" : "Rank";
-            var users = from s in db.Users
-                           select s;
 
-            
-            foreach (User user in users.ToList())
-            {
-                var userModel = new UserViewModel()
-                {
-                    ID = user.ID,
-                    Username = user.Username,
-                    Keys = user.Keys,
-                    TimeForAllGates = user.UserGates.Sum(ug => ug.Time.TotalSeconds)
-                };
-                userTimes.Add(userModel);
-            }
-            filteredUsers = userTimes.OrderByDescending(s => s.Keys).ThenBy(s => s.TimeForAllGates);
-            int rank = 0;
-            foreach (var user in filteredUsers)
-            {
-                rank++;
-                user.Rank = rank;
-            }
-
+            //First filter the results from the database
             if (searchString != null)
             {
                 page = 1;
@@ -56,107 +33,118 @@ namespace Gateway.Controllers
             {
                 searchString = currentFilter;
             }
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                userTimes = userTimes.Where(s => s.Username.ToLower().Contains(searchString.ToLower())).ToList();
-            }
 
-            ViewBag.CurrentFilter = searchString;
-            
-            
+            // See if there's any sort order.
             if (sortOrder != null)
             {
                 sortOrder = sortOrder.ToLower();
             }
-            switch (sortOrder)
+
+            IQueryable<User> users;
+            if (!String.IsNullOrEmpty(searchString))
             {
-                case "key_desc":
-                    filteredUsers = userTimes.OrderByDescending(s => s.Keys).ThenBy(s => s.TimeForAllGates);
-                    break;
-                case "key":
-                    filteredUsers = userTimes.OrderBy(s => s.Keys).ThenByDescending(s => s.TimeForAllGates);
-                    break;
-                case "name_desc":
-                    filteredUsers = userTimes.OrderByDescending(s => s.Username);
-                    break;
-                case "name":
-                    filteredUsers = userTimes.OrderBy(s => s.Username);
-                    break;
-                case "rank":
-                    filteredUsers = userTimes.OrderBy(s => s.Rank);
-                    break;
-                case "rank_desc":
-                    filteredUsers = userTimes.OrderByDescending(s => s.Rank);
-                    break;
-                default:
-                    filteredUsers = userTimes.OrderBy(s => s.Rank);
-                    break;
+                searchString = searchString.ToLower();
+
+                switch (sortOrder)
+                {
+                    case "key_desc":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderByDescending(u => u.Keys).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                    case "key":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderBy(u => u.Keys).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                    case "name_desc":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderByDescending(u => u.Username)
+                                select s;
+                        break;
+                    case "name":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderBy(u => u.Username)
+                                select s;
+                        break;
+                    case "rank_desc":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderByDescending(u => u.Rank)
+                                select s;
+                        break;
+                    default:
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderBy(u => u.Rank).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                }
             }
+            else
+            {
+                switch (sortOrder)
+                {
+                    case "key_desc":
+                        users = from s in db.Users
+                                .OrderByDescending(u => u.Keys).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                    case "key":
+                        users = from s in db.Users
+                                .OrderBy(u => u.Keys).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                    case "name_desc":
+                        users = from s in db.Users
+                                .OrderByDescending(u => u.Username)
+                                select s;
+                        break;
+                    case "name":
+                        users = from s in db.Users
+                                .OrderBy(u => u.Username)
+                                select s;
+                        break;
+                    case "rank_desc":
+                        users = from s in db.Users
+                                .OrderByDescending(u => u.Rank)
+                                select s;
+                        break;
+                    default:
+                        users = from s in db.Users
+                                .OrderBy(u => u.Rank).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                }
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             int pageSize = 200;
             int pageNumber = (page ?? 1);
-            return View(filteredUsers.ToPagedList(pageNumber, pageSize));
+            return View(users.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Students/Details/5
         public ActionResult Details(Guid? id)
         {
-            ICollection<UserViewModel> userTimes = new List<UserViewModel>();
-            IEnumerable<UserViewModel> filteredUsers;
-            var users = from s in db.Users
-                        select s;
-
-            foreach (User user in users.ToList())
+            if (id == null)
             {
-                var userModel = new UserViewModel()
-                {
-                    ID = user.ID,
-                    Username = user.Username,
-                    Keys = user.Keys,
-                    TimeForAllGates = user.UserGates.Sum(ug => ug.Time.TotalSeconds)
-                };
-                userTimes.Add(userModel);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            filteredUsers = userTimes.OrderByDescending(s => s.Keys).ThenBy(s => s.TimeForAllGates);
-            int rank = 0;
-            foreach (var user in filteredUsers)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
-                rank++;
-                user.Rank = rank;
+                return HttpNotFound();
             }
-
-            return View(filteredUsers.Where(s => s.ID == id).FirstOrDefault());
+            return View(user);
         }
         public ActionResult Gate1(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            List<UserViewModel> userTimes = new List<UserViewModel>();
-            IEnumerable<UserViewModel> filteredUsers;
             ViewBag.CurrentSort = sortOrder;
             ViewBag.KeySortParm = sortOrder == "Key" ? "key_desc" : "Key";
             ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
             ViewBag.RankSortParm = sortOrder == "Rank" ? "rank_desc" : "Rank";
-            var users = from s in db.Users
-                        select s;
 
-
-            foreach (User user in users.ToList())
-            {
-                var userModel = new UserViewModel()
-                {
-                    ID = user.ID,
-                    Username = user.Username,
-                    Keys = user.Keys,
-                    TimeForAllGates = user.UserGates.Sum(ug => ug.Time.TotalSeconds)
-                };
-                userTimes.Add(userModel);
-            }
-            filteredUsers = userTimes.OrderByDescending(s => s.Keys).ThenBy(s => s.TimeForAllGates);
-            int rank = 0;
-            foreach (var user in filteredUsers)
-            {
-                rank++;
-                user.Rank = rank;
-            }
-
+            //First filter the results from the database
             if (searchString != null)
             {
                 page = 1;
@@ -165,45 +153,94 @@ namespace Gateway.Controllers
             {
                 searchString = currentFilter;
             }
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                userTimes = userTimes.Where(s => s.Username.ToLower().Contains(searchString.ToLower())).ToList();
-            }
 
-            ViewBag.CurrentFilter = searchString;
-
-
+            // See if there's any sort order.
             if (sortOrder != null)
             {
                 sortOrder = sortOrder.ToLower();
             }
-            switch (sortOrder)
+
+            IQueryable<User> users;
+            if (!String.IsNullOrEmpty(searchString))
             {
-                case "key_desc":
-                    filteredUsers = userTimes.OrderByDescending(s => s.Keys).ThenBy(s => s.TimeForAllGates);
-                    break;
-                case "key":
-                    filteredUsers = userTimes.OrderBy(s => s.Keys).ThenByDescending(s => s.TimeForAllGates);
-                    break;
-                case "name_desc":
-                    filteredUsers = userTimes.OrderByDescending(s => s.Username);
-                    break;
-                case "name":
-                    filteredUsers = userTimes.OrderBy(s => s.Username);
-                    break;
-                case "rank":
-                    filteredUsers = userTimes.OrderBy(s => s.Rank);
-                    break;
-                case "rank_desc":
-                    filteredUsers = userTimes.OrderByDescending(s => s.Rank);
-                    break;
-                default:
-                    filteredUsers = userTimes.OrderBy(s => s.Rank);
-                    break;
+                searchString = searchString.ToLower();
+
+                switch (sortOrder)
+                {
+                    case "key_desc":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderByDescending(u => u.Keys).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                    case "key":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderBy(u => u.Keys).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                    case "name_desc":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderByDescending(u => u.Username)
+                                select s;
+                        break;
+                    case "name":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderBy(u => u.Username)
+                                select s;
+                        break;
+                    case "rank_desc":
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderByDescending(u => u.Rank)
+                                select s;
+                        break;
+                    default:
+                        users = from s in db.Users.Where(u => u.Username.ToLower().Contains(searchString))
+                                .OrderBy(u => u.Rank).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                }
             }
+            else
+            {
+                switch (sortOrder)
+                {
+                    case "key_desc":
+                        users = from s in db.Users
+                                .OrderByDescending(u => u.Keys).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                    case "key":
+                        users = from s in db.Users
+                                .OrderBy(u => u.Keys).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                    case "name_desc":
+                        users = from s in db.Users
+                                .OrderByDescending(u => u.Username)
+                                select s;
+                        break;
+                    case "name":
+                        users = from s in db.Users
+                                .OrderBy(u => u.Username)
+                                select s;
+                        break;
+                    case "rank_desc":
+                        users = from s in db.Users
+                                .OrderByDescending(u => u.Rank)
+                                select s;
+                        break;
+                    default:
+                        users = from s in db.Users
+                                .OrderBy(u => u.Rank).ThenBy(u => u.TimeForAllGates)
+                                select s;
+                        break;
+                }
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             int pageSize = 200;
             int pageNumber = (page ?? 1);
-            return View(filteredUsers.ToPagedList(pageNumber, pageSize));
+            return View(users.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Gate2()
         {

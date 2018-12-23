@@ -100,7 +100,7 @@
             <div style="color:red;text-align:center;border:8px solid red;font-family:Courier New, Courier, monospace;border-radius:8px">
 
                 <h1><strong>THE 7 GATES</strong></h1>
-                <h3><strong>!!! BETA GATE 1 OPENING !!!</strong></h3>
+                <h3><strong>!!! BETA GATE 2 COUNTDOWN !!!</strong></h3>
 
             </div>
             <br />
@@ -213,7 +213,7 @@
             <br />
             <div class="g2button">
                 <h4></h4>
-                <img src="~/Assets/BetaGate2.png" height="64px" width="64px" />
+                <img src="~/Assets/WaitingGate.gif" height="64px" width="64px" />
                 <h3>
                     <strong>
                         @Html.ActionLink("BETA GATE 2", "BetaGate2", "Gates")
@@ -221,7 +221,7 @@
                 </h3>
                 <p>Unknown Theme</p>
                 <p>Unknown Date</p>
-                <p><strong>LOCKED</strong></p>
+                <strong><p id="demo"></p></strong>
             </div>
             <br />
             <div class="g3button">
@@ -242,7 +242,7 @@
     </div>
     <script>
         // Set the date we're counting down to
-        var myDateObj = new Date("Fri Dec 21 2018 04:00:00 GMT-0000 (UTC)");
+        var myDateObj = new Date("Sat Dec 29 2018 04:00:00 GMT-0000 (UTC)");
         myDateObj.toString();
 
         // Update the count down every 1 second
