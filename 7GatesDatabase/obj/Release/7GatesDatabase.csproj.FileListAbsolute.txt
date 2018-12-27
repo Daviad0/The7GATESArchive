@@ -9,3 +9,4 @@ C:\Users\djree\The7GATESArchive22\7GatesDatabase\obj\Release\7GatesDatabase.cspr
 C:\Users\djree\The7GATESArchive22\7GatesDatabase\obj\Release\7GatesDatabase.csproj.CopyComplete
 C:\Users\djree\The7GATESArchive22\7GatesDatabase\obj\Release\7GatesDatabase.dll
 C:\Users\djree\The7GATESArchive22\7GatesDatabase\obj\Release\7GatesDatabase.pdb
+C:\Users\djree\The7GATESArchive22\7GatesDatabase\obj\Release\7GatesDatabase.csprojAssemblyReference.cache
