@@ -23,6 +23,34 @@
         color: white;
         text-align: center;
     }
+    .flip-box {
+        background-color: transparent;
+    }
+
+    .flip-box-inner {
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-box:hover .flip-box-inner {
+        transform: rotateX(180deg);
+    }
+
+    .flip-box-front, .flip-box-back {
+        backface-visibility: hidden;
+    }
+
+    .flip-box-front {
+        color: black;
+    }
+
+    .flip-box-back {
+        background-color: rgba(75, 185, 198,0.3);
+        border: 2px solid rgba(84, 237, 255,1);
+        color: white;
+        transform: rotateX(180deg);
+    }
 </style>
 
 <div>
@@ -36,126 +64,146 @@
             <br />
         </div>
         <br />
-        <table class="table table-condensed" style="color:red;padding-top:10px;text-align:left;border-radius:4px">
-            <caption class="top" style="font-size:large;text-align:center">
-            </caption>
-            <tr class="top">
-                <th>
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <table class="table table-condensed" style="color:red;padding-top:10px;text-align:left;border-radius:4px">
+                        <caption class="top" style="font-size:large;text-align:center">
+                        </caption>
+                        <tr class="top">
+                            <th>
+                                <br />
+                                <p></p>
+                            </th>
+                            <th>
+                                <img src="~/Assets/Gate1Logo.png" width="64px" height="64px" style="float:none" />
+                            </th>
+                            <th>
+                                <img src="~/Assets/Gate2Logo.png" width="64px" height="64px" style="float:none" />
+                            </th>
+                            <th>
+                                <img src="~/Assets/Gate3Logo.png" width="64px" height="64px" style="float:none" />
+                            </th>
+                            <th>
+                                <img src="~/Assets/Gate4Logo.png" width="64px" height="64px" style="float:none" />
+                            </th>
+                            <th>
+                                <img src="~/Assets/Gate5Logo.png" width="64px" height="64px" style="float:none" />
+                            </th>
+                            <th>
+                                <img src="~/Assets/Gate6Logo.png" width="64px" height="64px" style="float:none" />
+                            </th>
+                            <th>
+                                <img src="~/Assets/Gate7Logo.png" width="64px" height="64px" style="float:none" />
+                            </th>
+                        </tr>
+
+
+
+                        <tr class="topnorm">
+                            <td>
+                                Place
+                            </td>
+                            <td>
+                                #@Html.DisplayFor(model => model.Rank)
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+
+                        </tr>
+                        <tr class="topnorm">
+                            <td>
+                                Time
+                            </td>
+                            <td>
+                                @{
+                                    string timeValue = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                                }
+
+                                @Html.DisplayFor(modelItem => timeValue)
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+                            <td>
+                                TBD
+                            </td>
+
+                        </tr>
+                        <tr class="topnorm">
+                            <td>
+                                Keys
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Keys)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Keys)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Keys)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Keys)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Keys)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Keys)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Keys)
+                            </td>
+
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="flip-box-back">
                     <br />
-                    <p></p>
-                </th>
-                <th>
-                    <img src="~/Assets/Gate1Logo.png" width="64px" height="64px" style="float:none" />
-                </th>
-                <th>
-                    <img src="~/Assets/Gate2Logo.png" width="64px" height="64px" style="float:none" />
-                </th>
-                <th>
-                    <img src="~/Assets/Gate3Logo.png" width="64px" height="64px" style="float:none" />
-                </th>
-                <th>
-                    <img src="~/Assets/Gate4Logo.png" width="64px" height="64px" style="float:none" />
-                </th>
-                <th>
-                    <img src="~/Assets/Gate5Logo.png" width="64px" height="64px" style="float:none" />
-                </th>
-                <th>
-                    <img src="~/Assets/Gate6Logo.png" width="64px" height="64px" style="float:none" />
-                </th>
-                <th>
-                    <img src="~/Assets/Gate7Logo.png" width="64px" height="64px" style="float:none" />
-                </th>
-            </tr>
+                    <h3>CURRENT INFO:</h3>
+                        <p>RANK: #@Html.DisplayFor(model => model.Rank)</p>
+                        <p>
+                            TIME: @{
+                                string timeValueC = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                            }
 
-
-
-            <tr class="topnorm">
-                <td>
-                    Place
-                </td>
-                <td>
-                    #@Html.DisplayFor(model => model.Rank)
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-
-            </tr>
-            <tr class="topnorm">
-                <td>
-                    Time
-                </td>
-                <td>
-                    @{
-                        string timeValue = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                    }
-
-                    @Html.DisplayFor(modelItem => timeValue)
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-                <td>
-                    TBD
-                </td>
-
-            </tr>
-            <tr class="topnorm">
-                <td>
-                    Keys
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Keys)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Keys)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Keys)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Keys)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Keys)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Keys)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Keys)
-                </td>
-
-            </tr>
-
-        </table>
+                            @Html.DisplayFor(modelItem => timeValueC)
+                        </p>
+                        <p>KEYS: @Html.DisplayFor(model => model.Keys)</p>
+                    <br />
+                </div>
+            </div>
+        </div>
     </div>
 
     <p style="text-align:center">
