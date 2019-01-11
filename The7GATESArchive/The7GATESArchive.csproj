@@ -139,6 +139,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ARGController.cs" />
     <Compile Include="Controllers\GatesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -174,6 +175,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Zone1.png" />
+    <Content Include="Assets\ARG-1.png" />
     <Content Include="Assets\BetaGate1Open.gif" />
     <Content Include="Assets\BetaGate2Official.gif" />
     <Content Include="Assets\DiscordLogo.png" />
@@ -184,6 +187,8 @@
     <Content Include="Assets\ArchiveLogo.png" />
     <Content Include="Assets\BetaGate2Official.png" />
     <Content Include="Assets\BetaGate3Official.png" />
+    <Content Include="Assets\ARG-2.png" />
+    <Content Include="Assets\ARG-3.png" />
     <Content Include="Assets\TheTheoristGateway.gif" />
     <Content Include="Assets\WaitingGate.gif" />
     <Content Include="Assets\Gate1Logo.gif" />
@@ -275,6 +280,13 @@
     <Content Include="Views\User\Gate3.cshtml" />
     <Content Include="Views\Home\Fallback.cshtml" />
     <Content Include="Views\Home\Update.cshtml" />
+    <Content Include="Views\User\Report.cshtml" />
+    <Content Include="Views\ARG\ItsDarkInHere.cshtml" />
+    <Content Include="Views\ARG\postit.cshtml" />
+    <Content Include="Views\ARG\Index.cshtml" />
+    <Content Include="Views\ARG\Hint1ahgsdh.cshtml" />
+    <Content Include="Views\ARG\Hint2hfiuakk.cshtml" />
+    <Content Include="Views\ARG\Hint3kasdjm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

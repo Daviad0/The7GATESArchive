@@ -219,9 +219,9 @@
                         @Html.ActionLink("BETA GATE 2", "BetaGate2", "Gates")
                     </strong>
                 </h3>
-                <p>Unknown Theme</p>
+                <p>Game Theory ARG Theme</p>
                 <p>Dec 28th, 2018 8:00PM PST</p>
-                <strong><p id="demo"></p></strong>
+                <strong><p>OPEN</p></strong>
             </div>
             <br />
             <div class="g3button">
@@ -261,8 +261,8 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Output the result in an element with id="demo"
-            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
+            document.getElementById("demo").innerHTML = days + ":" + hours + ":"
+                + minutes + ":" + seconds;
 
             // If the count down is over, write some text
             if (distance < 0) {
