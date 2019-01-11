@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<style>
+    .body {
+        text-align: center;
+    }
+    .up {
+        background-color: rgba(0, 181, 135, 0.25);
+        color: white;
+        text-align: center;
+        border: 2px solid #00ffbf;
+        border-radius: 4px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .hint {
+        background-color: rgba(62, 120, 214, 0.25);
+        color: white;
+        text-align: center;
+        border: 2px solid rgb(66, 134, 244);
+        border-radius: 4px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    /* Slideshow container */
+    .slideshow-container {
+        position: relative;
+        background: #000000;
+    }
+
+    /* Slides */
+    .mySlides {
+        text-align: center;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -30px;
+        padding: 16px;
+        color: lightgray;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 5px 5px 0;
+        user-select: none;
+        transition: 0.3s;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        position: absolute;
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgb(244, 75, 66);
+            color: white;
+        }
+
+    /* The dot/bullet/indicator container */
+    .dot-container {
+        text-align: center;
+        padding: 20px;
+        background: #000000;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+        /* Add a background color to the active dot/circle */
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+    /* Add an italic font style to all quotes */
+    q {
+        font-style: italic;
+    }
+
+    /* Add a blue color to the author */
+    .author {
+        color: cornflowerblue;
+    }
+</style>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <h4 style="padding-top:6px">The Gateway Projects - ZONE [ALPHA]</h4>
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center">
+        <h1>ZONE ALPHA MAIN PAGE</h1>
+        <img src="~/Assets/Zone1.png" width="128px" height="128px" style="display:inline-block" />
+        <div style="text-align:center">
+            <h2 style="display:inline-block;width:50%" class="up">ACTIVE</h2>
+        </div>
+        <h4></h4>
+        
+    </div>
+</body>
+<script>
+    // Set the date we're counting down to
+    var myDateObj = new Date("Sat Nov 24 2018 16:00:00 GMT-0000 (UTC)");
+    myDateObj.toString();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = myDateObj - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("hint1").innerHTML = hours + ":"
+            + minutes + ":" + seconds;
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("hint1").innerHTML = "/Hint1ahgsdh";
+        }
+    }, 1000);
+</script>
+<script>
+    // Set the date we're counting down to
+    var myDateObj2 = new Date("Sat Nov 24 2018 16:00:00 GMT-0000 (UTC)");
+    myDateObj2.toString();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = myDateObj2 - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("hint2").innerHTML = days + ":" + hours + ":"
+            + minutes + ":" + seconds;
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("hint2").innerHTML = "/Hint2hfiuakk";
+        }
+    }, 1000);
+</script>
+<script>
+    // Set the date we're counting down to
+    var myDateObj3 = new Date("Sat Nov 24 2018 16:00:00 GMT-0000 (UTC)");
+    myDateObj3.toString();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = myDateObj3 - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("hint3").innerHTML = days + ":" + hours + ":"
+            + minutes + ":" + seconds;
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("hint3").innerHTML = "/Hint3kasdjm";
+        }
+    }, 1000);
+</script>
+<script>
+    // Set the date we're counting down to
+    var myDateObj4 = new Date("Sat Nov 24 2018 16:00:00 GMT-0000 (UTC)");
+    myDateObj4.toString();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = myDateObj4 - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("hint4").innerHTML = days + ":" + hours + ":"
+            + minutes + ":" + seconds;
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("hint4").innerHTML = "GO GO GO! COMPLETE THAT GATE!";
+        }
+    }, 1000);
+</script>
+<div class="slideshow-container" style="background-color: black;border: 4px solid lightgray;color:white;border-radius:10px;height:450px">
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <!-- Full-width slides/quotes -->
+    <div class="mySlides">hi
+        <h1>Hints</h1>
+        <div style="text-align:center">
+            <div class="hint" style="width:50%;text-align:center;display:inline-block">
+                <h4>Hint 1 (Video)</h4>
+                <h4 id="hint1"></h4>
+            </div>
+        </div>
+        <h4></h4>
+        <div style="text-align:center">
+            <div class="hint" style="width:50%;text-align:center;display:inline-block">
+                <h4>Hint 2 (Dark Room)</h4>
+                <h4 id="hint2"></h4>
+            </div>
+        </div>
+        <h4></h4>
+        <div style="text-align:center">
+            <div class="hint" style="width:50%;text-align:center;display:inline-block">
+                <h4>Hint 3 (Emergency Exit)</h4>
+                <h4 id="hint3"></h4>
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <div class="mySlides">
+        <h1>Submit The Keys</h1>
+        <h3>NOTICE: YOU MUST DO THEM IN ORDER TO QUALIFY</h3>
+        <div style="text-align:center">
+            <div class="hint" style="width:50%;text-align:center;display:inline-block">
+                <h4>Code 1</h4>
+                <h4><a href="https://goo.gl/forms/1yE6NYPPZxa8w4Vm1">https://goo.gl/forms/1yE6NYPPZxa8w4Vm1</a></h4>
+            </div>
+        </div>
+        <h4></h4>
+        <div style="text-align:center">
+            <div class="hint" style="width:50%;text-align:center;display:inline-block">
+                <h4>Code 2</h4>
+                <h4><a href="https://goo.gl/forms/EnDtjwoEEEzOG8OJ3">https://goo.gl/forms/EnDtjwoEEEzOG8OJ3</a></h4>
+            </div>
+        </div>
+        <h4></h4>
+        <div style="text-align:center">
+            <div class="hint" style="width:50%;text-align:center;display:inline-block">
+                <h4>Code 3</h4>
+                <h4><a href="https://goo.gl/forms/CYw1UIELu4cYxNb13">https://goo.gl/forms/CYw1UIELu4cYxNb13</a></h4>
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <div class="mySlides">
+        <h1>THE STARTING CLUE</h1>
+        <h3 style="padding-left:20px;padding-right:20px">https://youtu.be/wRSQf23c0lo (ORIGINAL)</h3>
+        <h3 style="padding-left:20px;padding-right:20px">https://drive.google.com/drive/folders/1SSxkDHsBPkP_vYxe4nIFJ3TBrKrDQwh3?usp=sharing (DOWNLOAD)</h3>
+        <h3>Get to it theorist!</h3>
+        <br />
+    </div>
+
+    <div class="mySlides">
+        <h1>Leaderboard</h1>
+        <h4>1: ---</h4>
+        <h4>2: ---</h4>
+        <h4>3: ---</h4>
+        <h4>4: ---</h4>
+        <h4>5: ---</h4>
+        <h4>6: ---</h4>
+        <h4>7: ---</h4>
+        <h4>8: ---</h4>
+        <h4>9: ---</h4>
+        <h4>10: ---</h4>
+        <br />
+    </div>
+
+
+
+    <!-- Next/prev buttons -->
+
+</div>
+<br />
+    </div>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
+</html>

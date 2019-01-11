@@ -3,13 +3,86 @@
 
 }
 <style>
+    /* Slideshow container */
+    .slideshow-container {
+        position: relative;
+        background: #000000;
+    }
+
+    /* Slides */
+    .mySlides {
+        text-align: center;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -30px;
+        padding: 16px;
+        color: rgb(244, 75, 66);
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 5px 5px 0;
+        user-select: none;
+        transition: 0.3s;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        position: absolute;
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgb(244, 75, 66);
+            color: white;
+        }
+
+    /* The dot/bullet/indicator container */
+    .dot-container {
+        text-align: center;
+        padding: 20px;
+        background: #000000;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+        /* Add a background color to the active dot/circle */
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+    /* Add an italic font style to all quotes */
+    q {
+        font-style: italic;
+    }
+
+    /* Add a blue color to the author */
+    .author {
+        color: cornflowerblue;
+    }
     .data {
         color:white
     }
     .title {
-        border: 4px solid rgba(84, 237, 255,1);
+        border: 4px solid rgb(244, 75, 66);
         text-align: center;
-        background-color: rgba(75, 185, 198,0.3);
+        background-color: rgba(206, 63, 55,0.3);
         border-radius: 10px
     }
     .table {
@@ -55,15 +128,18 @@
 
 <div>
     <br />
-    <div class="data">
-        <div class="title">
-            <br />
+    <div>
+        <div style="text-align:center">
+            <div class="title" style="width:100%;display:inline-block;color:white">
+                <br />
 
-            <h1 style="font-size:60px"><strong>USER INFO</strong></h1>
-            <h3 style="font-family:'Courier New';padding:1px">@Html.DisplayFor(model => model.Username)</h3>
-            <br />
+                <h1 style="font-size:60px"><strong>THEORIST DETAILS</strong></h1>
+                <h3 style="font-family:'Courier New';padding:1px">@Html.DisplayFor(model => model.Username)</h3>
+                <br />
+            </div>
         </div>
         <br />
+        <!--
         <div class="flip-box">
             <div class="flip-box-inner">
                 <div class="flip-box-front">
@@ -191,24 +267,185 @@
                 <div class="flip-box-back">
                     <br />
                     <h3>CURRENT INFO:</h3>
-                        <p>RANK: #@Html.DisplayFor(model => model.Rank)</p>
-                        <p>
-                            TIME: @{
-                                string timeValueC = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                            }
+                    <p>RANK: #@Html.DisplayFor(model => model.Rank)</p>
+                    <p>
+                        TIME: @{
+                            string timeValueC = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                        }
 
-                            @Html.DisplayFor(modelItem => timeValueC)
-                        </p>
-                        <p>KEYS: @Html.DisplayFor(model => model.Keys)</p>
+                        @Html.DisplayFor(modelItem => timeValueC)
+                    </p>
+                    <p>KEYS: @Html.DisplayFor(model => model.Keys)</p>
                     <br />
                 </div>
             </div>
         </div>
     </div>
+            -->
+        <!-- Slideshow container -->
+        <div class="slideshow-container" style="background-color: rgba(206, 63, 55,0.3);border: 4px solid rgb(244, 75, 66);color:white;border-radius:10px">
 
-    <p style="text-align:center">
+            <!-- Full-width slides/quotes -->
+            <div class="mySlides">
+                <h1>Gate 1</h1>
+                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
+                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
+                <h3 style="padding-bottom:10px">
+                    TIME: @{
+                        string timeValueV = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                    }
 
-        @Html.ActionLink("<<< Back to Leaderboard", "Index")
+                    @Html.DisplayFor(modelItem => timeValueV)
+                </h3>
+            </div>
+
+            <div class="mySlides">
+                <h1>Gate 2</h1>
+                <!--
+                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
+                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
+                <h3>
+                    TIME: @{
+                        string timeValueV2 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValueV2)
+                </h3>
+                -->
+                <h3>KEYS: 0</h3>
+                <h3>RANK: NOT RANKED</h3>
+                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+            </div>
+
+            <div class="mySlides">
+                <h1>Gate 3</h1>
+                <!--
+                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
+                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
+                <h3>
+                    TIME: @{
+                        string timeValueV3 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValueV3)
+                </h3>
+                -->
+                <h3>KEYS: 0</h3>
+                <h3>RANK: NOT RANKED</h3>
+                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+            </div>
+
+            <div class="mySlides">
+                <h1>Gate 4</h1>
+                <!--
+                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
+                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
+                <h3>
+                    TIME: @{
+                        string timeValueV4 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValueV4)
+                </h3>
+                -->
+                <h3>KEYS: 0</h3>
+                <h3>RANK: NOT RANKED</h3>
+                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+            </div>
+
+            <div class="mySlides">
+                <h1>Gate 5</h1>
+                <!--
+                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
+                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
+                <h3>
+                    TIME: @{
+                        string timeValueV5 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValueV5)
+                </h3>
+                -->
+                <h3>KEYS: 0</h3>
+                <h3>RANK: NOT RANKED</h3>
+                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+            </div>
+
+            <div class="mySlides">
+                <h1>Gate 6</h1>
+                <!--
+                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
+                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
+                <h3>
+                    TIME: @{
+                        string timeValueV6 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValueV6)
+                </h3>
+                -->
+                <h3>KEYS: 0</h3>
+                <h3>RANK: NOT RANKED</h3>
+                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+            </div>
+
+            <div class="mySlides">
+                <h1>Gate 7</h1>
+                <!--
+                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
+                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
+                <h3>
+                    TIME: @{
+                        string timeValueV7 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValueV7)
+                </h3>
+                -->
+                <h3>KEYS: 0</h3>
+                <h3>RANK: NOT RANKED</h3>
+                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+            </div>
+
+            <!-- Next/prev buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
         <br />
-    </p>
-</div>
+        <div style="text-align:center">
+            <div style="text-align:center;width:50%;display:inline-block;border-radius:120px" class="title">
+                <h3><a href="/User/Report">REPORT USERNAME</a></h3>
+
+                <h3>@Html.ActionLink("<<< Back to Leaderboard", "Index")</h3>
+                <br />
+            </div>
+        </div>
+    </div>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>

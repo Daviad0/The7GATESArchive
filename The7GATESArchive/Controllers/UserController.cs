@@ -287,6 +287,11 @@ namespace Gateway.Controllers
 
             return View();
         }
+        public ActionResult Report()
+        {
+
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
