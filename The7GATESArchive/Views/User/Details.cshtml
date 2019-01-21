@@ -22,7 +22,7 @@
         width: auto;
         margin-top: -30px;
         padding: 16px;
-        color: rgb(244, 75, 66);
+        color: white;
         font-weight: bold;
         font-size: 20px;
         border-radius: 0 5px 5px 0;
@@ -39,8 +39,8 @@
 
         /* On hover, add a black background color with a little bit see-through */
         .prev:hover, .next:hover {
-            background-color: rgb(244, 75, 66);
-            color: white;
+            background-color: white;
+            color: black;
         }
 
     /* The dot/bullet/indicator container */
@@ -283,10 +283,11 @@
     </div>
             -->
         <!-- Slideshow container -->
-        <div class="slideshow-container" style="background-color: rgba(206, 63, 55,0.3);border: 4px solid rgb(244, 75, 66);color:white;border-radius:10px">
+        <div class="slideshow-container" style="background-color: black;color:white;border-radius:10px">
 
             <!-- Full-width slides/quotes -->
-            <div class="mySlides">
+            <div class="mySlides" style="background-color: rgba(230, 51, 90, .3);border: 4px solid rgb(230, 51, 90);border-radius:10px">
+                <br />
                 <h1>Gate 1</h1>
                 <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
                 <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
@@ -297,9 +298,11 @@
 
                     @Html.DisplayFor(modelItem => timeValueV)
                 </h3>
+                <br />
             </div>
 
-            <div class="mySlides">
+            <div class="mySlides" style="background-color: rgba(63, 186, 132, .3);border: 4px solid rgb(63, 186, 132);border-radius:10px">
+                <br />
                 <h1>Gate 2</h1>
                 <!--
                 <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
@@ -315,9 +318,11 @@
                 <h3>KEYS: 0</h3>
                 <h3>RANK: NOT RANKED</h3>
                 <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+                <br />
             </div>
 
-            <div class="mySlides">
+            <div class="mySlides" style="background-color: rgba(52, 169, 246, .3);border: 4px solid rgb(52, 169, 246);border-radius:10px">
+                <br />
                 <h1>Gate 3</h1>
                 <!--
                 <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
@@ -333,9 +338,11 @@
                 <h3>KEYS: 0</h3>
                 <h3>RANK: NOT RANKED</h3>
                 <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+                <br />
             </div>
 
-            <div class="mySlides">
+            <div class="mySlides" style="background-color: rgba(254, 123, 81, .3);border: 4px solid rgb(254, 123, 81);border-radius:10px">
+                <br />
                 <h1>Gate 4</h1>
                 <!--
                 <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
@@ -351,9 +358,11 @@
                 <h3>KEYS: 0</h3>
                 <h3>RANK: NOT RANKED</h3>
                 <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+                <br />
             </div>
 
-            <div class="mySlides">
+            <div class="mySlides" style="background-color: rgba(240, 190, 55, .3);border: 4px solid rgb(240, 190, 55);border-radius:10px">
+                <br />
                 <h1>Gate 5</h1>
                 <!--
                 <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
@@ -369,9 +378,11 @@
                 <h3>KEYS: 0</h3>
                 <h3>RANK: NOT RANKED</h3>
                 <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+                <br />
             </div>
 
-            <div class="mySlides">
+            <div class="mySlides" style="background-color: rgba(167, 76, 193, .3);border: 4px solid rgb(167, 76, 193);border-radius:10px">
+                <br />
                 <h1>Gate 6</h1>
                 <!--
                 <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
@@ -387,9 +398,11 @@
                 <h3>KEYS: 0</h3>
                 <h3>RANK: NOT RANKED</h3>
                 <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+                <br />
             </div>
 
-            <div class="mySlides">
+            <div class="mySlides" style="background-color:rgba(40, 40, 40, .3);border: 4px solid rgb(40, 40, 40);border-radius:10px">
+                <br />
                 <h1>Gate 7</h1>
                 <!--
                 <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
@@ -405,6 +418,7 @@
                 <h3>KEYS: 0</h3>
                 <h3>RANK: NOT RANKED</h3>
                 <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
+                <br />
             </div>
 
             <!-- Next/prev buttons -->
@@ -413,7 +427,7 @@
         </div>
         <br />
         <div style="text-align:center">
-            <div style="text-align:center;width:50%;display:inline-block;border-radius:120px" class="title">
+            <div style="text-align:center;width:100%;display:inline-block" class="title">
                 <h3><a href="/User/Report">REPORT USERNAME</a></h3>
 
                 <h3>@Html.ActionLink("<<< Back to Leaderboard", "Index")</h3>

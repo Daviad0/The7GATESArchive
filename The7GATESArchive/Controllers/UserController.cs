@@ -118,7 +118,7 @@ namespace Gateway.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            int pageSize = 200;
+            int pageSize = 100;
             int pageNumber = (page ?? 1);
             return View(users.ToPagedList(pageNumber, pageSize));
         }

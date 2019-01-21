@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<The7GATESArchive.Models.UserViewModel>
+﻿@model PagedList.IPagedList<The7GATESArchive.Models.User>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
@@ -26,7 +26,6 @@
 
     .top2 {
         color: white;
-        text-align: center;
     }
 
     .form {
@@ -74,43 +73,49 @@
             border-radius: 8px;
         }
 </style>
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
 <body style="background-color:black;font-family:Courier New, Courier, monospace">
     <br />
+    <div class="top" style="text-align:center">
+        <h1>¯\_(ツ)_/¯</h1>
+        <h3>This error's on us. We haven't released this page yet! Check back soon for gate specific leaderboards!</h3>
+        <h3>@Html.ActionLink("Guess I'll be on my way then...", "Index")</h3>
+        <br />
+    </div>
+    <!--<br />
     <table class="table table-condensed">
         <tr class="top">
             <th>
-                <a href="Gate1">
+                <a href="User/Gate1">
                     <img src="~/Assets/Gate1Logo.gif" height="64px" width="64px" style="border-radius:65px" />
                 </a>
             </th>
             <th>
-                <a href="Gate2">
+                <a href="User/Gate2">
                     <img src="~/Assets/Gate2Logo.png" height="64px" width="64px" style="border-radius:65px" />
                 </a>
             </th>
             <th>
-                <a href="Gate3">
+                <a href="User/Gate3">
                     <img src="~/Assets/Gate3Logo.png" height="64px" width="64px" style="border-radius:65px" />
                 </a>
             </th>
             <th>
-                <a href="Gate4">
+                <a href="User/Gate4">
                     <img src="~/Assets/Gate4Logo.png" height="64px" width="64px" style="border-radius:65px" />
                 </a>
             </th>
             <th>
-                <a href="Gate5">
+                <a href="User/Gate5">
                     <img src="~/Assets/Gate5Logo.png" height="64px" width="64px" style="border-radius:65px" />
                 </a>
             </th>
             <th>
-                <a href="Gate6">
+                <a href="User/Gate6">
                     <img src="~/Assets/Gate6Logo.png" height="64px" width="64px" style="border-radius:65px" />
                 </a>
             </th>
             <th>
-                <a href="Gate7">
+                <a href="User/Gate7">
                     <img src="~/Assets/Gate7Logo.png" height="64px" width="64px" style="border-radius:65px" />
                 </a>
             </th>
@@ -122,15 +127,66 @@
         <caption class="top" style="font-size:large;text-align:center">
 
             <h1 style="font-size:60px">ALL THEORISTS</h1>
-            <h3>Beta Gate 3</h3>
+            <h3>Gate 1</h3>
+            @using (Html.BeginForm())
+            {
+                <p style="text-align:center;color:red">
+                <p style="color:white">Find by Username:</p> <p style="color:red">@Html.Editor("SearchString", ViewBag.CurrentFilter as string)</p>
+                <button class="btn">Search</button><button class="btn" style="margin-left:20px">@Html.ActionLink("Clear", "Index")</button>
+                </p>
+            }
+            <br />
+            <div style="text-align:center;font-size:small">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </div>
         </caption>
-        <tr class="top" style="background-color:black">
-            <td>
-                <p class="top2"><strong>No Data To Display</strong></p>
-            </td>
+        <tr class="top">
+            <th>
+                <p class="top2"><strong>@Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>@Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>@Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>Time</strong></p>
+            </th>
+            <th>
+                <p class="top2"><strong>Options</strong></p>
+            </th>
         </tr>
 
+        @foreach (var item in Model)
+        {
 
 
-    </table>
+            <tr class="topnorm">
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Keys)
+                </td>
+                <td>
+                    @{
+                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                    }
+
+                    @Html.DisplayFor(modelItem => timeValue)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>-->
 </body>

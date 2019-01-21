@@ -13,21 +13,22 @@ namespace The7GATESArchive
 {
     public class ApiUpdater
     {
+        private int CurrentGate = 2;
         public void CreateGates(GatewayContext context)
         {
 
             var courses = new List<Gate>
             {
-            new Gate{GateID=1,Theme="Nintendo"},
-            new Gate{GateID=2,Theme="Indie Games"},
-            new Gate{GateID=3,Theme="Unknown"},
-            new Gate{GateID=4,Theme="Unknown"},
-            new Gate{GateID=5,Theme="Unknown"},
-            new Gate{GateID=6,Theme="Unknown"},
-            new Gate{GateID=7,Theme="Unknown"},
-            new Gate{GateID=8,Theme="BETA GATE 1"},
-            new Gate{GateID=9,Theme="BETA GATE 2"},
-            new Gate{GateID=10,Theme="BETA GATE 3"},
+            new Gate{GateID=1,Theme="Nintendo",Keys=5},
+            new Gate{GateID=2,Theme="Indie Games",Keys=4},
+            new Gate{GateID=3,Theme="Unknown",Keys=0},
+            new Gate{GateID=4,Theme="Unknown",Keys=0},
+            new Gate{GateID=5,Theme="Unknown",Keys=0},
+            new Gate{GateID=6,Theme="Unknown",Keys=0},
+            new Gate{GateID=7,Theme="Unknown",Keys=0},
+            new Gate{GateID=8,Theme="BETA GATE 1",Keys=0},
+            new Gate{GateID=9,Theme="BETA GATE 2",Keys=0},
+            new Gate{GateID=10,Theme="BETA GATE 3",Keys=0},
             };
             courses.ForEach(s => context.Gates.AddOrUpdate(s));
             context.SaveChanges();
@@ -48,6 +49,7 @@ namespace The7GATESArchive
                 context.SaveChanges();
                 Console.WriteLine("Loaded page " + i + " successfully");
             }
+            Console.WriteLine("Leaderboard update has successfully completed! There was about " + searchPages*100 + " users processed");
             
 
         }
@@ -85,14 +87,29 @@ namespace The7GATESArchive
                         };
 
                         //TODO:  NEED TO SUBTRACT PREVIOUS GATE TIME AND KEYS HERE BEFORE ADDING GATE 2!!!!!!
+                        var TotalTime = new TimeSpan(0, 0, 0, 0, result.total_time);
+                        var TotalKeys = result.total_keys;
+                        for (int i = 1; i < CurrentGate; i++)
+                        {
+                            var PreviousGate = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == i).FirstOrDefault();
+                            var PreviousKeys = context.Gates.Where(u => u.GateID == i && u.Keys >= 0).FirstOrDefault();
+                            if (PreviousGate != null) {
+                                TotalTime = TotalTime - PreviousGate.Time;
+                            }
+                            if (PreviousKeys != null)
+                            {
+                                TotalKeys = TotalKeys - PreviousKeys.Keys;
+                            }
+                        }
+                        
 
                         var userGate = new UserGate
                         {
-                            GateID = 1,
+                            GateID = CurrentGate,
                             Rank = rank,
                             UserID = result.uuid,
-                            Time = new TimeSpan(0, 0, 0, 0, result.total_time),
-                            Keys = result.total_keys
+                            Time = TotalTime,
+                            Keys = TotalKeys
                         };
 
                         users.Add(user);
