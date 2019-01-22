@@ -16,6 +16,7 @@ namespace The7GATESArchive.Models
         public TimeSpan Time { get; set; }
         public int Rank { get; set; }
         public int Keys { get; set; }
+        public TimeSpan CollectiveTime { get; set; }
 
 
         public virtual Gate Gate { get; set; }

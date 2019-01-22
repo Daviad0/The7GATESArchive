@@ -86,22 +86,26 @@ namespace The7GATESArchive
                             TimeForAllGates = new TimeSpan(0, 0, 0, 0, result.total_time)
                         };
 
-                        //TODO:  NEED TO SUBTRACT PREVIOUS GATE TIME AND KEYS HERE BEFORE ADDING GATE 2!!!!!!
-                        var TotalTime = new TimeSpan(0, 0, 0, 0, result.total_time);
+                        var CollectiveTime = new TimeSpan(0, 0, 0, 0, result.total_time);
+                        var TotalTime = CollectiveTime;
                         var TotalKeys = result.total_keys;
+                        bool Participate = true;
                         for (int i = 1; i < CurrentGate; i++)
                         {
                             var PreviousGate = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == i).FirstOrDefault();
                             var PreviousKeys = context.Gates.Where(u => u.GateID == i && u.Keys >= 0).FirstOrDefault();
                             if (PreviousGate != null) {
+                                if (TotalTime == PreviousGate.Time)
+                                {
+                                    Participate = false;
+                                }
                                 TotalTime = TotalTime - PreviousGate.Time;
                             }
-                            if (PreviousKeys != null)
+                            if (PreviousKeys != null && Participate == true)
                             {
                                 TotalKeys = TotalKeys - PreviousKeys.Keys;
                             }
                         }
-                        
 
                         var userGate = new UserGate
                         {
@@ -109,8 +113,9 @@ namespace The7GATESArchive
                             Rank = rank,
                             UserID = result.uuid,
                             Time = TotalTime,
-                            Keys = TotalKeys
-                        };
+                            Keys = TotalKeys,
+                            CollectiveTime = CollectiveTime
+                    };
 
                         users.Add(user);
                         usergates.Add(userGate);

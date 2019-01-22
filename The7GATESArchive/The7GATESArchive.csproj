@@ -175,6 +175,10 @@
     <Compile Include="Migrations\201901210055147_TotalKeys.Designer.cs">
       <DependentUpon>201901210055147_TotalKeys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901210113568_CollectiveTime.cs" />
+    <Compile Include="Migrations\201901210113568_CollectiveTime.Designer.cs">
+      <DependentUpon>201901210113568_CollectiveTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -334,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901210055147_TotalKeys.resx">
       <DependentUpon>201901210055147_TotalKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901210113568_CollectiveTime.resx">
+      <DependentUpon>201901210113568_CollectiveTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
