@@ -9,8 +9,10 @@ namespace The7GATESArchive.Models
     {
         public string Username;
         public int Keys;
-        public double TimeForAllGates;
+        public TimeSpan TimeForAllGates;
         public Guid ID;
         public int Rank;
+
+        public ICollection<UserGate> UserGates { get; set; }
     }
 }

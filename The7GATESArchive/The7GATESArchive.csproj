@@ -143,6 +143,7 @@
     <Compile Include="Controllers\GatesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WhatsThisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,11 +171,20 @@
     <Compile Include="Migrations\201812232150267_WebsiteUpdate.Designer.cs">
       <DependentUpon>201812232150267_WebsiteUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901210055147_TotalKeys.cs" />
+    <Compile Include="Migrations\201901210055147_TotalKeys.Designer.cs">
+      <DependentUpon>201901210055147_TotalKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901210113568_CollectiveTime.cs" />
+    <Compile Include="Migrations\201901210113568_CollectiveTime.Designer.cs">
+      <DependentUpon>201901210113568_CollectiveTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\LeaderboardBackground.png" />
     <Content Include="Assets\Zone1.png" />
     <Content Include="Assets\ARG-1.png" />
     <Content Include="Assets\BetaGate1Open.gif" />
@@ -287,6 +297,8 @@
     <Content Include="Views\ARG\Hint1ahgsdh.cshtml" />
     <Content Include="Views\ARG\Hint2hfiuakk.cshtml" />
     <Content Include="Views\ARG\Hint3kasdjm.cshtml" />
+    <Content Include="Views\WhatsThis\Ranking.cshtml" />
+    <Content Include="Views\WhatsThis\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,6 +335,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812232150267_WebsiteUpdate.resx">
       <DependentUpon>201812232150267_WebsiteUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901210055147_TotalKeys.resx">
+      <DependentUpon>201901210055147_TotalKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901210113568_CollectiveTime.resx">
+      <DependentUpon>201901210113568_CollectiveTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

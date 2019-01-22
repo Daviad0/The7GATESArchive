@@ -13,8 +13,8 @@
     }
 
     .top {
-        border: 2px solid rgba(255, 76, 249,1);
-        background-color: rgba(183, 0, 177,0.45);
+        border: 2px solid #ff32f1;
+        background-color: rgba(255, 50, 214, 0.21);
         color: white;
     }
 
@@ -27,18 +27,20 @@
     .top2 {
         color: white;
     }
-    .form {
-        background-color:black;
-        color:red;
-        border:2px solid red
 
+    .form {
+        background-color: black;
+        color: red;
+        border: 2px solid red
     }
+
     .notice {
         border: 2px solid red;
         background-color: rgba(188, 0, 0,0.35);
         color: white;
-        text-align:center;
+        text-align: center;
     }
+
     .btn {
         color: white;
         background-color: rgba(183, 0, 177,0);
@@ -46,27 +48,32 @@
         border-radius: 8px;
         transition: 0.3s;
     }
+
         .btn:hover {
             background: rgba(255, 76, 249,1)
         }
+
         .btn:disabled {
             color: black;
             background-color: lightgray;
             border: 2px solid lightgray;
             border-radius: 8px;
         }
+
     .clear {
         color: white;
         background-color: rgba(183, 0, 177,0);
         border: 2px solid rgba(255, 76, 249,1);
         border-radius: 8px;
     }
+
         .clear:hover {
             color: white;
             background-color: red;
             border: 2px solid red;
             border-radius: 8px;
         }
+
     * {
         box-sizing: border-box;
     }
@@ -104,114 +111,158 @@
         clear: both;
         display: table;
     }
+
+    a.my-class {
+        color: #bcddff
+    }
+
+        a.my-class:active {
+            color: #bcddff
+        }
+
+        a.my-class:link {
+            color: #bcddff
+        }
+
+        a.my-class:visited {
+            color: #a0a0a0
+        }
+    /* The alert message box */
+    .alert {
+        padding: 20px;
+        background-color: #f44336; /* Red */
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    /* The close button */
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        /* When moving the mouse over the close button */
+        .closebtn:hover {
+            color: black;
+        }
 </style>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
 <body style="background-color:black;font-family:Courier New, Courier, monospace">
-    <br />
-    <table class="table table-condensed">
-        <tr class="top">
-            <th>
-                <a href="User/Gate1">
-                    <img src="~/Assets/Gate1Logo.gif" height="64px" width="64px" style="border-radius:65px" />
-                </a>
-            </th>
-            <th>
-                <a href="User/Gate2">
-                    <img src="~/Assets/Gate2Logo.png" height="64px" width="64px" style="border-radius:65px" />
-                </a>
-            </th>
-            <th>
-                <a href="User/Gate3">
-                    <img src="~/Assets/Gate3Logo.png" height="64px" width="64px" style="border-radius:65px" />
-                </a>
-            </th>
-            <th>
-                <a href="User/Gate4">
-                    <img src="~/Assets/Gate4Logo.png" height="64px" width="64px" style="border-radius:65px" />
-                </a>
-            </th>
-            <th>
-                <a href="User/Gate5">
-                    <img src="~/Assets/Gate5Logo.png" height="64px" width="64px" style="border-radius:65px" />
-                </a>
-            </th>
-            <th>
-                <a href="User/Gate6">
-                    <img src="~/Assets/Gate6Logo.png" height="64px" width="64px" style="border-radius:65px" />
-                </a>
-            </th>
-            <th>
-                <a href="User/Gate7">
-                    <img src="~/Assets/Gate7Logo.png" height="64px" width="64px" style="border-radius:65px" />
-                </a>
-            </th>
-
-        </tr>
-    </table>
-    <br />
-    <table class="table table-condensed" style="color:red;padding-top:10px">
-        <caption class="top" style="font-size:large;text-align:center">
-
-            <h1 style="font-size:60px">ALL THEORISTS</h1>
-            @using (Html.BeginForm())
-            {
-                <p style="text-align:center;color:red">
-                <p style="color:white">Find by Username:</p> <p style="color:red">@Html.Editor("SearchString", ViewBag.CurrentFilter as string)</p>
-                <button class="btn">Search</button><button class="btn" style="margin-left:20px">@Html.ActionLink("Clear", "Index")</button>
-                </p>
-            }
-            <br />
-            <div style="text-align:center;font-size:small">
-                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-                @Html.PagedListPager(Model, page => Url.Action("Index",
-                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    <div class="navbar navbar-inverse navbar-fixed-top" style="color:white">
+        <div class="navbar-inner">
+            <div class="container">
+                <h4 style="padding-top:6px">The Gateway Archives - @Html.ActionLink("Go Home", "Index", "Home")</h4>
             </div>
-        </caption>
-        <tr class="top">
-            <th>
-                <p class="top2"><strong>@Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
-            </th>
-            <th>
-                <p class="top2"><strong>@Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
-            </th>
-            <th>
-                <p class="top2"><strong>@Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
-            </th>
-            <th>
-                <p class="top2"><strong>Time</strong></p>
-            </th>
-            <th>
-                <p class="top2"><strong>Options</strong></p>
-            </th>
-        </tr>
+        </div>
+    </div>
+    <br />
+    <div class="alert info">
+        <span class="closebtn">&times;</span>
+        <strong>Notice!</strong> This website database is still a work in progess! All data is complete, but we are still learning to make it better!
+    </div>
+    <br />
+    <br />
+    <div>
+        <table align="center" class="table table-condensed" style="color:red;padding-top:10px;width:65%">
 
-        @foreach (var item in Model)
-        {
-
-
-            <tr class="topnorm">
-                <td>
-                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Keys)
-                </td>
-                <td>
-                    @{
-                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+            <caption class="top" style="font-size:large;text-align:center">
+                <div>
+                    <h1 style="font-size:60px">ALL THEORISTS</h1>
+                    @using (Html.BeginForm())
+                    {
+                        <p style="text-align:center;color:red">
+                        <p style="color:white">Find by Username:</p> <p style="color:red">@Html.Editor("SearchString", ViewBag.CurrentFilter as string)</p>
+                        <button class="btn">Search</button><button class="btn" style="margin-left:20px">@Html.ActionLink("Clear", "Index")</button>
+                        </p>
                     }
+                    <br />
+                    <div style="text-align:center;font-size:small">
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                    @Html.DisplayFor(modelItem => timeValue)
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.ID })
-                </td>
+                        @Html.PagedListPager(Model, page => Url.Action("Index",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                    </div>
+            </caption>
+            <tr class="top" style="align-content:center">
+                <th>
+                    <p class="top2"><strong>@Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
+                </th>
+                <th>
+                    <p class="top2"><strong>@Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
+                </th>
+                <th>
+                    <p class="top2"><strong>@Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
+                </th>
+                <th>
+                    <p class="top2"><strong>Time</strong></p>
+                </th>
             </tr>
-        }
 
-    </table>
+            @foreach (var item in Model)
+            {
+
+                <div style="overflow:auto">
+                    <tr class="topnorm">
+                        <td>
+                            <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                        </td>
+                        <td>
+                            @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @class = "my-class" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Keys)
+                        </td>
+                        <td>
+                            @{
+                                string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                            }
+
+                            @Html.DisplayFor(modelItem => timeValue)
+                        </td>
+                    </tr>
+                </div>
+            }
+
+        </table>
+        <div style="text-align:center">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+    </div>
 </body>
+<style>
+    .alert {
+        opacity: 1;
+        transition: opacity 0.6s; /* 600ms to fade out */
+    }
+</style>
+
+<script>
+    // Get all elements with class="closebtn"
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    // Loop through all close buttons
+    for (i = 0; i < close.length; i++) {
+        // When someone clicks on a close button
+        close[i].onclick = function () {
+
+            // Get the parent of <span class="closebtn"> (<div class="alert">)
+            var div = this.parentElement;
+
+            // Set the opacity of div to 0 (transparent)
+            div.style.opacity = "0";
+
+            // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+            setTimeout(function () { div.style.display = "none"; }, 600);
+        }
+    }
+</script>

@@ -1,7 +1,5 @@
-﻿@model The7GATESArchive.Models.User
-@{
+﻿@model The7GATESArchive.Models.UserViewModel
 
-}
 <style>
     /* Slideshow container */
     .slideshow-container {
@@ -14,6 +12,48 @@
         text-align: center;
     }
 
+    .gate-1 {
+        background-color: rgba(230, 51, 90, .3);
+        border: 8px solid rgb(230, 51, 90);
+        border-radius: 10px;
+    }
+
+    .gate-2 {
+        background-color: rgba(63, 186, 132, .3);
+        border: 8px solid rgb(63, 186, 132);
+        border-radius: 10px
+    }
+
+    .gate-3 {
+        background-color: rgba(52, 169, 246, .3);
+        border: 8px solid rgb(52, 169, 246);
+        border-radius: 10px
+    }
+
+    .gate-4 {
+        background-color: rgba(254, 123, 81, .3);
+        border: 8px solid rgb(254, 123, 81);
+        border-radius: 10px
+    }
+
+    .gate-5 {
+        background-color: rgba(240, 190, 55, .3);
+        border: 8px solid rgb(240, 190, 55);
+        border-radius: 10px
+    }
+
+    .gate-6 {
+        background-color: rgba(167, 76, 193, .3);
+        border: 8px solid rgb(167, 76, 193);
+        border-radius: 10px
+    }
+
+    .gate-7 {
+        background-color: rgba(40, 40, 40, .3);
+        border: 8px solid rgb(40, 40, 40);
+        border-radius: 10px
+    }
+
     /* Next & previous buttons */
     .prev, .next {
         cursor: pointer;
@@ -22,7 +62,7 @@
         width: auto;
         margin-top: -30px;
         padding: 16px;
-        color: rgb(244, 75, 66);
+        color: white;
         font-weight: bold;
         font-size: 20px;
         border-radius: 0 5px 5px 0;
@@ -39,8 +79,8 @@
 
         /* On hover, add a black background color with a little bit see-through */
         .prev:hover, .next:hover {
-            background-color: rgb(244, 75, 66);
-            color: white;
+            background-color: white;
+            color: black;
         }
 
     /* The dot/bullet/indicator container */
@@ -76,26 +116,31 @@
     .author {
         color: cornflowerblue;
     }
+
     .data {
-        color:white
+        color: white
     }
+
     .title {
         border: 4px solid rgb(244, 75, 66);
         text-align: center;
         background-color: rgba(206, 63, 55,0.3);
         border-radius: 10px
     }
+
     .table {
         border: 2px solid rgba(84, 237, 255,1);
         text-align: center;
         border-radius: 8px;
     }
+
     .notice {
         border: 2px solid red;
         background-color: rgba(188, 0, 0,0.35);
         color: white;
         text-align: center;
     }
+
     .flip-box {
         background-color: transparent;
     }
@@ -134,278 +179,38 @@
                 <br />
 
                 <h1 style="font-size:60px"><strong>THEORIST DETAILS</strong></h1>
-                <h3 style="font-family:'Courier New';padding:1px">@Html.DisplayFor(model => model.Username)</h3>
+                <h2 style="font-family:'Courier New';padding:1px">@Html.DisplayFor(model => model.Username)</h2>
+                <h3>#@Html.DisplayFor(model => model.Rank)</h3>
+                <h3>@Html.DisplayFor(model => model.TimeForAllGates)</h3>
+                <h3>@Html.DisplayFor(model => model.Keys) Keys</h3>
                 <br />
             </div>
         </div>
         <br />
-        <!--
-        <div class="flip-box">
-            <div class="flip-box-inner">
-                <div class="flip-box-front">
-                    <table class="table table-condensed" style="color:red;padding-top:10px;text-align:left;border-radius:4px">
-                        <caption class="top" style="font-size:large;text-align:center">
-                        </caption>
-                        <tr class="top">
-                            <th>
-                                <br />
-                                <p></p>
-                            </th>
-                            <th>
-                                <img src="~/Assets/Gate1Logo.png" width="64px" height="64px" style="float:none" />
-                            </th>
-                            <th>
-                                <img src="~/Assets/Gate2Logo.png" width="64px" height="64px" style="float:none" />
-                            </th>
-                            <th>
-                                <img src="~/Assets/Gate3Logo.png" width="64px" height="64px" style="float:none" />
-                            </th>
-                            <th>
-                                <img src="~/Assets/Gate4Logo.png" width="64px" height="64px" style="float:none" />
-                            </th>
-                            <th>
-                                <img src="~/Assets/Gate5Logo.png" width="64px" height="64px" style="float:none" />
-                            </th>
-                            <th>
-                                <img src="~/Assets/Gate6Logo.png" width="64px" height="64px" style="float:none" />
-                            </th>
-                            <th>
-                                <img src="~/Assets/Gate7Logo.png" width="64px" height="64px" style="float:none" />
-                            </th>
-                        </tr>
 
-
-
-                        <tr class="topnorm">
-                            <td>
-                                Place
-                            </td>
-                            <td>
-                                #@Html.DisplayFor(model => model.Rank)
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-
-                        </tr>
-                        <tr class="topnorm">
-                            <td>
-                                Time
-                            </td>
-                            <td>
-                                @{
-                                    string timeValue = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                                }
-
-                                @Html.DisplayFor(modelItem => timeValue)
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-                            <td>
-                                TBD
-                            </td>
-
-                        </tr>
-                        <tr class="topnorm">
-                            <td>
-                                Keys
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Keys)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Keys)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Keys)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Keys)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Keys)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Keys)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Keys)
-                            </td>
-
-                        </tr>
-
-                    </table>
-                </div>
-                <div class="flip-box-back">
-                    <br />
-                    <h3>CURRENT INFO:</h3>
-                    <p>RANK: #@Html.DisplayFor(model => model.Rank)</p>
-                    <p>
-                        TIME: @{
-                            string timeValueC = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                        }
-
-                        @Html.DisplayFor(modelItem => timeValueC)
-                    </p>
-                    <p>KEYS: @Html.DisplayFor(model => model.Keys)</p>
-                    <br />
-                </div>
-            </div>
-        </div>
-    </div>
-            -->
         <!-- Slideshow container -->
-        <div class="slideshow-container" style="background-color: rgba(206, 63, 55,0.3);border: 4px solid rgb(244, 75, 66);color:white;border-radius:10px">
+        <div class="slideshow-container" style="background-color: black;color:white;border-radius:10px">
 
             <!-- Full-width slides/quotes -->
-            <div class="mySlides">
-                <h1>Gate 1</h1>
-                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
-                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
-                <h3 style="padding-bottom:10px">
-                    TIME: @{
-                        string timeValueV = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                    }
+            @foreach (var item in Model.UserGates)
+            {
+                <div class="mySlides">
+                    <div class="gate-@item.GateID">
+                        <br />
+                        <h1>Gate @item.GateID</h1>
+                        <h3>KEYS: @item.Keys</h3>
+                        <h3>RANK: #@item.Rank</h3>
+                        <h3 style="padding-bottom:10px">
+                            TIME: @{
+                                string timeValueV = item.Time.ToString(@"hh\:mm\:ss\.fff");
+                            }
 
-                    @Html.DisplayFor(modelItem => timeValueV)
-                </h3>
-            </div>
-
-            <div class="mySlides">
-                <h1>Gate 2</h1>
-                <!--
-                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
-                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
-                <h3>
-                    TIME: @{
-                        string timeValueV2 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                    }
-
-                    @Html.DisplayFor(modelItem => timeValueV2)
-                </h3>
-                -->
-                <h3>KEYS: 0</h3>
-                <h3>RANK: NOT RANKED</h3>
-                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
-            </div>
-
-            <div class="mySlides">
-                <h1>Gate 3</h1>
-                <!--
-                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
-                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
-                <h3>
-                    TIME: @{
-                        string timeValueV3 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                    }
-
-                    @Html.DisplayFor(modelItem => timeValueV3)
-                </h3>
-                -->
-                <h3>KEYS: 0</h3>
-                <h3>RANK: NOT RANKED</h3>
-                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
-            </div>
-
-            <div class="mySlides">
-                <h1>Gate 4</h1>
-                <!--
-                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
-                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
-                <h3>
-                    TIME: @{
-                        string timeValueV4 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                    }
-
-                    @Html.DisplayFor(modelItem => timeValueV4)
-                </h3>
-                -->
-                <h3>KEYS: 0</h3>
-                <h3>RANK: NOT RANKED</h3>
-                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
-            </div>
-
-            <div class="mySlides">
-                <h1>Gate 5</h1>
-                <!--
-                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
-                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
-                <h3>
-                    TIME: @{
-                        string timeValueV5 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                    }
-
-                    @Html.DisplayFor(modelItem => timeValueV5)
-                </h3>
-                -->
-                <h3>KEYS: 0</h3>
-                <h3>RANK: NOT RANKED</h3>
-                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
-            </div>
-
-            <div class="mySlides">
-                <h1>Gate 6</h1>
-                <!--
-                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
-                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
-                <h3>
-                    TIME: @{
-                        string timeValueV6 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                    }
-
-                    @Html.DisplayFor(modelItem => timeValueV6)
-                </h3>
-                -->
-                <h3>KEYS: 0</h3>
-                <h3>RANK: NOT RANKED</h3>
-                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
-            </div>
-
-            <div class="mySlides">
-                <h1>Gate 7</h1>
-                <!--
-                <h3>KEYS: @Html.DisplayFor(model => model.Keys)</h3>
-                <h3>RANK: #@Html.DisplayFor(model => model.Rank)</h3>
-                <h3>
-                    TIME: @{
-                        string timeValueV7 = Model.TimeForAllGates.ToString(@"hh\:mm\:ss\.fff");
-                    }
-
-                    @Html.DisplayFor(modelItem => timeValueV7)
-                </h3>
-                -->
-                <h3>KEYS: 0</h3>
-                <h3>RANK: NOT RANKED</h3>
-                <h3 style="padding-bottom:10px">TIME: 00:00:00.000</h3>
-            </div>
+                            @Html.DisplayFor(modelItem => timeValueV)
+                        </h3>
+                        <br />
+                    </div>
+                </div>
+            }
 
             <!-- Next/prev buttons -->
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -413,7 +218,7 @@
         </div>
         <br />
         <div style="text-align:center">
-            <div style="text-align:center;width:50%;display:inline-block;border-radius:120px" class="title">
+            <div style="text-align:center;width:100%;display:inline-block" class="title">
                 <h3><a href="/User/Report">REPORT USERNAME</a></h3>
 
                 <h3>@Html.ActionLink("<<< Back to Leaderboard", "Index")</h3>
@@ -421,31 +226,32 @@
             </div>
         </div>
     </div>
-<script>
-    var slideIndex = 1;
-    showSlides(slideIndex);
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
         }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
         }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-    }
-</script>
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+</div>

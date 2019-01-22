@@ -118,7 +118,7 @@ namespace Gateway.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            int pageSize = 200;
+            int pageSize = 100;
             int pageNumber = (page ?? 1);
             return View(users.ToPagedList(pageNumber, pageSize));
         }
@@ -130,12 +130,17 @@ namespace Gateway.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+            var user = db.Users.Find(id);
+            var usergates = db.UserGates.Where(u => u.UserID == id);
+            var UserViewModel = new UserViewModel();
+            UserViewModel.ID = user.ID;
+            UserViewModel.TimeForAllGates = user.TimeForAllGates;
+            UserViewModel.Keys = user.Keys;
+            UserViewModel.UserGates = usergates.ToList();
+            UserViewModel.Username = user.Username;
+            UserViewModel.Rank = user.Rank;
+
+            return View(UserViewModel);
         }
         public ActionResult Gate1(string sortOrder, string currentFilter, string searchString, int? page)
         {
