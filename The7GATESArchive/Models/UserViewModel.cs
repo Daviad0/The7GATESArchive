@@ -12,6 +12,8 @@ namespace The7GATESArchive.Models
         public TimeSpan TimeForAllGates;
         public Guid ID;
         public int Rank;
+        public double? Percentile;
+        public string PrizeStatus;
 
         public ICollection<UserGate> UserGates { get; set; }
     }

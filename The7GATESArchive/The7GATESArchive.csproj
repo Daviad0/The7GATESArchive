@@ -179,6 +179,14 @@
     <Compile Include="Migrations\201901210113568_CollectiveTime.Designer.cs">
       <DependentUpon>201901210113568_CollectiveTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901271544488_Percentile.cs" />
+    <Compile Include="Migrations\201901271544488_Percentile.Designer.cs">
+      <DependentUpon>201901271544488_Percentile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901300151365_FixPercentile.cs" />
+    <Compile Include="Migrations\201901300151365_FixPercentile.Designer.cs">
+      <DependentUpon>201901300151365_FixPercentile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -341,6 +349,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901210113568_CollectiveTime.resx">
       <DependentUpon>201901210113568_CollectiveTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901271544488_Percentile.resx">
+      <DependentUpon>201901271544488_Percentile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901300151365_FixPercentile.resx">
+      <DependentUpon>201901300151365_FixPercentile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

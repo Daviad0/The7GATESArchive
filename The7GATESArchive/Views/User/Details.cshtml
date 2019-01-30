@@ -180,9 +180,18 @@
 
                 <h1 style="font-size:60px"><strong>THEORIST DETAILS</strong></h1>
                 <h2 style="font-family:'Courier New';padding:1px">@Html.DisplayFor(model => model.Username)</h2>
-                <h3>#@Html.DisplayFor(model => model.Rank)</h3>
-                <h3>@Html.DisplayFor(model => model.TimeForAllGates)</h3>
-                <h3>@Html.DisplayFor(model => model.Keys) Keys</h3>
+                <br />
+            </div>
+        </div>
+        <br />
+        <div style="text-align:center">
+            <div class="title" style="width:100%;display:inline-block;color:white">
+                <br />
+                <h2>CURRENT STATS</h2>
+                <h4>RANK: #@Html.DisplayFor(model => model.Rank)</h4>
+                <h4>TIME: @Html.DisplayFor(model => model.TimeForAllGates)</h4>
+                <h4>KEYS: @Html.DisplayFor(model => model.Keys)</h4>
+                <h4>PERCENTILE: @Html.DisplayFor(model => model.Percentile)%</h4>
                 <br />
             </div>
         </div>
@@ -215,6 +224,11 @@
             <!-- Next/prev buttons -->
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br />
+        <div class="title">
+            <h2 style="color:white">PRIZE STATUS:</h2>
+            <h4 style="color:white">@Html.DisplayFor(model => model.PrizeStatus)</h4>
         </div>
         <br />
         <div style="text-align:center">

@@ -36,7 +36,7 @@ namespace The7GATESArchive
         public void UpdateFromApi(GatewayContext context)
         {
 
-            var searchPages = 1;
+            var searchPages = 100;
 
             for (int i = 0; i < searchPages; i++)
             {
@@ -44,10 +44,12 @@ namespace The7GATESArchive
                 var usergates = new List<UserGate>();
                 var users = new List<User>();
                 searchPages = ProcessApiUsers(context, i, users, usergates);
+                Console.WriteLine("All Data for Page " + i + " Loaded Successfully. Updating");
                 users.ForEach(s => context.Users.AddOrUpdate(s));
                 usergates.ForEach(s => context.UserGates.AddOrUpdate(s));
                 context.SaveChanges();
                 Console.WriteLine("Loaded page " + i + " successfully");
+                searchPages = 100;
             }
             Console.WriteLine("Leaderboard update has successfully completed! There was about " + searchPages*100 + " users processed");
             
@@ -69,6 +71,7 @@ namespace The7GATESArchive
 
                     var sevengates = JsonConvert.DeserializeObject<apiresults>(responseString);
                     numPages = sevengates.total / 100;
+                    var amount = sevengates.total;
                     foreach (var result in sevengates.results)
                     {
                         int rank = 0;
@@ -77,24 +80,38 @@ namespace The7GATESArchive
                             rank = sevengates.total;
                         }
 
-                        var user = new User
-                        {
-                            ID = result.uuid,
-                            Username = result.username_raw,
-                            Keys = result.total_keys,
-                            Rank = rank,
-                            TimeForAllGates = new TimeSpan(0, 0, 0, 0, result.total_time)
-                        };
+                        
 
                         var CollectiveTime = new TimeSpan(0, 0, 0, 0, result.total_time);
                         var TotalTime = CollectiveTime;
                         var TotalKeys = result.total_keys;
+                        float PercentFinished = 0;
                         bool Participate = true;
+                        PercentFinished = (float)rank / (float)numPages;
+                        PercentFinished = (float)Math.Ceiling(PercentFinished);
+                        string PrizeQM = "This user is not in the percentile for a physical prize.";
+                        //if (PercentFinished <= 0.001)
+                        //{
+                        //    PercentFinished = 0.01;
+                        //}
+                        if (PercentFinished >= 101.0f)
+                        {
+                            PercentFinished = 100.0f;
+                        }
+                        if (PercentFinished <= 1.0f)
+                        {
+                            PrizeQM = "This user IS in the percentile for a 1% prize!";
+                        }
+                        if (PercentFinished > 1.0f && PercentFinished <= 5.0f)
+                        {
+                            PrizeQM = "This user IS in the percentile for a 5% prize";
+                        }
                         for (int i = 1; i < CurrentGate; i++)
                         {
                             var PreviousGate = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == i).FirstOrDefault();
                             var PreviousKeys = context.Gates.Where(u => u.GateID == i && u.Keys >= 0).FirstOrDefault();
-                            if (PreviousGate != null) {
+                            if (PreviousGate != null)
+                            {
                                 if (TotalTime == PreviousGate.Time)
                                 {
                                     Participate = false;
@@ -105,8 +122,18 @@ namespace The7GATESArchive
                             {
                                 TotalKeys = TotalKeys - PreviousKeys.Keys;
                             }
-                        }
 
+                        }
+                        var user = new User
+                        {
+                            ID = result.uuid,
+                            Username = result.username_raw,
+                            Keys = result.total_keys,
+                            Rank = rank,
+                            TimeForAllGates = new TimeSpan(0, 0, 0, 0, result.total_time),
+                            Percentile = PercentFinished,
+                            PrizeStatus = PrizeQM
+                        };
                         var userGate = new UserGate
                         {
                             GateID = CurrentGate,
@@ -114,7 +141,8 @@ namespace The7GATESArchive
                             UserID = result.uuid,
                             Time = TotalTime,
                             Keys = TotalKeys,
-                            CollectiveTime = CollectiveTime
+                            CollectiveTime = CollectiveTime,
+                            Percentile = PercentFinished
                     };
 
                         users.Add(user);

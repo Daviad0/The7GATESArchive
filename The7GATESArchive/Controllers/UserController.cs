@@ -139,6 +139,8 @@ namespace Gateway.Controllers
             UserViewModel.UserGates = usergates.ToList();
             UserViewModel.Username = user.Username;
             UserViewModel.Rank = user.Rank;
+            UserViewModel.Percentile = user.Percentile;
+            UserViewModel.PrizeStatus = user.PrizeStatus;
 
             return View(UserViewModel);
         }
