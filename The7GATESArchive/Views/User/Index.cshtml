@@ -13,16 +13,19 @@
     }
 
     .top {
-        border: 2px solid #ff32f1;
-        background-color: rgba(255, 50, 214, 0.21);
+        border: 3px solid white;
+        background-color: #ff3a26;
         color: white;
+        border-radius: 8px;
     }
 
     .topnorm {
-        border: 2px solid rgba(255, 76, 249,1);
+        border: 3px solid white;
         background-color: rgba(183, 0, 177,0.05);
         color: white;
+        border-radius: 8px;
     }
+
 
     .top2 {
         color: white;
@@ -113,19 +116,23 @@
     }
 
     a.my-class {
-        color: #bcddff
+        color: #ffffff;
+        text-align:center;
     }
 
         a.my-class:active {
-            color: #bcddff
+            color: #ffffff;
+            text-align: center;
         }
 
         a.my-class:link {
-            color: #bcddff
+            color: #ffffff;
+            text-align: center;
         }
 
         a.my-class:visited {
-            color: #a0a0a0
+            color: #ffffff;
+            text-align: center;
         }
     /* The alert message box */
     .alert {
@@ -151,92 +158,327 @@
         .closebtn:hover {
             color: black;
         }
+    .textbox{
+        border: 2px solid red;
+        border-radius: 4px;
+
+    }.textbox:focus{
+         border: 2px solid black;
+     }
+    .navbar-collapse {
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+.navbar-collapse.in {
+  overflow-y: auto;
+}
+@@media (min-width: 768px) {
+  .navbar-collapse2 {
+    width: auto;
+    border-top: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-collapse2.collapse2 {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar-collapse2.in {
+    overflow-y: visible;
+  }
+  .navbar-fixed-top .navbar-collapse2,
+  .navbar-static-top .navbar-collapse2,
+  .navbar-fixed-bottom .navbar-collapse2 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.navbar-fixed-top .navbar-collapse2,
+.navbar-fixed-bottom .navbar-collapse2 {
+  max-height: 340px;
+}
+@@media (max-device-width: 480px) and (orientation: landscape) {
+  .navbar-fixed-top .navbar-collapse2,
+  .navbar-fixed-bottom .navbar-collapse2 {
+    max-height: 200px;
+  }
+}
+.container > .navbar-header,
+.container-fluid > .navbar-header,
+.container > .navbar-collapse2,
+.container-fluid > .navbar-collapse2 {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@@media (min-width: 768px) {
+  .container > .navbar-header,
+  .container-fluid > .navbar-header,
+  .container > .navbar-collapse2,
+  .container-fluid > .navbar-collapse2 {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.center{
+    text-align:left;
+}
+    .top10 {
+        background-color: #ffc3b2;
+        color: black;
+    }
+    .n3 {
+        background-color: #db685c;
+        color: white;
+    }
+    .n2 {
+        background-color: #d1d1d1;
+        color: black;
+    }
+    .n1 {
+        background-color: #f7ef56;
+        color:black;
+    }
+    .all {
+        background-color: #ffe1d8;
+        color: black;
+    }
 </style>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
 <body style="background-color:black;font-family:Courier New, Courier, monospace">
     <div class="navbar navbar-inverse navbar-fixed-top" style="color:white">
         <div class="navbar-inner">
             <div class="container">
-                <h4 style="padding-top:6px">The Gateway Archives - @Html.ActionLink("Go Home", "Index", "Home")</h4>
+                <a style="color:white">@Html.ActionLink("ALL THEORISTS - Go Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+
             </div>
         </div>
     </div>
+    <h1 class="title" style="font-size:6vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">Leaderboard</h1>
+    <h3 class="title" style="font-size:2vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26"><i class="material-icons">timer</i> Last Updated: Febuary 12th, 2019 <i class="material-icons">timer</i></h3>
+
     <br />
-    <div class="alert info">
-        <span class="closebtn">&times;</span>
-        <strong>Notice!</strong> This website database is still a work in progess! All data is complete, but we are still learning to make it better!
-    </div>
     <br />
     <br />
     <div>
-        <table align="center" class="table table-condensed" style="color:red;padding-top:10px;width:65%">
-
-            <caption class="top" style="font-size:large;text-align:center">
-                <div>
-                    <h1 style="font-size:60px">ALL THEORISTS</h1>
-                    @using (Html.BeginForm())
-                    {
-                        <p style="text-align:center;color:red">
-                        <p style="color:white">Find by Username:</p> <p style="color:red">@Html.Editor("SearchString", ViewBag.CurrentFilter as string)</p>
-                        <button class="btn">Search</button><button class="btn" style="margin-left:20px">@Html.ActionLink("Clear", "Index")</button>
-                        </p>
-                    }
-                    <br />
-                    <div style="text-align:center;font-size:small">
-                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-                        @Html.PagedListPager(Model, page => Url.Action("Index",
-                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-                    </div>
-            </caption>
-            <tr class="top" style="align-content:center">
-                <th>
-                    <p class="top2"><strong>@Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
-                </th>
-                <th>
-                    <p class="top2"><strong>@Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
-                </th>
-                <th>
-                    <p class="top2"><strong>@Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })</strong></p>
-                </th>
-                <th>
-                    <p class="top2"><strong>Time</strong></p>
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+            @using (Html.BeginForm())
             {
-
-                <div style="overflow:auto">
-                    <tr class="topnorm">
-                        <td>
-                            <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                        </td>
-                        <td>
-                            @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @class = "my-class" })
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Keys)
-                        </td>
-                        <td>
-                            @{
-                                string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                            }
-
-                            @Html.DisplayFor(modelItem => timeValue)
-                        </td>
-                    </tr>
-                </div>
+                <p style="text-align:center;color:red">
+                <p style="color:red">Find by Username:</p> <p style="color:red">@Html.Editor("SearchString", ViewBag.CurrentFilter as string, new { @class = "textbox" })</p>
+                <button class="btn">Search</button><button class="btn" style="margin-left:20px">@Html.ActionLink("Clear", "Index")</button>
+                </p>
             }
+        </div>
+            <table align="center" class="table table-condensed" style="color:red;padding-top:10px;width:80%;border:0px red solid">
+                <tr class="top" style="align-content:center;height:60px;font-size:24px;border-radius:8px">
+                    <th style="border-radius:16px 0px 0px 16px">
+                        <p class="top2"><strong>Rank <i class="fa fa-trophy"></i></strong></p>
+                    </th>
+                    <th>
+                        <p class="top2"><strong>Username <i class="fa fa-user-circle-o"></i></strong></p>
+                    </th>
+                    <th>
+                        <p class="top2"><strong>Keys <i class="fa fa-key"></i></strong></p>
+                    </th>
+                    <th>
+                        <p class="top2" style="text-align:left"><strong>Time</strong> <i class="fa fa-clock-o"></i></p>
+                    </th>
+                    <th style="border-radius:0px 16px 16px 0px">
+                        <p class="top2" style="text-align:left"><strong>Status</strong> <i class="fa fa-info-circle"></i></p>
+                    </th>
+                </tr>
 
-        </table>
-        <div style="text-align:center">
+                @{
+                    int i = 0;
+                }
+                @foreach (var item in Model)
+                {
+
+                    i++;
+                    if (item.Rank > 6510)
+                    {
+                        <div style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="all" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="all">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @class = "all" })
+                                </td>
+                                <td class="all">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="all">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="all" style="border-radius:0px 16px 16px 0px">
+                                    <i class="material-icons">do_not_disturb_alt</i>
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                    <!--THIS VALUE CHANGES-->
+                    if (item.Rank > 10 && item.Rank < 6511)
+                    {
+                        <div style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="all" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="all">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @class = "all" })
+                                </td>
+                                <td class="all">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="all">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="all" style="border-radius:0px 16px 16px 0px">
+                                    <i class="material-icons">card_giftcard</i>
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                    if (item.Rank > 3 && item.Rank < 11)
+                    {
+                        <div class="top10" style="overflow:auto;border-radius:8px">
+                            <tr class="topnorm" style="width:80%;border-radius:8px">
+                                <td class="top10" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="top10">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @class = "top10" })
+                                </td>
+                                <td class="top10">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="top10">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="top10" style="border-radius:0px 16px 16px 0px">
+                                    <i class="material-icons">stars</i>
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                    if (item.Rank == 3)
+                    {
+                        <div class="n3" style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="n3" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="n3">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @class = "n3" })
+                                </td>
+                                <td class="n3">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="n3">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="n3" style="border-radius:0px 16px 16px 0px">
+                                    <i class="material-icons">stars</i>
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                    if (item.Rank == 2)
+                    {
+                        <div class="n2" style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="n2" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="n2">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @class = "n2" })
+                                </td>
+                                <td class="n2">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="n2">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="n2" style="border-radius:0px 16px 16px 0px">
+                                    <i class="material-icons">stars</i>
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                    if (item.Rank == 1)
+                    {
+                        <div class="n1" style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="n1" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="n1">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @class = "n1" })
+                                </td>
+                                <td class="n1">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="n1">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="n1" style="border-radius:0px 16px 16px 0px">
+                                    <i class="material-icons" style="color:black">stars</i>
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                }
+
+            </table>
+            <div style="text-align:center">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </div>
+        </div>
+
+        <br />
+        <div style="text-align:center;font-size:small">
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
             @Html.PagedListPager(Model, page => Url.Action("Index",
             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-        </div>
-    </div>
+            @Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })
 </body>
 <style>
     .alert {

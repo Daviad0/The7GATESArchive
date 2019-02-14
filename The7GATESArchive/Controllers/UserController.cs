@@ -144,6 +144,26 @@ namespace Gateway.Controllers
 
             return View(UserViewModel);
         }
+        public ActionResult DetailsPlain(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = db.Users.Find(id);
+            var usergates = db.UserGates.Where(u => u.UserID == id);
+            var UserViewModel = new UserViewModel();
+            UserViewModel.ID = user.ID;
+            UserViewModel.TimeForAllGates = user.TimeForAllGates;
+            UserViewModel.Keys = user.Keys;
+            UserViewModel.UserGates = usergates.ToList();
+            UserViewModel.Username = user.Username;
+            UserViewModel.Rank = user.Rank;
+            UserViewModel.Percentile = user.Percentile;
+            UserViewModel.PrizeStatus = user.PrizeStatus;
+
+            return View(UserViewModel);
+        }
         public ActionResult Gate1(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;

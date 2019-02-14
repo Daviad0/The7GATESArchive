@@ -49,7 +49,6 @@ namespace The7GATESArchive
                 usergates.ForEach(s => context.UserGates.AddOrUpdate(s));
                 context.SaveChanges();
                 Console.WriteLine("Loaded page " + i + " successfully");
-                searchPages = 100;
             }
             Console.WriteLine("Leaderboard update has successfully completed! There was about " + searchPages*100 + " users processed");
             
@@ -89,7 +88,7 @@ namespace The7GATESArchive
                         bool Participate = true;
                         PercentFinished = (float)rank / (float)numPages;
                         PercentFinished = (float)Math.Ceiling(PercentFinished);
-                        string PrizeQM = "This user is not in the percentile for a physical prize.";
+                        string PrizeQM = "(N)";
                         //if (PercentFinished <= 0.001)
                         //{
                         //    PercentFinished = 0.01;
@@ -100,11 +99,11 @@ namespace The7GATESArchive
                         }
                         if (PercentFinished <= 1.0f)
                         {
-                            PrizeQM = "This user IS in the percentile for a 1% prize!";
+                            PrizeQM = "(BP)";
                         }
                         if (PercentFinished > 1.0f && PercentFinished <= 5.0f)
                         {
-                            PrizeQM = "This user IS in the percentile for a 5% prize";
+                            PrizeQM = "(SP)";
                         }
                         for (int i = 1; i < CurrentGate; i++)
                         {

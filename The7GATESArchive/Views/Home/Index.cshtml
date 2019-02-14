@@ -1,7 +1,14 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style>
+    html{
+        height: 100%;
+    }
+    body{
+        min-height: 100%;
+    }
     .gate1 {
         background-color: #e6335a;
         color: white;
@@ -38,53 +45,128 @@
 
     }
     .title {
-        background-color: rgba(175, 0, 0, 0.25);
-        color: white;
-        text-align: center;
-        border: 2px solid #ff0000;
-        border-radius: 4px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        color: #ff3a26;
     }
     .info {
-        background-color: rgba(175, 0, 0, 0.05);
+        background-color: #ff3a26;
         color: white;
         text-align: center;
-        border: 2px solid #ff0000;
-        border-radius: 4px;
+        border: 2px solid #ff3a26;
         padding-top: 10px;
         padding-bottom: 10px;
     }
+    .button {
+        border-radius: 6px;
+        background-color: #ff3a26;
+        border: none;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: none;
+        margin: 5px;
+    }
 
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+    a.my-class {
+        color: #ffffff
+    }
+
+        a.my-class:active {
+            color: #ffffff
+        }
+
+        a.my-class:link {
+            color: #ffffff
+        }
+
+        a.my-class:visited {
+            color: #ffffff
+        }
+    .navbar-default .navbar-brand {
+        color: #ffffff;
+    }
+
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: #ffffff;
+            background-color: transparent;
+        }
 </style>
 
-<body style="background-color:black">
+<body">
     <div class="row">
         <div class="carousel">
+            <div style="height:90vh">
+                <br />
+                <br />
+                <h1 class="title" style="font-size:6vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center">The Gateway Projects</h1>
+                <h3 class="title" style="font-size:3vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center">Managed By Daviado#3449</h3>
+                <div style="text-align:center">
+                    <br />
+                    <br />
+                    <br />
+                    <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">See All The Rankings</span></button>
+                    <br />
+                    <br />
+                    <br />
+                    <hr style="width:50%;color:red" />
+                    <h3 class="title" style="font-size:2vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center">and</h3>
+                    <hr style="width:50%;color:red" />
+                    <br />
+                    <br />
+                    <br />
+                    <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">See The Gate Updates</span></button>
+                </div>
+            </div>
+            <hr />
             <br />
-            <div class="title">
+            <div class="info">
 
-                <h1>THE GATEWAY PROJECTS</h1>
-                <h3 style="padding-bottom:7px">Managed By Daviado#3449</h3>
+                <h2 style="padding-left:10px;font-family:Calibri">Wait, what are the Gateway Projects?</h2>
+                <i class="material-icons">group</i>
+                <h4 style="padding-bottom:7px;font-family:Calibri">We are the Gateway Projects, an unofficial archive of ALL of the 7GATES ARG information, including gate information, user leaderboard information, and even realtime updates. We pull data from thetheoristgateway.com every day to make sure that the data that you are seeing is correct and up-to-date. Our database houses over 200,000 entries with 5 columns of data each, and we deliver it right to your webpage quickly.</h4>
 
             </div>
             <br />
             <div class="info">
 
-                <h3>> What are the Gateway Projects?</h3>
-                <p style="padding-bottom:7px">The Gateway Projects are a bunch of archives and statuses of thetheoristgateway.com. They consist of Leaderboard Archives, Statuses, Gateway Inforamtion, and more to come! All of the data on this website is up-to-date, so you won't have to worry about really old data if you want to rely on our archives.</p>
+                <h2 style="padding-left:10px;font-family:Calibri">What is this data that you are keeping track of?</h2>
+                    <i class="material-icons">beenhere</i>
+                    <h4 style="padding-bottom:7px;font-family:Calibri">We pull data from thetheoristgateway.com's API, which allows users to pull data about the 7GATES ARG that is currently in progress. The data we pull consists of: Usernames, times for each gate, times for all gates, keys for each gate, keys for all gates, each individual ranking, and other information that is used for the backend (basically making all the data more accurate and connected). All this data is accurate and we make sure to check up on our databases everytime we update to make sure no data was lost.</h4>
 
-            </div>
+</div>
+            <br />
             <div class="info">
 
-                <h3>> Where does this data come from?</h3>
-                <p style="padding-bottom:7px">All the data on this website is accurate data from thetheoristgateway.com. For the leaderboard, we use their API to gather information and input data into our website. For the statuses, someone is always here waiting to update them when it is needed, so it is always up-to-date. We also provide descriptions for those who may not completely understand the information being given.</p>
-
-            </div>
-            <div class="info">
-
-                <h3>> Where does one contact someone on this website for feedback?</h3>
-                <p style="padding-bottom:7px">While running the website, we may make a couple errors here and there. If you find an error or inaccurate data, please contact Daviado#3449 on Discord! We will make sure that we review your report thouroughly and fix it if we see that it would improve the website!</p>
+                <h2 style="padding-left:10px;font-family:Calibri">Is there any other important information that I should know about?</h2>
+                <i class="material-icons">info  insert_emoticon</i>
+                <h4 style="padding-bottom:7px;font-family:Calibri">Yes, in fact! One of the things we want to emphesize is that we will NEVER put ads on this website or try to get money by locking up parts of the website. All features of this website are 100% free and can be accessed by anyone on the web! Also, if you want to send feedback or report an error, please contact Daviado#3449 on Discord, OR you can go to #arg-community-suggestions on <a href="https://discordapp.com/channels/353694095220408322/498548521516007431">this Discord server</a> as we regularly check that channel!</h4>
 
             </div>
         </div>

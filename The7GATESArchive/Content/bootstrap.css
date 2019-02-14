@@ -2301,6 +2301,7 @@ th {
 .table-condensed > tbody > tr > td,
 .table-condensed > tfoot > tr > td {
   padding: 5px;
+
 }
 .table-bordered {
   border: 1px solid #ddd;
@@ -4498,7 +4499,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
     .navbar-default .navbar-brand:hover,
     .navbar-default .navbar-brand:focus {
-        color: #ff9e9e;
+        color: #ffffff;
         background-color: transparent;
     }
 .navbar-default .navbar-text {

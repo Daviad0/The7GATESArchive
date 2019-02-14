@@ -192,6 +192,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CardGate-1-1.png" />
+    <Content Include="Assets\CardGate-2-1.png" />
+    <Content Include="Assets\CardGate-3-1.png" />
+    <Content Include="Assets\CardGate-4-1.png" />
+    <Content Include="Assets\CardGate-5-1.png" />
+    <Content Include="Assets\CardGate-6-1.png" />
+    <Content Include="Assets\CardGate-7-1.png" />
+    <Content Include="Assets\CardGate-C-1.png" />
     <Content Include="Assets\LeaderboardBackground.png" />
     <Content Include="Assets\Zone1.png" />
     <Content Include="Assets\ARG-1.png" />
@@ -229,6 +237,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Properties\PublishProfiles\The7GATESArchive - Web Deploy.pubxml" />
     <Content Include="Properties\webjobs-list.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -307,6 +316,10 @@
     <Content Include="Views\ARG\Hint3kasdjm.cshtml" />
     <Content Include="Views\WhatsThis\Ranking.cshtml" />
     <Content Include="Views\WhatsThis\Index.cshtml" />
+    <Content Include="Views\User\DetailsPlain.cshtml" />
+    <None Include="Web.Test.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
