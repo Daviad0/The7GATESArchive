@@ -306,7 +306,6 @@
     <Content Include="Views\User\Gate4.cshtml" />
     <Content Include="Views\User\Gate3.cshtml" />
     <Content Include="Views\Home\Fallback.cshtml" />
-    <Content Include="Views\Home\Update.cshtml" />
     <Content Include="Views\User\Report.cshtml" />
     <Content Include="Views\ARG\ItsDarkInHere.cshtml" />
     <Content Include="Views\ARG\postit.cshtml" />

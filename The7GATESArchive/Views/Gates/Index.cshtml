@@ -90,156 +90,269 @@
         border-radius: 4px;
         font-size: 20px;
     }
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
 
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: 'OPEN';
+            color: #5cd67a;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .active:after {
+        content: "OPEN";
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+    .collapsible3 {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+        .activec, .collapsible3:hover {
+            background-color: #555;
+        }
+
+        .collapsible3:after {
+            content: '';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .activec:after {
+        content: "";
+    }
+
+    .content3 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
 </style>
 
 <body style="background-color:black">
     <div class="row">
         <div class="carousel">
             <br />
-            <div style="color:red;text-align:center;border:8px solid red;font-family:Courier New, Courier, monospace;border-radius:8px">
-
-                <h1><strong>THE 7 GATES</strong></h1>
-                <h3><strong>!!! BETA GATE 2 COUNTDOWN !!!</strong></h3>
-
+            <h1 style="font-size:60px;color:black;text-align:center"><strong>All of the 7GATES</strong></h1>
+            <br />
+            <button class="collapsible3">Gate 1</button>
+            <div class="content3">
+                <br />
+                <div style="text-align:center">
+                    <div style="background-color:white;height:12vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <img src="~/Assets/gate1.PNG" alt="Gate 1 Image" style="height:11.5vw;width:11.5vw;border-radius:16px" />
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#e6335a;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw">Nintendo Theme</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#e6335a;color:white;height:1.8vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:1vw">November 24th, 2018 12:00PM PST</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#e6335a;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw"><strong>OPEN</strong></p>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <button class="collapsible3">Gate 2</button>
+            <div class="content3">
+                <br />
+                <div style="text-align:center">
+                    <div style="background-color:white;height:12vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <img src="~/Assets/gate2.PNG" alt="Gate 1 Image" style="height:11.5vw;width:11.5vw;border-radius:16px" />
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#3fba84;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw">Indie Game Theme</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#3fba84;color:white;height:1.8vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:1vw">January 20th, 2019 2:22PM PST</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#3fba84;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw"><strong>OPEN</strong></p>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <button class="collapsible3">Gate 3</button>
+            <div class="content3">
+                <br />
+                <div style="text-align:center">
+                    <div style="background-color:white;height:12vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <img src="~/Assets/gate3.PNG" alt="Gate 1 Image" style="height:11.5vw;width:11.5vw;border-radius:16px" />
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#34a9f6;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw">Film Theory Theme</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#34a9f6;color:white;height:1.8vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:1vw">February 16th, 2019 3:33PM PST</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#34a9f6;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw"><strong>GET READY...</strong></p>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <button class="collapsible3">Gate 4</button>
+            <div class="content3">
+                <br />
+                <div style="text-align:center">
+                    <div style="background-color:white;height:12vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <img src="~/Assets/gate4.PNG" alt="Gate 1 Image" style="height:11.5vw;width:11.5vw;border-radius:16px" />
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#fe7b51;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw">Merch Theme</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#fe7b51;color:white;height:1.8vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:1vw">Unknown Opening Date & Time</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#fe7b51;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw"><strong>CLOSED</strong></p>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <button class="collapsible3">Gate 5</button>
+            <div class="content3">
+                <br />
+                <div style="text-align:center">
+                    <div style="background-color:white;height:12vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <img src="~/Assets/gate5.PNG" alt="Gate 1 Image" style="height:11.5vw;width:11.5vw;border-radius:16px" />
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#f0be37;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw">GTLive Theme</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#f0be37;color:white;height:1.8vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:1vw">Unknown Opening Date & Time</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#f0be37;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw"><strong>CLOSED</strong></p>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <button class="collapsible3">Gate 6</button>
+            <div class="content3">
+                <br />
+                <div style="text-align:center">
+                    <div style="background-color:white;height:12vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <img src="~/Assets/gate6.PNG" alt="Gate 1 Image" style="height:11.5vw;width:11.5vw;border-radius:16px" />
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#a74cc1;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw">Unknown Theme</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#a74cc1;color:white;height:1.8vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:1vw">Unknown Opening Date & Time</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#a74cc1;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw"><strong>CLOSED</strong></p>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <button class="collapsible3">Gate 7</button>
+            <div class="content3">
+                <br />
+                <div style="text-align:center">
+                    <div style="background-color:black;height:12vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <img src="~/Assets/gate7.PNG" alt="Gate 1 Image" style="height:11.5vw;width:20vw" />
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#282828;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw">Earth Theme</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#282828;color:white;height:1.8vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:1vw">Unknown Opening Date & Time</p>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="background-color:#282828;color:white;height:4vw;width:30vw;border-radius:.6vw;display:inline-block">
+                        <p style="font-size:2.5vw"><strong>CLOSED</strong></p>
+                    </div>
+                    <br />
+                    <br />
+                </div>
             </div>
             <br />
-                <div class="g1button">
-                <h4></h4>
-                <img src="~/Assets/Gate1Logo.gif" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("Gate 1", "Gate1", "Gates")
-                    </strong>
-                </h3>
-                <p>Nintendo Theme</p>
-                <p>November 24th, 2018 12:00PM PST</p>
-                <p><strong>OPEN</strong></p>
-            </div>
-            <h4></h4>
-            <div class="g2button">
-                <h4></h4>
-                <img src="~/Assets/Gate2Logo.png" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("Gate 2", "Gate2", "Gates")
-                    </strong>
-                </h3>
-                <p>Indie Game Theme</p>
-                <p>January 20th, 2019 2:22PM PST</p>
-                <p><strong>OPEN</strong></p>
-            </div>
-            <h4></h4>
-            <div class="g3button">
-                <h4></h4>
-                <img src="~/Assets/Gate3Logo.png" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("Gate 3", "Gate3", "Gates")
-                    </strong>
-                </h3>
-                <p>Unknown Theme</p>
-                <p>Unknown Release Date</p>
-                <p><strong>LOCKED</strong></p>
-            </div>
-            <h4></h4>
-            <div class="g4button">
-                <h4></h4>
-                <img src="~/Assets/Gate4Logo.png" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("Gate 4", "Gate4", "Gates")
-                    </strong>
-                </h3>
-                <p>Merch Theme</p>
-                <p>Unknown Date</p>
-                <p><strong>LOCKED</strong></p>
-            </div>
-            <h4></h4>
-            <div class="g5button">
-                <h4></h4>
-                <img src="~/Assets/Gate5Logo.png" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("Gate 5", "Gate5", "Gates")
-                    </strong>
-                </h3>
-                <p>GTLive Theme</p>
-                <p>Unknown Date</p>
-                <p><strong>LOCKED</strong></p>
-            </div>
-            <h4></h4>
-            <div class="g6button">
-                <h4></h4>
-                <img src="~/Assets/Gate6Logo.png" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("Gate 6", "Gate6", "Gates")
-                    </strong>
-                </h3>
-                <p>Unknown Theme</p>
-                <p>Unknown Date</p>
-                <p><strong>LOCKED</strong></p>
-            </div>
-            <h4></h4>
-            <div class="g7button">
-                <h4></h4>
-                <img src="~/Assets/Gate7Logo.png" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("Gate 7", "Gate7", "Gates")
-                    </strong>
-                </h3>
-                <p>Unknown Theme</p>
-                <p>Unknown Date</p>
-                <p><strong>LOCKED</strong></p>
-            </div>
-            <br />
-            <div class="g7button" style="background-color:white;border:7px solid white"></div>
-            <br />
-            <div class="g1button">
-                <h4></h4>
-                <img src="~/Assets/BetaGate1.gif" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("BETA GATE 1", "BetaGate1", "Gates")
-                    </strong>
-                </h3>
-                <p>Game Theory ARG Theme</p>
-                <p>Dec 20th, 2018 8:00PM PST</p>
-                <strong><p>OPEN</p></strong>
-
-            </div>
-            <br />
-            <div class="g2button">
-                <h4></h4>
-                <img src="~/Assets/WaitingGate.gif" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("BETA GATE 2", "BetaGate2", "Gates")
-                    </strong>
-                </h3>
-                <p>Game Theory ARG Theme</p>
-                <p>Dec 28th, 2018 8:00PM PST</p>
-                <strong><p>OPEN</p></strong>
-            </div>
-            <br />
-            <div class="g3button">
-                <h4></h4>
-                <img src="~/Assets/BetaGate3.png" height="64px" width="64px" />
-                <h3>
-                    <strong>
-                        @Html.ActionLink("BETA GATE 3", "BetaGate3", "Gates")
-                    </strong>
-                </h3>
-                <p>Game Theory ARG Theme</p>
-                <p>Jan 12th, 2019 8:00PM PST</p>
-                <p><strong>OPEN</strong></p>
-            </div>
-
-        </div>
-
-    </div>
     <script>
         // Set the date we're counting down to
         var myDateObj = new Date("Sat Dec 29 2018 04:00:00 GMT-0000 (UTC)");
@@ -270,5 +383,21 @@
                 document.getElementById("demo").innerHTML = "GO GO GO! COMPLETE THAT GATE!";
             }
         }, 1000);
+    </script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible3");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("activec");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
     </script>
 </body>

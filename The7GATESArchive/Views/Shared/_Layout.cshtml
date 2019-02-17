@@ -61,7 +61,7 @@
 
 </head>
 <body style="font-family:Calibri;background-color:#ffffff;color:red">
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:red">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:white">
         <div class="navbar-inner">
             <div class="container">
                 <button class="button2" data-toggle="collapse" data-target=".nav-collapse">
@@ -70,13 +70,12 @@
                 <a style="color:white">@Html.ActionLink("The Gateway Projects", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "my-class" })</li>
-                        <li>@Html.ActionLink("About", "About", "Home", new { @class = "my-class" })</li>
-                        <li>@Html.ActionLink("Users", "Index", "User", new { @class = "my-class" })</li>
-                        <li>@Html.ActionLink("Realtime Updates", "Update", "Home", new { @class = "my-class" })</li>
-                        <li>@Html.ActionLink("Status", "Status", "Home", new { @class = "my-class" })</li>
-                        <li>@Html.ActionLink("Gates", "Index", "Gates", new { @class = "my-class" })</li>
-                        <li>@Html.ActionLink("Find Help", "Help", "Home", new { @class = "my-class" })</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Users", "Index", "User")</li>
+                        <li>@Html.ActionLink("Status", "Status", "Home")</li>
+                        <li>@Html.ActionLink("Gates", "Index", "Gates")</li>
+                        <li>@Html.ActionLink("Find Help", "Help", "Home")</li>
                     </ul>
                 </div>
             </div>

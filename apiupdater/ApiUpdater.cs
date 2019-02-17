@@ -13,7 +13,7 @@ namespace The7GATESArchive
 {
     public class ApiUpdater
     {
-        private int CurrentGate = 2;
+        private int CurrentGate = 3;
         public void CreateGates(GatewayContext context)
         {
 
@@ -36,7 +36,7 @@ namespace The7GATESArchive
         public void UpdateFromApi(GatewayContext context)
         {
 
-            var searchPages = 100;
+            var searchPages = 1000;
 
             for (int i = 0; i < searchPages; i++)
             {

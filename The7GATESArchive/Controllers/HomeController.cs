@@ -19,12 +19,6 @@ namespace Gateway.Controllers
 
             return View();
         }
-        public ActionResult Update()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
 
         public ActionResult Contact()
         {

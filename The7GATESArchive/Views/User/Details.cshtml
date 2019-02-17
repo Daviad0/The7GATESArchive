@@ -442,7 +442,7 @@
     <div>
         <br />
 
-        <h1 style="font-size:60px;color:black;text-align:center"><strong>@Html.DisplayFor(model => model.Username)'s Theorist Page</strong></h1>
+        <h1 style="font-size:60px;color:black;text-align:center;width:80vw"><strong>@Html.DisplayFor(model => model.Username)'s Theorist Page</strong></h1>
         <br />
         <br />
         <button class="collapsible3">Current Information</button>
@@ -450,7 +450,7 @@
             <br />
             <div style="text-align:center">
                 @{
-                    float percent = (float)Model.Keys / 9;
+                    float percent = (float)Model.Keys / 14;
                     percent = percent * 100;
                 }
                 @if (Model.Rank == 1)
@@ -675,7 +675,117 @@
                     <br />
                     <br />
                 }
-                @if (Model.Rank > 10)
+                @if (Model.Rank > 10 && Model.Rank < 100)
+                {
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                        </div>
+
+                    </div>
+                    <h5></h5>
+                    if (percent == 100)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 100 && percent > 10)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 11)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.Keys) Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.PrizeStatus)</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (Model.Rank > 99 && Model.Rank < 999)
+                {
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:5vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                        </div>
+
+                    </div>
+                    <h5></h5>
+                    if (percent == 100)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 100 && percent > 10)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 11)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.Keys) Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.PrizeStatus)</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (Model.Rank > 999)
                 {
                     <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
 
@@ -737,7 +847,7 @@
         }
         @foreach (var item in Model.UserGates)
         {{
-                percent2 = (float)Model.Keys / 9;
+                percent2 = (float)Model.Keys / 14;
                 percent2 = percent2 * 100;
             }
         <button class="collapsible">Gate @item.GateID</button>
@@ -897,7 +1007,7 @@
                 <br />
                 <br />
             }
-            @if (item.Rank > 3 && Model.Rank < 11)
+            @if (item.Rank > 3 && item.Rank < 11)
             {
                 <br />
                 <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
@@ -948,7 +1058,109 @@
                 <br />
                 <br />
             }
-            @if (item.Rank > 10)
+            @if (item.Rank > 10 && item.Rank < 100)
+            {
+                <br />
+                <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                    <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                    </div>
+
+                </div>
+                <h5></h5>
+                if (percent == 100)
+                {
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent2)%</p>
+
+                    </div>
+                }
+                if (percent < 100 && percent > 10)
+                {
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent2)%</p>
+
+                    </div>
+                }
+                if (percent < 11)
+                {
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent2)%</p>
+
+                    </div>
+                }
+                <h4></h4>
+                <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                    <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                </div>
+                <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                    <p style="font-size:2.7vw">@item.Time</p>
+
+                </div>
+                <br />
+                <br />
+            }
+            @if (item.Rank > 99 && item.Rank < 1000)
+            {
+                <br />
+                <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                    <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                        <p style="font-size:5vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                    </div>
+
+                </div>
+                <h5></h5>
+                if (percent == 100)
+                {
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent2)%</p>
+
+                    </div>
+                }
+                if (percent < 100 && percent > 10)
+                {
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent2)%</p>
+
+                    </div>
+                }
+                if (percent < 11)
+                {
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent2)%</p>
+
+                    </div>
+                }
+                <h4></h4>
+                <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                    <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                </div>
+                <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                    <p style="font-size:2.7vw">@item.Time</p>
+
+                </div>
+                <br />
+                <br />
+            }
+            @if (item.Rank > 999)
             {
                 <br />
                 <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
@@ -1001,19 +1213,11 @@
             }
         </div>
     }
-        <button class="collapsible2">Gate 3</button>
-        <div class="content2">
-            <br />
-            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">Check When The Gate Opens</span></button>
-            <br />
-            <br />
-        </div>
         <button class="collapsible2">Gate 4</button>
         <div class="content2">
             <br />
             <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">Check When The Gate Opens</span></button>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
             <br />
             <br />
         </div>
@@ -1021,7 +1225,7 @@
         <div class="content2">
             <br />
             <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">Check When The Gate Opens</span></button>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
             <br />
             <br />
         </div>
@@ -1029,7 +1233,7 @@
         <div class="content2">
             <br />
             <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">Check When The Gate Opens</span></button>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
             <br />
             <br />
         </div>
@@ -1037,7 +1241,7 @@
         <div class="content2">
             <br />
             <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">Check When The Gate Opens</span></button>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
             <br />
             <br />
         </div>
