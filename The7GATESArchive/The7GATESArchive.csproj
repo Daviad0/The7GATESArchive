@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201901300151365_FixPercentile.Designer.cs">
       <DependentUpon>201901300151365_FixPercentile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902252152253_Insights2.cs" />
+    <Compile Include="Migrations\201902252152253_Insights2.Designer.cs">
+      <DependentUpon>201902252152253_Insights2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -367,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901300151365_FixPercentile.resx">
       <DependentUpon>201901300151365_FixPercentile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902252152253_Insights2.resx">
+      <DependentUpon>201902252152253_Insights2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

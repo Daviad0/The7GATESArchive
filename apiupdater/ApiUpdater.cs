@@ -79,7 +79,84 @@ namespace The7GATESArchive
                             rank = sevengates.total;
                         }
 
-                        
+                        int I1 = 0;
+                        int I2 = 0;
+                        int I3 = 0;
+                        if (result.gates_solved == 2 && result.total_keys < 14 && result.total_keys > 11)
+                        {
+                            I1 = 4;
+                        }
+                        if (result.gates_solved < 3 && I1 == 0){
+                            if (result.gates_solved == 2)
+                            {
+                                I1 = 1;
+                            }
+                            if (result.gates_solved == 1)
+                            {
+                                I1 = 2;
+                            }
+                            if (result.gates_solved == 0)
+                            {
+                                I1 = 3;
+                            }
+                        }
+                        if (!result.username_raw.ToLower().Contains('<') == false && !result.username_raw.ToLower().Contains('>') == false && rank > 150)
+                        {
+                            if (I1 == 0)
+                            {
+                                I1 = 5;
+                            }
+                            else
+                            {
+                                I2 = 5;
+                            }
+                        }
+                        if (!result.username_raw.ToLower().Contains('<') == false && !result.username_raw.ToLower().Contains('>') == false && rank < 151)
+                        {
+                            if (I1 == 0)
+                            {
+                                I1 = 6;
+                            }
+                            else
+                            {
+                                I2 = 6;
+                            }
+                        }
+                        if (result.gates_solved == 3)
+                        {
+                            if (rank > 500) { 
+                                if (I1 == 0)
+                                {
+                                    I1 = 7;
+                                }
+                                else
+                                {
+                                    I2 = 7;
+                                }
+                            }
+                            if (rank > 100 && rank < 501)
+                            {
+                                if (I1 == 0)
+                                {
+                                    I1 = 8;
+                                }
+                                else
+                                {
+                                    I2 = 8;
+                                }
+                            }
+                            if (rank < 101)
+                            {
+                                if (I1 == 0)
+                                {
+                                    I1 = 0;
+                                }
+                                else
+                                {
+                                    I2 = 0;
+                                }
+                            }
+                        }
 
                         var CollectiveTime = new TimeSpan(0, 0, 0, 0, result.total_time);
                         var TotalTime = CollectiveTime;
@@ -88,7 +165,7 @@ namespace The7GATESArchive
                         bool Participate = true;
                         PercentFinished = (float)rank / (float)numPages;
                         PercentFinished = (float)Math.Ceiling(PercentFinished);
-                        string PrizeQM = "(N)";
+                        string PrizeQM = "0";
                         //if (PercentFinished <= 0.001)
                         //{
                         //    PercentFinished = 0.01;
@@ -99,11 +176,11 @@ namespace The7GATESArchive
                         }
                         if (PercentFinished <= 1.0f)
                         {
-                            PrizeQM = "(BP)";
+                            PrizeQM = "1";
                         }
                         if (PercentFinished > 1.0f && PercentFinished <= 5.0f)
                         {
-                            PrizeQM = "(SP)";
+                            PrizeQM = "2";
                         }
                         for (int i = 1; i < CurrentGate; i++)
                         {
@@ -131,7 +208,10 @@ namespace The7GATESArchive
                             Rank = rank,
                             TimeForAllGates = new TimeSpan(0, 0, 0, 0, result.total_time),
                             Percentile = PercentFinished,
-                            PrizeStatus = PrizeQM
+                            PrizeStatus = PrizeQM,
+                            Insight1 = I1,
+                            Insight2 = I2,
+                            Insight3 = I3,
                         };
                         var userGate = new UserGate
                         {

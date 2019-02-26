@@ -41,5 +41,10 @@ namespace Gateway.Controllers
         {
             return View();
         }
+        public ActionResult NekomancerPI()
+        {
+            return View();
+        }
+        
     }
 }

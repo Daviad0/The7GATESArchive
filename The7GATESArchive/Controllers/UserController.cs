@@ -141,6 +141,8 @@ namespace Gateway.Controllers
             UserViewModel.Rank = user.Rank;
             UserViewModel.Percentile = user.Percentile;
             UserViewModel.PrizeStatus = user.PrizeStatus;
+            UserViewModel.Insight1 = user.Insight1;
+            UserViewModel.Insight2 = user.Insight2;
 
             return View(UserViewModel);
         }

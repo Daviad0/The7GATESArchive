@@ -1261,12 +1261,68 @@
 </div>
 <div id="overlay">
     <div style="text-align:center" id="box">
-        <div style="background-color:white;color:black;height:40vw;width:60vw;border-radius:16px;display:inline-block">
-            <div style="background-color:yellow;color:black;height:5vw;width:60vw;border-radius:4px;display:inline-block;font-size:3.2vw">
+        <div style="background-color:white;color:black;height:60vw;width:85vw;border-radius:16px;display:inline-block">
+            <div style="background-color:yellow;color:black;height:5vw;width:85vw;border-radius:4px;display:inline-block;font-size:3.2vw">
                 <p>@Html.DisplayFor(model => model.Username) Insights</p>
             </div>
             <br />
-            <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Hmm... This area hasn't been finished yet. Hope you got a good preview of what this is! You'll see what this is.</p>
+            @if (Model.Insight1 == 1)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">You’re doing a great job so far! Try completing all of the gates to get all of the keys possible at the moment. Remember, even if you hit the timecap, there’s still a chance to get back in the race! You have 1 gate left. You can do this!</p>
+            }
+            @if (Model.Insight1 == 2)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">You’re doing a great job so far! Try completing all of the gates to get all of the keys possible at the moment. Remember, even if you hit the timecap, there’s still a chance to get back in the race! You have 2 gates left. You can do this!</p>
+            }
+            @if (Model.Insight1 == 3)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">It seems that you haven’t completed any gates yet. Don’t worry, you still have a chance to get back in the race. Just find the key answers for all 3 gates and you’ll be at the timecap time!</p>
+            }
+            @if (Model.Insight1 == 4)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">It looks like you have missed a couple keys on one of your gates! Don’t worry! The timecap is here to help. Now get out there and solve those last few keys!</p>
+            }
+            @if (Model.Insight1 == 5)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Sometimes going solo is a good thing, but maybe you could try joining a team to raise your ranking! Some teams do recruitment tests or just plain recruitment in #arg-find-your-teams at the Official Game Theorists Discord server.</p>
+            }
+            @if (Model.Insight1 == 6)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Your ranking is below the top 150, but you aren’t on a team. Try to keep your high position with friends or help by joining a team. Try going to #arg-find-your-teams on the Official Game Theorists Discord to find a team to join in and give you more than 100% power! You’re unstoppable!</p>
+            }
+            @if (Model.Insight1 == 7)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Wow, you’re doing great! You have all of the gates completed, but you are a little behind the main race. Try catching up to everyone by joining when the gate opens, and/or finding people to cooperate with you that have a higher ranking!</p>
+            }
+            @if (Model.Insight1 == 8)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Wow! You’re so close to the top 100! Try getting tips from those in the top 100 to get there, or wait until we implement ‘Final Push’ tips for those who are SO CLOSE!</p>
+            }
+            @if (Model.Insight1 == 0)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Top 100! Good job! YAY! Bravo! (Try to keep up your ranking and you are all set)! Keep a lookout for the ‘#1 On Top’ tips we are releasing soon for those who want to stay in the top 100!</p>
+            }
+            @if (Model.Insight2 == 5)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Sometimes going solo is a good thing, but maybe you could try joining a team to raise your ranking! Some teams do recruitment tests or just plain recruitment in #arg-find-your-teams at the Official Game Theorists Discord server.</p>
+            }
+            @if (Model.Insight2 == 6)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Your ranking is below the top 150, but you aren’t on a team. Try to keep your high position with friends or help by joining a team. Try going to #arg-find-your-teams on the Official Game Theorists Discord to find a team to join in and give you more than 100% power! You’re unstoppable!</p>
+            }
+            @if (Model.Insight2 == 7)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Wow, you’re doing great! You have all of the gates completed, but you are a little behind the main race. Try catching up to everyone by joining when the gate opens, and/or finding people to cooperate with you that have a higher ranking!</p>
+            }
+            @if (Model.Insight2 == 8)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Wow! You’re so close to the top 100! Try getting tips from those in the top 100 to get there, or wait until we implement ‘Final Push’ tips for those who are SO CLOSE!</p>
+            }
+            @if (Model.Insight2 == 0)
+            {
+                <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">Top 100! Good job! YAY! Bravo! (Try to keep up your ranking and you are all set)! Keep a lookout for the ‘#1 On Top’ tips we are releasing soon for those who want to stay in the top 100!</p>
+            }
+
             <br />
             <button onclick="off()" class="buttonc" style="width:18vw;height:6vw;font-size:2vw">Exit Insights</button>
         </div>

@@ -14,6 +14,9 @@ namespace The7GATESArchive.Models
         public int Rank;
         public double? Percentile;
         public string PrizeStatus;
+        public int Insight1 { get; set; }
+        public int Insight2 { get; set; }
+        public int Insight3 { get; set; }
 
         public ICollection<UserGate> UserGates { get; set; }
     }
