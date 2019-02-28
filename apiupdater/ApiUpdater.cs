@@ -100,7 +100,7 @@ namespace The7GATESArchive
                                 I1 = 3;
                             }
                         }
-                        if (!result.username_raw.ToLower().Contains('<') == false && !result.username_raw.ToLower().Contains('>') == false && rank > 150)
+                        if (!result.username_raw.ToLower().Contains('<') && !result.username_raw.ToLower().Contains('>') && rank > 150)
                         {
                             if (I1 == 0)
                             {
@@ -111,7 +111,7 @@ namespace The7GATESArchive
                                 I2 = 5;
                             }
                         }
-                        if (!result.username_raw.ToLower().Contains('<') == false && !result.username_raw.ToLower().Contains('>') == false && rank < 151)
+                        if (!result.username_raw.ToLower().Contains('<') && !result.username_raw.ToLower().Contains('>') && rank < 151)
                         {
                             if (I1 == 0)
                             {
