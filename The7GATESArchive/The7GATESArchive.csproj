@@ -320,6 +320,9 @@
     <Content Include="Views\WhatsThis\Ranking.cshtml" />
     <Content Include="Views\WhatsThis\Index.cshtml" />
     <Content Include="Views\User\DetailsPlain.cshtml" />
+    <Content Include="Views\User\Insights.cshtml" />
+    <Content Include="Views\User\Compare.cshtml" />
+    <Content Include="Views\User\Options.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

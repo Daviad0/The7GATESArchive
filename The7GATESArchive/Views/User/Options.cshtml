@@ -361,7 +361,7 @@
             </div>
         </div>
     </div>
-    <h1 class="title" style="font-size:6vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">Leaderboard</h1>
+    <h1 class="title" style="font-size:6vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">Experimental Area</h1>
 
     <br />
     <br />
@@ -387,8 +387,8 @@
             </div>
             <br />
             <table align="center" class="table table-condensed" style="color:red;padding-top:10px;width:80%;border:0px red solid">
-                <tr class="top" style="align-content:center;height:60px;font-size:24px">
-                    <th>
+                <tr class="top" style="align-content:center;height:60px;font-size:24px;border-radius:8px">
+                    <th style="border-radius:16px 0px 0px 16px">
                         <p class="top2"><strong>Rank <i class="fa fa-trophy"></i></strong></p>
                     </th>
                     <th>
@@ -399,6 +399,9 @@
                     </th>
                     <th>
                         <p class="top2" style="text-align:left"><strong>Time</strong> <i class="fa fa-clock-o"></i></p>
+                    </th>
+                    <th style="border-radius:0px 16px 16px 0px">
+                        <p class="top2" style="text-align:left"><strong>Options</strong> <i class="fa fa-info-circle"></i></p>
                     </th>
                 </tr>
 
@@ -413,7 +416,7 @@
                     {
                         <div style="overflow:auto">
                             <tr class="topnorm" style="width:80%">
-                                <td class="all">
+                                <td class="all" style="border-radius:16px 0px 0px 16px">
                                     <p>@Html.DisplayFor(modelItem => item.Rank)</p>
                                 </td>
                                 <td class="all">
@@ -428,6 +431,9 @@
                                     }
 
                                     @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="all" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
                                 </td>
                             </tr>
                         </div>
@@ -437,7 +443,7 @@
                     {
                         <div style="overflow:auto">
                             <tr class="topnorm" style="width:80%">
-                                <td class="all">
+                                <td class="all" style="border-radius:16px 0px 0px 16px">
                                     <p>@Html.DisplayFor(modelItem => item.Rank)</p>
                                 </td>
                                 <td class="all">
@@ -452,6 +458,9 @@
                                     }
 
                                     @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="all" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
                                 </td>
                             </tr>
                         </div>
@@ -460,7 +469,7 @@
                     {
                         <div class="top10" style="overflow:auto;border-radius:8px">
                             <tr class="topnorm" style="width:80%;border-radius:8px">
-                                <td class="top10">
+                                <td class="top10" style="border-radius:16px 0px 0px 16px">
                                     <p>@Html.DisplayFor(modelItem => item.Rank)</p>
                                 </td>
                                 <td class="top10">
@@ -475,6 +484,9 @@
                                     }
 
                                     @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="top10" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
                                 </td>
                             </tr>
                         </div>
@@ -483,7 +495,7 @@
                     {
                         <div class="n3" style="overflow:auto">
                             <tr class="topnorm" style="width:80%">
-                                <td class="n3">
+                                <td class="n3" style="border-radius:16px 0px 0px 16px">
                                     <p>@Html.DisplayFor(modelItem => item.Rank)</p>
                                 </td>
                                 <td class="n3">
@@ -498,6 +510,9 @@
                                     }
 
                                     @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="n3" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
                                 </td>
                             </tr>
                         </div>
@@ -506,7 +521,7 @@
                     {
                         <div class="n2" style="overflow:auto">
                             <tr class="topnorm" style="width:80%">
-                                <td class="n2">
+                                <td class="n2" style="border-radius:16px 0px 0px 16px">
                                     <p>@Html.DisplayFor(modelItem => item.Rank)</p>
                                 </td>
                                 <td class="n2">
@@ -521,6 +536,9 @@
                                     }
 
                                     @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="n2" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
                                 </td>
                             </tr>
                         </div>
@@ -529,7 +547,7 @@
                                         {
                         <div class="n1" style="overflow:auto">
                             <tr class="topnorm" style="width:80%">
-                                <td class="n1">
+                                <td class="n1" style="border-radius:16px 0px 0px 16px">
                                     <p>@Html.DisplayFor(modelItem => item.Rank)</p>
                                 </td>
                                 <td class="n1">
@@ -544,6 +562,9 @@
                                     }
 
                                     @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="n1" style="border-radius:0px 16px 16px 0px">
+                                    @Html.ActionLink(item.Username, "Compare", new { id2 = item.ID, id = item.ID }, new { @style = "color:#000000" })
                                 </td>
 
 </tr>
