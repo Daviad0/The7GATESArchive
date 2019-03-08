@@ -299,16 +299,9 @@
     <Content Include="Views\Gates\BetaGate1.cshtml" />
     <Content Include="Views\Gates\BetaGate2.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
-    <Content Include="Views\User\Gate1.cshtml" />
-    <Content Include="Views\User\Gate2.cshtml" />
     <Content Include="Views\User\BGate3.cshtml" />
     <Content Include="Views\User\BGate2.cshtml" />
     <Content Include="Views\User\BGate1.cshtml" />
-    <Content Include="Views\User\Gate7.cshtml" />
-    <Content Include="Views\User\Gate6.cshtml" />
-    <Content Include="Views\User\Gate5.cshtml" />
-    <Content Include="Views\User\Gate4.cshtml" />
-    <Content Include="Views\User\Gate3.cshtml" />
     <Content Include="Views\Home\Fallback.cshtml" />
     <Content Include="Views\User\Report.cshtml" />
     <Content Include="Views\ARG\ItsDarkInHere.cshtml" />
