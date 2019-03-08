@@ -1,5 +1,5 @@
 ﻿@model The7GATESArchive.Models.UserViewModel
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     /* Slideshow container */
     .slideshow-container {
@@ -12,9 +12,20 @@
         text-align: center;
     }
 
+    .responsive {
+        max-width: 100%;
+        height: auto;
+    }
+
     .gate-1 {
         background-color: rgba(230, 51, 90, .3);
         border: 8px solid rgb(230, 51, 90);
+        border-radius: 10px;
+    }
+
+    .gate-c {
+        background-color: rgba(0, 219, 255, .3);
+        border: 8px solid rgb(0, 219, 255);
         border-radius: 10px;
     }
 
@@ -79,8 +90,8 @@
 
         /* On hover, add a black background color with a little bit see-through */
         .prev:hover, .next:hover {
-            background-color: white;
-            color: black;
+            background-color: black;
+            color: white;
         }
 
     /* The dot/bullet/indicator container */
@@ -122,9 +133,9 @@
     }
 
     .title {
-        border: 4px solid rgb(244, 75, 66);
+        border: 4px solid rgb(0, 219, 255);
         text-align: center;
-        background-color: rgba(206, 63, 55,0.3);
+        background-color: rgba(0, 219, 255,0.3);
         border-radius: 10px
     }
 
@@ -169,89 +180,1098 @@
         color: white;
         transform: rotateX(180deg);
     }
+
+    .top10 {
+        background-color: #ffc3b2;
+        color: black;
+    }
+
+    .n3 {
+        background-color: #db685c;
+        color: white;
+    }
+
+    .n2 {
+        background-color: #d1d1d1;
+        color: black;
+    }
+
+    .n1 {
+        background-color: #f7ef56;
+        color: black;
+    }
+
+    .all {
+        background-color: #ffe1d8;
+        color: black;
+    }
+
+    .top {
+        border: 3px solid white;
+        background-color: #ff3a26;
+        color: white;
+        border-radius: 8px;
+    }
+
+    .topnorm {
+        border: 3px solid white;
+        background-color: rgba(183, 0, 177,0.05);
+        color: white;
+        border-radius: 8px;
+    }
+
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration:0.3s;
+    }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: 'OPEN';
+            color: #5cd67a;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .active:after {
+        content: "OPEN";
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible2 {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .activeb, .collapsible2:hover {
+            background-color: #555;
+        }
+
+        .collapsible2:after {
+            content: 'CLOSED';
+            color: #ff6d6d;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .activeb:after {
+        content: "CLOSED";
+    }
+
+    .content2 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible3 {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .activec, .collapsible3:hover {
+            background-color: #555;
+        }
+
+        .collapsible3:after {
+            content: '';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .activec:after {
+        content: "";
+    }
+
+    .content3 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+    .collapsible4 {
+        background-color: #fcf93c;
+        color: black;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .actived, .collapsible4:hover {
+            background-color: #f2ef26;
+        }
+
+        .collapsible4:after {
+            content: '';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .actived:after {
+        content: "";
+        background-color: #f2ef26;
+    }
+
+    .content4 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+    .top10 {
+        background-color: #ffc3b2;
+        color: black;
+    }
+
+    .n3 {
+        background-color: #db685c;
+        color: white;
+    }
+
+    .n2 {
+        background-color: #d1d1d1;
+        color: black;
+    }
+
+    .n1 {
+        background-color: #f7ef56;
+        color: black;
+    }
+
+    .all {
+        background-color: #ffe1d8;
+        color: black;
+    }
+
+    .button {
+        border-radius: 6px;
+        background-color: #ff3a26;
+        border: none;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: none;
+        margin: 5px;
+    }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+    .buttonb {
+        border-radius: 6px;
+        background-color: white;
+        border: 4px solid #fc6f3c;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        margin: 5px;
+    }
+
+    .buttonc {
+        border-radius: 6px;
+        background-color: white;
+        border: 4px solid #fcf93c;
+        color: black;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        margin: 5px;
+    }
+
+    #overlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    #box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 50px;
+        color: white;
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+    }
 </style>
 
 <div>
     <br />
     <div>
-        <div style="text-align:center">
-            <div class="title" style="width:100%;display:inline-block;color:white">
-                <br />
+        <br />
+        <h1 style="font-size:60px;color:black;text-align:center"><strong>@Html.DisplayFor(model => model.Username)'s Theorist Page</strong></h1>
 
-                <h1 style="font-size:60px"><strong>THEORIST DETAILS</strong></h1>
-                <h2 style="font-family:'Courier New';padding:1px">@Html.DisplayFor(model => model.Username)</h2>
-                <h3>#@Html.DisplayFor(model => model.Rank)</h3>
-                <h3>@Html.DisplayFor(model => model.TimeForAllGates)</h3>
-                <h3>@Html.DisplayFor(model => model.Keys) Keys</h3>
-                <br />
+        <br />
+        <br />
+        <button class="collapsible3">Current Information</button>
+        <div class="content3">
+            <br />
+            <div style="text-align:center">
+                @{
+                    float percent = (float)Model.Keys / 14;
+                    percent = percent * 100;
+                }
+                @if (Model.Rank == 1)
+                {
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="n1" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">stars</i></p>
+
+                        </div>
+
+                    </div>
+                    <h5></h5>
+                    if (percent == 100)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 100 && percent > 10)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 11)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.Keys) Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">Big Prize</p>
+
+                    </div>
+                    <br />
+                    <br />
+
+
+                }
+                @if (Model.Rank == 2)
+                {
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="n2" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">stars</i></p>
+
+                        </div>
+
+                    </div>
+                    <h5></h5>
+                    if (percent == 100)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 100 && percent > 10)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 11)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.Keys) Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">Big Prize</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (Model.Rank == 3)
+                {
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="n3" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">stars</i></p>
+
+                        </div>
+
+                    </div>
+                    <h5></h5>
+                    if (percent == 100)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 100 && percent > 10)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 11)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.Keys) Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">Big Prize</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (Model.Rank > 3 && Model.Rank < 11)
+                {
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="top10" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">stars</i></p>
+
+                        </div>
+
+                    </div>
+                    <h5></h5>
+                    if (percent == 100)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 100 && percent > 10)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 11)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.Keys) Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">Big Prize</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (Model.Rank > 10 && Model.Rank < 100)
+                {
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                        </div>
+
+                    </div>
+                    <h5></h5>
+                    if (percent == 100)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 100 && percent > 10)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 11)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.Keys) Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">Big Prize</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (Model.Rank > 99 && Model.Rank < 999)
+                {
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:5vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                        </div>
+
+                    </div>
+                    <h5></h5>
+                    if (percent == 100)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 100 && percent > 10)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 11)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.Keys) Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+
+                    </div>
+                    if (Model.PrizeStatus == "1")
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">Big Prize</p>
+
+                        </div>
+                    }
+                    if (Model.PrizeStatus == "2")
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">Small Prize</p>
+
+                        </div>
+                    }
+                    if (Model.PrizeStatus == "0")
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">No Prize</p>
+
+                        </div>
+                    }
+                    <br />
+                    <br />
+                }
+                @if (Model.Rank > 999)
+                {
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:4vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                        </div>
+
+                    </div>
+                    <h5></h5>
+                    if (percent == 100)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#58e87b;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 100 && percent > 10)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#e6ed61;color:black">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    if (percent < 11)
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#ef5353;color:white">
+
+                            <p style="font-size:2.7vw">@Html.DisplayFor(modelItem => percent)%</p>
+
+                        </div>
+                    }
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.Keys) Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+
+                    </div>
+                    if (Model.PrizeStatus == "1")
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">Big Prize</p>
+
+                        </div>
+                    }
+                    if (Model.PrizeStatus == "2")
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">Small Prize</p>
+
+                        </div>
+                    }
+                    if (Model.PrizeStatus == "0")
+                    {
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">No Prize</p>
+
+                        </div>
+                    }
+                    <br />
+                    <br />
+                }
             </div>
         </div>
-        <br />
-
-        <!-- Slideshow container -->
-        <div class="slideshow-container" style="background-color: black;color:white;border-radius:10px">
-
-            <!-- Full-width slides/quotes -->
-            @foreach (var item in Model.UserGates)
+        @{
+            float percent2 = 1;
+        }
+        @foreach (var item in Model.UserGates)
+        {
             {
-                <div class="mySlides">
-                    <div class="gate-@item.GateID">
-                        <br />
-                        <h1>Gate @item.GateID</h1>
-                        <h3>KEYS: @item.Keys</h3>
-                        <h3>RANK: #@item.Rank</h3>
-                        <h3 style="padding-bottom:10px">
-                            TIME: @{
-                                string timeValueV = item.Time.ToString(@"hh\:mm\:ss\.fff");
-                            }
-
-                            @Html.DisplayFor(modelItem => timeValueV)
-                        </h3>
-                        <br />
-                    </div>
-                </div>
+                percent2 = (float)Model.Keys / 14;
+                percent2 = percent2 * 100;
             }
+            <button class="collapsible">Gate @item.GateID</button>
+            <div class="content">
+                @if (item.Rank == 1)
+                {
+                    <br />
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
 
-            <!-- Next/prev buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        <div class="n1" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
+
+                        </div>
+
+                    </div>
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Time</p>
+
+                    </div>
+                    <br />
+                    <br />
+
+
+                }
+                @if (item.Rank == 2)
+                {
+                    <br />
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="n2" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
+
+                        </div>
+
+                    </div>
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Time</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (item.Rank == 3)
+                {
+                    <br />
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="n3" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
+
+                        </div>
+
+                    </div>
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Time</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (item.Rank > 3 && item.Rank < 11)
+                {
+                    <br />
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="top10" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
+
+                        </div>
+
+                    </div>
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Time</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (item.Rank > 10 && item.Rank < 100)
+                {
+                    <br />
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                        </div>
+
+                    </div>
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Time</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (item.Rank > 99 && item.Rank < 1000)
+                {
+                    <br />
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:5vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                        </div>
+
+                    </div>
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Time</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+                @if (item.Rank > 999)
+                {
+                    <br />
+                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                            <p style="font-size:4vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                        </div>
+
+                    </div>
+                    <h4></h4>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                    </div>
+                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                        <p style="font-size:2.7vw">@item.Time</p>
+
+                    </div>
+                    <br />
+                    <br />
+                }
+            </div>
+        }
+        <button class="collapsible2">Gate 4</button>
+        <div class="content2">
+            <br />
+            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
+            <br />
+            <br />
         </div>
-        <br />
-        <div style="text-align:center">
-            <div style="text-align:center;width:100%;display:inline-block" class="title">
-                <h3><a href="/User/Report">REPORT USERNAME</a></h3>
+        <button class="collapsible2">Gate 5</button>
+        <div class="content2">
+            <br />
+            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
+            <br />
+            <br />
+        </div>
+        <button class="collapsible2">Gate 6</button>
+        <div class="content2">
+            <br />
+            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
+            <br />
+            <br />
+        </div>
+        <button class="collapsible2">Gate 7</button>
+        <div class="content2">
+            <br />
+            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
+            <br />
+            <br />
+        </div>
+    </div>
+    <br />
+    <div style="text-align:center">
+        <div style="text-align:center;width:100%;display:inline-block">
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+                <a href="@Url.Action("Index")" style="display:inline;padding-right:10px"><input type="button" class="buttonmain buttonmain2" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="Back to Leaderboard" /></a>
+                <a href="@Url.Action("Insights", new { id = Model.ID })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri;background-color:#fcf93c;color:black" value="Insights" /></a>
 
-                <h3>@Html.ActionLink("<<< Back to Leaderboard", "Index")</h3>
                 <br />
             </div>
         </div>
     </div>
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
+</div>
+<br />
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+<script>
+    function on() {
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
         }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
         }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
 
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
             }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
+        });
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible2");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("activeb");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
             }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-        }
-    </script>
+        });
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible3");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("activec");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible4");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("actived");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
 </div>

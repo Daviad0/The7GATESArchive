@@ -1,0 +1,647 @@
+﻿@model PagedList.IPagedList<The7GATESArchive.Models.User>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Leaderboard";
+}
+<head>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 12%;
+    }
+
+    .top {
+        border: 3px solid white;
+        background-color: #ff3a26;
+        color: white;
+        border-radius: 8px;
+        transition-duration:0.3s;
+    }
+        .top:hover {
+            background-color: #ed3825;
+        }
+        .top:active {
+            background-color: #d1301f;
+        }
+
+    .topnorm {
+        border: 3px solid white;
+        background-color: #eee;
+        color: white;
+        border-radius: 8px;
+    }
+
+
+    .top2 {
+        color: white;
+    }
+
+    .form {
+        background-color: black;
+        color: red;
+        border: 2px solid red
+    }
+
+    .notice {
+        border: 2px solid red;
+        background-color: rgba(188, 0, 0,0.35);
+        color: white;
+        text-align: center;
+    }
+
+    .btn {
+        color: white;
+        background-color: rgba(183, 0, 177,0);
+        border: 2px solid rgba(255, 76, 249,1);
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+        .btn:hover {
+            background: rgba(255, 76, 249,1)
+        }
+
+        .btn:disabled {
+            color: black;
+            background-color: lightgray;
+            border: 2px solid lightgray;
+            border-radius: 8px;
+        }
+
+    .clear {
+        color: white;
+        background-color: rgba(183, 0, 177,0);
+        border: 2px solid rgba(255, 76, 249,1);
+        border-radius: 8px;
+    }
+
+        .clear:hover {
+            color: white;
+            background-color: red;
+            border: 2px solid red;
+            border-radius: 8px;
+        }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Style the search field */
+    form.example input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none; /* Prevent double borders */
+        cursor: pointer;
+    }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+    /* Clear floats */
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    a.my-class {
+        color: #ffffff;
+        text-align:center;
+    }
+
+        a.my-class:active {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        a.my-class:link {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        a.my-class:visited {
+            color: #ffffff;
+            text-align: center;
+        }
+    /* The alert message box */
+    .alert {
+        padding: 20px;
+        background-color: #f44336; /* Red */
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    /* The close button */
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        /* When moving the mouse over the close button */
+        .closebtn:hover {
+            color: black;
+        }
+    .textbox{
+        border: 2px solid red;
+        border-radius: 4px;
+
+    }.textbox:focus{
+         border: 2px solid black;
+     }
+    .navbar-collapse {
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+.navbar-collapse.in {
+  overflow-y: auto;
+}
+@@media (min-width: 768px) {
+  .navbar-collapse2 {
+    width: auto;
+    border-top: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-collapse2.collapse2 {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar-collapse2.in {
+    overflow-y: visible;
+  }
+  .navbar-fixed-top .navbar-collapse2,
+  .navbar-static-top .navbar-collapse2,
+  .navbar-fixed-bottom .navbar-collapse2 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.navbar-fixed-top .navbar-collapse2,
+.navbar-fixed-bottom .navbar-collapse2 {
+  max-height: 340px;
+}
+@@media (max-device-width: 480px) and (orientation: landscape) {
+  .navbar-fixed-top .navbar-collapse2,
+  .navbar-fixed-bottom .navbar-collapse2 {
+    max-height: 200px;
+  }
+}
+.container > .navbar-header,
+.container-fluid > .navbar-header,
+.container > .navbar-collapse2,
+.container-fluid > .navbar-collapse2 {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@@media (min-width: 768px) {
+  .container > .navbar-header,
+  .container-fluid > .navbar-header,
+  .container > .navbar-collapse2,
+  .container-fluid > .navbar-collapse2 {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.center{
+    text-align:left;
+}
+    .top10 {
+        background-color: #eee;
+        color: black;
+        transition-duration:0.3s;
+    }
+    .n3 {
+        background-color: #eee;
+        color: black;
+        transition-duration: 0.3s;
+    }
+    .n2 {
+        background-color: #eee;
+        color: black;
+        transition-duration: 0.3s;
+    }
+    .n1 {
+        background-color: #eee;
+        color: black;
+        transition-duration: 0.3s;
+    }
+    .all {
+        background-color: #eee;
+        color: black;
+        transition-duration: 0.3s;
+    }
+    .top10:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+
+    .n3:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+
+    .n2:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+
+    .n1:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+
+    .all:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+    .top10:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+
+    .n3:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+
+    .n2:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+
+    .n1:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+
+    .all:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 70%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: '';
+            color: #5cd67a;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .active:after {
+        content: "OPEN";
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+        width: 70%;
+        align-content: center;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
+<body style="background-color:black;font-family:Courier New, Courier, monospace">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="color:white">
+        <div class="navbar-inner">
+            <div class="container">
+                <a style="color:white">@Html.ActionLink("ALL THEORISTS - Go Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+
+            </div>
+        </div>
+    </div>
+    <h1 class="title" style="font-size:6vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">Experimental Area</h1>
+
+    <br />
+    <br />
+    <div>
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+            @using (Html.BeginForm())
+            {
+                <p style="text-align:center;color:red">
+                <p style="color:#ff3a26;font-size:2vw">Find by Username:</p> <p style="color:red">@Html.Editor("SearchString", ViewBag.CurrentFilter as string, new { @class = "textbox" })</p>
+                <button class="buttonmain buttonmain2" style="color:white">Search</button><a href="@Url.Action("Index")" style="display:inline"><input type="button" class="buttonmain buttonmain2" value="Clear" /></a>
+                </p>
+            }
+        </div>
+        <div style="text-align:center">
+            <p style="color:#ff3a26;font-size:2vw">Sort Options:</p>
+            <a href="@Url.Action("Index", new { sortOrder = ViewBag.RankSortParm })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:10vw;height:4vw;font-size:1.5vw;display:inline-block;font-family:Calibri" value="By Rank" /></a>
+            <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:10vw;height:4vw;font-size:1.5vw;display:inline-block;font-family:Calibri" value="By Username" /></a>
+            <a href="@Url.Action("Index", new { sortOrder = ViewBag.KeySortParm })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:10vw;height:4vw;font-size:1.5vw;display:inline-block;font-family:Calibri" value="By Keys" /></a>
+            <a href="@Url.Action("Index")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:10vw;height:4vw;font-size:1.5vw;display:inline-block;font-family:Calibri" value="Reset Sort" /></a>
+        </div>
+        <div style="text-align:center">
+            <a href="@Url.Action("Index")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:4vw;font-size:1.5vw;display:inline-block;font-family:Calibri;text-align:center" value="Compare Selected Users" /></a>
+            </div>
+            <br />
+            <table align="center" class="table table-condensed" style="color:red;padding-top:10px;width:80%;border:0px red solid">
+                <tr class="top" style="align-content:center;height:60px;font-size:24px;border-radius:8px">
+                    <th style="border-radius:16px 0px 0px 16px">
+                        <p class="top2"><strong>Rank <i class="fa fa-trophy"></i></strong></p>
+                    </th>
+                    <th>
+                        <p class="top2"><strong>Username <i class="fa fa-user-circle-o"></i></strong></p>
+                    </th>
+                    <th>
+                        <p class="top2"><strong>Keys <i class="fa fa-key"></i></strong></p>
+                    </th>
+                    <th>
+                        <p class="top2" style="text-align:left"><strong>Time</strong> <i class="fa fa-clock-o"></i></p>
+                    </th>
+                    <th style="border-radius:0px 16px 16px 0px">
+                        <p class="top2" style="text-align:left"><strong>Options</strong> <i class="fa fa-info-circle"></i></p>
+                    </th>
+                </tr>
+
+                @{
+                    int i = 0;
+                }
+                @foreach (var item in Model)
+                {
+
+                    i++;
+                    if (item.Rank > 6510)
+                    {
+                        <div style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="all" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="all">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                                </td>
+                                <td class="all">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="all">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="all" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                    <!--THIS VALUE CHANGES-->
+                    if (item.Rank > 10 && item.Rank < 6511)
+                    {
+                        <div style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="all" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="all">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                                </td>
+                                <td class="all">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="all">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="all" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                    if (item.Rank > 3 && item.Rank < 11)
+                    {
+                        <div class="top10" style="overflow:auto;border-radius:8px">
+                            <tr class="topnorm" style="width:80%;border-radius:8px">
+                                <td class="top10" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="top10">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                                </td>
+                                <td class="top10">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="top10">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="top10" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                    if (item.Rank == 3)
+                    {
+                        <div class="n3" style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="n3" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="n3">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                                </td>
+                                <td class="n3">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="n3">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="n3" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
+                                </td>
+                            </tr>
+                        </div>
+                    }
+                    if (item.Rank == 2)
+                    {
+                        <div class="n2" style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="n2" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="n2">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                                </td>
+                                <td class="n2">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="n2">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="n2" style="border-radius:0px 16px 16px 0px">
+                                    <input type="checkbox" name="vehicle" value="id">Compare User
+                                </td>
+                            </tr>
+                        </div>
+                                        }
+                                        if (item.Rank == 1)
+                                        {
+                        <div class="n1" style="overflow:auto">
+                            <tr class="topnorm" style="width:80%">
+                                <td class="n1" style="border-radius:16px 0px 0px 16px">
+                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                                </td>
+                                <td class="n1">
+                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                                </td>
+                                <td class="n1">
+                                    @Html.DisplayFor(modelItem => item.Keys)
+                                </td>
+                                <td class="n1">
+                                    @{
+                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                    }
+
+                                    @Html.DisplayFor(modelItem => timeValue)
+                                </td>
+                                <td class="n1" style="border-radius:0px 16px 16px 0px">
+                                    @Html.ActionLink(item.Username, "Compare", new { id2 = item.ID, id = item.ID }, new { @style = "color:#000000" })
+                                </td>
+
+</tr>
+
+</div>
+                    }
+                }
+
+            </table>
+            <div style="text-align:center">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </div>
+        </div>
+
+        <br />
+        <!--<div style="text-align:center;font-size:small">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                @Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })
+    -->
+</body>
+<style>
+    .alert {
+        opacity: 1;
+        transition: opacity 0.6s; /* 600ms to fade out */
+    }
+</style>
+
+<script>
+    // Get all elements with class="closebtn"
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    // Loop through all close buttons
+    for (i = 0; i < close.length; i++) {
+        // When someone clicks on a close button
+        close[i].onclick = function () {
+
+            // Get the parent of <span class="closebtn"> (<div class="alert">)
+            var div = this.parentElement;
+
+            // Set the opacity of div to 0 (transparent)
+            div.style.opacity = "0";
+
+            // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+            setTimeout(function () { div.style.display = "none"; }, 600);
+        }
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script>
+    $('input[type=checkbox]').change(function (e) {
+        if ($('input[type=checkbox]:checked').length > 2) {
+            $(this).prop('checked', false)
+            alert("You can only compare 2 users!");
+        }
+    })
+</script>

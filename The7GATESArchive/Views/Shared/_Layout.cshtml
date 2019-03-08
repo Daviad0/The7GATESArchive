@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <style>
     .form {
         text-align: center
     }
-    .button {
+    .button2 {
         background-color: #ddd;
         border: none;
         color: black;
@@ -15,6 +18,55 @@
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 4px;
+    }
+    .button2 {
+        background-color: #ddd;
+        border: none;
+        color: black;
+        text-align: center;
+        padding-left: 5px;
+        padding-right: 5px;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    a.my-class {
+        color: #ffffff
+    }
+
+        a.my-class:active {
+            color: #ffffff
+        }
+
+        a.my-class:link {
+            color: #ffffff
+        }
+
+        a.my-class:visited {
+            color: #ffffff
+        }
+    .buttonmain {
+        color: white;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        padding: 7px 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+    }
+
+    .buttonmain2:hover {
+        box-shadow: 0 12px 16px 0 rgba(255, 79, 35,0.24),0 17px 50px 0 rgba(255, 79, 35,0.19);
+    }
+
+    .buttondanger:hover {
+        box-shadow: 0 12px 16px 0 rgba(255,104,104,0.24),0 17px 50px 0 rgba(255,104,104,0.19);
     }
 </style>
 <html>
@@ -30,11 +82,11 @@
 
 
 </head>
-<body style="font-family:Consolas;color:red;background-color:black">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body style="font-family:Calibri;background-color:#ffffff;color:red">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:white">
         <div class="navbar-inner">
             <div class="container">
-                <button class="button" data-toggle="collapse" data-target=".nav-collapse">
+                <button class="button2" data-toggle="collapse" data-target=".nav-collapse">
                     <p style="padding-top:10px">Pages</p>
                 </button>
                 <a style="color:white">@Html.ActionLink("The Gateway Projects", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
@@ -43,7 +95,6 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Users", "Index", "User")</li>
-                        <li>@Html.ActionLink("Realtime Updates", "Update", "Home")</li>
                         <li>@Html.ActionLink("Status", "Status", "Home")</li>
                         <li>@Html.ActionLink("Gates", "Index", "Gates")</li>
                         <li>@Html.ActionLink("Find Help", "Help", "Home")</li>
@@ -59,8 +110,7 @@
         <footer>
             <div class="form">
             </div>
-            <p style="float:left">The Gateway Projects - Daviado#3449</p>
-            <img src="~/Assets/Gate1Logo.gif" width="36px" height="32px" style="float:right" />
+            <p style="float:left;color:white">The Gateway Projects - Daviado#3449</p>
         </footer>
     </div>
 

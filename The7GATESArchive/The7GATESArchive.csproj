@@ -179,11 +179,31 @@
     <Compile Include="Migrations\201901210113568_CollectiveTime.Designer.cs">
       <DependentUpon>201901210113568_CollectiveTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901271544488_Percentile.cs" />
+    <Compile Include="Migrations\201901271544488_Percentile.Designer.cs">
+      <DependentUpon>201901271544488_Percentile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901300151365_FixPercentile.cs" />
+    <Compile Include="Migrations\201901300151365_FixPercentile.Designer.cs">
+      <DependentUpon>201901300151365_FixPercentile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902252152253_Insights2.cs" />
+    <Compile Include="Migrations\201902252152253_Insights2.Designer.cs">
+      <DependentUpon>201902252152253_Insights2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CardGate-1-1.png" />
+    <Content Include="Assets\CardGate-2-1.png" />
+    <Content Include="Assets\CardGate-3-1.png" />
+    <Content Include="Assets\CardGate-4-1.png" />
+    <Content Include="Assets\CardGate-5-1.png" />
+    <Content Include="Assets\CardGate-6-1.png" />
+    <Content Include="Assets\CardGate-7-1.png" />
+    <Content Include="Assets\CardGate-C-1.png" />
     <Content Include="Assets\LeaderboardBackground.png" />
     <Content Include="Assets\Zone1.png" />
     <Content Include="Assets\ARG-1.png" />
@@ -221,6 +241,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Properties\PublishProfiles\The7GATESArchive - Web Deploy.pubxml" />
     <Content Include="Properties\webjobs-list.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -278,18 +299,10 @@
     <Content Include="Views\Gates\BetaGate1.cshtml" />
     <Content Include="Views\Gates\BetaGate2.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
-    <Content Include="Views\User\Gate1.cshtml" />
-    <Content Include="Views\User\Gate2.cshtml" />
     <Content Include="Views\User\BGate3.cshtml" />
     <Content Include="Views\User\BGate2.cshtml" />
     <Content Include="Views\User\BGate1.cshtml" />
-    <Content Include="Views\User\Gate7.cshtml" />
-    <Content Include="Views\User\Gate6.cshtml" />
-    <Content Include="Views\User\Gate5.cshtml" />
-    <Content Include="Views\User\Gate4.cshtml" />
-    <Content Include="Views\User\Gate3.cshtml" />
     <Content Include="Views\Home\Fallback.cshtml" />
-    <Content Include="Views\Home\Update.cshtml" />
     <Content Include="Views\User\Report.cshtml" />
     <Content Include="Views\ARG\ItsDarkInHere.cshtml" />
     <Content Include="Views\ARG\postit.cshtml" />
@@ -299,6 +312,13 @@
     <Content Include="Views\ARG\Hint3kasdjm.cshtml" />
     <Content Include="Views\WhatsThis\Ranking.cshtml" />
     <Content Include="Views\WhatsThis\Index.cshtml" />
+    <Content Include="Views\User\DetailsPlain.cshtml" />
+    <Content Include="Views\User\Insights.cshtml" />
+    <Content Include="Views\User\Compare.cshtml" />
+    <Content Include="Views\User\Options.cshtml" />
+    <None Include="Web.Test.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -341,6 +361,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901210113568_CollectiveTime.resx">
       <DependentUpon>201901210113568_CollectiveTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901271544488_Percentile.resx">
+      <DependentUpon>201901271544488_Percentile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901300151365_FixPercentile.resx">
+      <DependentUpon>201901300151365_FixPercentile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902252152253_Insights2.resx">
+      <DependentUpon>201902252152253_Insights2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

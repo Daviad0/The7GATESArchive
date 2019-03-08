@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apiupdater", "apiupdater\ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7GatesDatabase", "7GatesDatabase\7GatesDatabase.csproj", "{0AF359DC-BCB6-49A9-8B96-0F605DA62A59}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{76818452-BB3B-4687-89C3-B9DAAE51956D}"
+	ProjectSection(SolutionItems) = preProject
+		..\OneDrive\Documents\Backup Files\Grant.sql = ..\OneDrive\Documents\Backup Files\Grant.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

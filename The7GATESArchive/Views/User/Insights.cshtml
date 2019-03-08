@@ -1,0 +1,886 @@
+﻿@model The7GATESArchive.Models.UserViewModel
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Slideshow container */
+    .slideshow-container {
+        position: relative;
+        background: #000000;
+    }
+
+    /* Slides */
+    .mySlides {
+        text-align: center;
+    }
+
+    .responsive {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .gate-1 {
+        background-color: rgba(230, 51, 90, .3);
+        border: 8px solid rgb(230, 51, 90);
+        border-radius: 10px;
+    }
+
+    .gate-c {
+        background-color: rgba(0, 219, 255, .3);
+        border: 8px solid rgb(0, 219, 255);
+        border-radius: 10px;
+    }
+
+    .gate-2 {
+        background-color: rgba(63, 186, 132, .3);
+        border: 8px solid rgb(63, 186, 132);
+        border-radius: 10px
+    }
+
+    .gate-3 {
+        background-color: rgba(52, 169, 246, .3);
+        border: 8px solid rgb(52, 169, 246);
+        border-radius: 10px
+    }
+
+    .gate-4 {
+        background-color: rgba(254, 123, 81, .3);
+        border: 8px solid rgb(254, 123, 81);
+        border-radius: 10px
+    }
+
+    .gate-5 {
+        background-color: rgba(240, 190, 55, .3);
+        border: 8px solid rgb(240, 190, 55);
+        border-radius: 10px
+    }
+
+    .gate-6 {
+        background-color: rgba(167, 76, 193, .3);
+        border: 8px solid rgb(167, 76, 193);
+        border-radius: 10px
+    }
+
+    .gate-7 {
+        background-color: rgba(40, 40, 40, .3);
+        border: 8px solid rgb(40, 40, 40);
+        border-radius: 10px
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -30px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 5px 5px 0;
+        user-select: none;
+        transition: 0.3s;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        position: absolute;
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: black;
+            color: white;
+        }
+
+    /* The dot/bullet/indicator container */
+    .dot-container {
+        text-align: center;
+        padding: 20px;
+        background: #000000;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+        /* Add a background color to the active dot/circle */
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+    /* Add an italic font style to all quotes */
+    q {
+        font-style: italic;
+    }
+
+    /* Add a blue color to the author */
+    .author {
+        color: cornflowerblue;
+    }
+
+    .data {
+        color: white
+    }
+
+    .title {
+        border: 4px solid rgb(0, 219, 255);
+        text-align: center;
+        background-color: rgba(0, 219, 255,0.3);
+        border-radius: 10px
+    }
+
+    .table {
+        border: 2px solid rgba(84, 237, 255,1);
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .notice {
+        border: 2px solid red;
+        background-color: rgba(188, 0, 0,0.35);
+        color: white;
+        text-align: center;
+    }
+
+    .flip-box {
+        background-color: transparent;
+    }
+
+    .flip-box-inner {
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-box:hover .flip-box-inner {
+        transform: rotateX(180deg);
+    }
+
+    .flip-box-front, .flip-box-back {
+        backface-visibility: hidden;
+    }
+
+    .flip-box-front {
+        color: black;
+    }
+
+    .flip-box-back {
+        background-color: rgba(75, 185, 198,0.3);
+        border: 2px solid rgba(84, 237, 255,1);
+        color: white;
+        transform: rotateX(180deg);
+    }
+
+    .top10 {
+        background-color: #ffc3b2;
+        color: black;
+    }
+
+    .n3 {
+        background-color: #db685c;
+        color: white;
+    }
+
+    .n2 {
+        background-color: #d1d1d1;
+        color: black;
+    }
+
+    .n1 {
+        background-color: #f7ef56;
+        color: black;
+    }
+
+    .all {
+        background-color: #ffe1d8;
+        color: black;
+    }
+
+    .top {
+        border: 3px solid white;
+        background-color: #ff3a26;
+        color: white;
+        border-radius: 8px;
+    }
+
+    .topnorm {
+        border: 3px solid white;
+        background-color: rgba(183, 0, 177,0.05);
+        color: white;
+        border-radius: 8px;
+    }
+
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: 'OPEN';
+            color: #5cd67a;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .active:after {
+        content: "OPEN";
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible2 {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+        .activeb, .collapsible2:hover {
+            background-color: #555;
+        }
+
+        .collapsible2:after {
+            content: 'CLOSED';
+            color: #ff6d6d;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .activeb:after {
+        content: "CLOSED";
+    }
+
+    .content2 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible3 {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+        .activec, .collapsible3:hover {
+            background-color: #555;
+        }
+
+        .collapsible3:after {
+            content: '';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .activec:after {
+        content: "";
+    }
+
+    .content3 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible4 {
+        background-color: #fcf93c;
+        color: black;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+        .actived, .collapsible4:hover {
+            background-color: #f2ef26;
+        }
+
+        .collapsible4:after {
+            content: '';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .actived:after {
+        content: "";
+        background-color: #f2ef26;
+    }
+
+    .content4 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .top10 {
+        background-color: #ffc3b2;
+        color: black;
+    }
+
+    .n3 {
+        background-color: #db685c;
+        color: white;
+    }
+
+    .n2 {
+        background-color: #d1d1d1;
+        color: black;
+    }
+
+    .n1 {
+        background-color: #f7ef56;
+        color: black;
+    }
+
+    .all {
+        background-color: #ffe1d8;
+        color: black;
+    }
+
+    .button {
+        border-radius: 6px;
+        background-color: #ff3a26;
+        border: none;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: none;
+        margin: 5px;
+    }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+    .buttonb {
+        border-radius: 6px;
+        background-color: white;
+        border: 4px solid #fc6f3c;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        margin: 5px;
+    }
+
+    .buttonc {
+        border-radius: 6px;
+        background-color: white;
+        border: 4px solid #fcf93c;
+        color: black;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        margin: 5px;
+    }
+
+    #overlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    #box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 50px;
+        color: white;
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+    }
+</style>
+
+
+@{
+    int G1Rank = 0;
+    int G2Rank = 0;
+    int G3Rank = 0;
+    int G4Rank = 0;
+    int G5Rank = 0;
+    int G6Rank = 0;
+    int G7Rank = 0;
+    TimeSpan G1Time = new TimeSpan(0, 0, 0);
+    TimeSpan G2Time = new TimeSpan(0, 0, 0);
+    TimeSpan G3Time = new TimeSpan(0, 0, 0);
+    TimeSpan G4Time = new TimeSpan(0, 0, 0);
+    TimeSpan G5Time = new TimeSpan(0, 0, 0);
+    TimeSpan G6Time = new TimeSpan(0, 0, 0);
+    TimeSpan G7Time = new TimeSpan(0, 0, 0);
+    int G1TimeInt = 0;
+    int G2TimeInt = 0;
+    int G3TimeInt = 0;
+    int G4TimeInt = 0;
+    int G5TimeInt = 0;
+    int G6TimeInt = 0;
+    int G7TimeInt = 0;
+    double KeysP1 = 0;
+    double KeysP2 = 0;
+    double KeysP3 = 0;
+    double KeysP4 = 0;
+    double KeysP5 = 0;
+    double KeysP6 = 0;
+    double KeysP7 = 0;
+}
+<br />
+<h1 style="font-size:60px;color:black;text-align:center"><strong>@Html.DisplayFor(model => model.Username)'s Insights</strong></h1>
+<div style="color:black;width:100%;border-radius:16px;display:inline-block;text-align:center">
+    <br />
+    <h1 style="color:black;text-align:center;font-size:4vw"><strong>Simple Tips:</strong></h1>
+    <br />
+    @if (Model.Insight1 == 1)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#1</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">You’re doing a great job so far! Try completing all of the gates to get all of the keys possible at the moment. Remember, even if you hit the timecap, there’s still a chance to get back in the race! You have 1 gate left. You can do this!</p>
+    }
+    @if (Model.Insight1 == 2)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#1</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">You’re doing a great job so far! Try completing all of the gates to get all of the keys possible at the moment. Remember, even if you hit the timecap, there’s still a chance to get back in the race! You have 2 gates left. You can do this!</p>
+    }
+    @if (Model.Insight1 == 3)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#1</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">It seems that you haven’t completed any gates yet. Don’t worry, you still have a chance to get back in the race. Just find the key answers for all 3 gates and you’ll be at the timecap time!</p>
+    }
+    @if (Model.Insight1 == 4)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#1</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">It looks like you have missed a couple keys on one of your gates! Don’t worry! The timecap is here to help. Now get out there and solve those last few keys!</p>
+    }
+    @if (Model.Insight1 == 5)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#1</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">Sometimes going solo is a good thing, but maybe you could try joining a team to raise your ranking! Some teams do recruitment tests or just plain recruitment in #arg-find-your-teams at the Official Game Theorists Discord server.</p>
+    }
+    @if (Model.Insight1 == 6)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#1</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">You're in the top 150, but you aren’t on a team. Try to keep your high position with friends or help by joining a team. Try going to #arg-find-your-teams on the Official Game Theorists Discord to find a team to join in and give you more than 100% power! You’re unstoppable!</p>
+    }
+    @if (Model.Insight1 == 7)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#1</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">Wow, you’re doing great! You have all of the gates completed, but you are a little behind the main race. Try catching up to everyone by joining when the gate opens, and/or finding people to cooperate with you that have a higher ranking!</p>
+    }
+    @if (Model.Insight1 == 8)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#1</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">Wow! You’re so close to the top 100! Try getting tips from those in the top 100 to get there, or wait until we implement ‘Final Push’ tips for those who are SO CLOSE!</p>
+    }
+    @if (Model.Insight1 == 0)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#1</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">Top 100! Good job! YAY! Bravo! (Try to keep up your ranking and you are all set)! Keep a lookout for the ‘#1 On Top’ tips we are releasing soon for those who want to stay in the top 100!</p>
+    }
+    @if (Model.Insight2 == 5)
+    {<p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#2</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">Sometimes going solo is a good thing, but maybe you could try joining a team to raise your ranking! Some teams do recruitment tests or just plain recruitment in #arg-find-your-teams at the Official Game Theorists Discord server.</p>
+    }
+    @if (Model.Insight2 == 6)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#2</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">Your ranking is below the top 150, but you aren’t on a team. Try to keep your high position with friends or help by joining a team. Try going to #arg-find-your-teams on the Official Game Theorists Discord to find a team to join in and give you more than 100% power! You’re unstoppable!</p>
+    }
+    @if (Model.Insight2 == 7)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#2</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">Wow, you’re doing great! You have all of the gates completed, but you are a little behind the main race. Try catching up to everyone by joining when the gate opens, and/or finding people to cooperate with you that have a higher ranking!</p>
+    }
+    @if (Model.Insight2 == 8)
+    {
+        <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#2</p>
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">Wow! You’re so close to the top 100! Try getting tips from those in the top 100 to get there, or wait until we implement ‘Final Push’ tips for those who are SO CLOSE!</p>
+    }
+    @if (Model.Insight1 > 0)
+    {
+        if (Model.Insight2 == 0)
+        {
+            <p style="color:red;font-size:3vw;padding-left:15px;padding-right:15px">#2</p>
+            <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px">Top 100! Good job! YAY! Bravo! (Try to keep up your ranking and you are all set)! Keep a lookout for the ‘#1 On Top’ tips we are releasing soon for those who want to stay in the top 100!</p>
+        }
+    }
+    <h1 style="color:black;text-align:center;font-size:4vw"><strong>Experimental Tips:</strong></h1>
+    @foreach (var item in Model.UserGates)
+    {
+        if (item.GateID == 1)
+        {
+            G1Rank = item.Rank;
+            G1TimeInt = (int)item.Time.TotalMinutes;
+            G1Time = item.Time;
+            KeysP1 = ((double)item.Keys / 5) * 100;
+
+        }
+        if (item.GateID == 2)
+        {
+            G2Rank = item.Rank;
+            G2TimeInt = (int)item.Time.TotalMinutes;
+            G2Time = item.Time;
+            KeysP2 = ((double)item.Keys / 4) * 100;
+        }
+        if (item.GateID == 3)
+        {
+            G3Rank = item.Rank;
+            G3TimeInt = (int)item.Time.TotalMinutes;
+            G3Time = item.Time;
+            KeysP3 = ((double)item.Keys / 5) * 100;
+        }
+        if (item.GateID == 4)
+        {
+            G4Rank = item.Rank;
+            G4TimeInt = (int)item.Time.TotalMinutes;
+            G4Time = item.Time;
+
+        }
+        if (item.GateID == 5)
+        {
+            G5Rank = item.Rank;
+            G5TimeInt = (int)item.Time.TotalMinutes;
+            G5Time = item.Time;
+
+        }
+        if (item.GateID == 6)
+        {
+            G6Rank = item.Rank;
+            G6TimeInt = (int)item.Time.TotalMinutes;
+            G6Time = item.Time;
+
+        }
+        if (item.GateID == 7)
+        {
+            G7Rank = item.Rank;
+            G7TimeInt = (int)item.Time.TotalMinutes;
+            G7Time = item.Time;
+
+        }
+    }
+
+</div>
+<body style="text-align:center">
+    <div id="curve_chart" style="display:block;margin:0 auto;"></div>
+</body>
+<br />
+@if (G3Rank < G1Rank)
+{
+    if (G2Rank > G1Rank)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">You have improved your rank from gate 1, but in gate 2 something happened to put you in a place worse than what you were in gate 1. You recovered though, which is a good thing!</p>
+    }
+    else
+    {
+        if (G2Rank < G3Rank)
+        {
+            <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">You nailed it on gate 2, but your ranking fell a little bit during gate 3. Try to raise your ranking again in gate 4!</p>
+        }
+        if (G2Rank > G3Rank)
+        {
+            <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">You are doing exactly what you want to be doing! You keep raising your ranking every gate that comes. Try to keep the same trend for gate 4.</p>
+        }
+    }
+}
+@if (G3Rank > G1Rank)
+{
+    if (G2Rank > G3Rank)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">Even though you aren't doing as good as you were on gate 1, you still improved from gate 2!</p>
+    }
+    if (G2Rank < G3Rank)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">Uh oh! You are on a downward trend. Try getting to the gates on time to improve the trend!</p>
+    }
+}
+@if (G3Rank == G1Rank)
+{
+    if (G3Rank == G2Rank)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">Wow! You've kept your rank for the whole time!</p>
+    }
+    else
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">Your gate 1 ranking and gate 3 ranking is the same! Good job!</p>
+    }
+}
+@{
+    TimeSpan Okay1 = new TimeSpan(0, 40, 0);
+    TimeSpan Okay2 = new TimeSpan(2, 0, 0);
+    TimeSpan Okay3 = new TimeSpan(1, 20, 0);
+}
+@if (TimeSpan.Compare(G1Time, Okay1) <= 0 && TimeSpan.Compare(G2Time, Okay2) <= 0 && TimeSpan.Compare(G3Time, Okay3) <= 0)
+{
+    <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">All of your times are above average! You were able to get above the timecap for all gates and able to get good times!</p>
+}
+else
+{
+    if (TimeSpan.Compare(G1Time, Okay1) >= 0 && TimeSpan.Compare(G2Time, Okay2) <= 0 && TimeSpan.Compare(G3Time, Okay3) <= 0)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">You have above average times except for gate 1. Make up for that time by doing well on future gates!</p>
+    }
+    if (TimeSpan.Compare(G1Time, Okay1) >= 0 && TimeSpan.Compare(G2Time, Okay2) >= 0 && TimeSpan.Compare(G3Time, Okay3) <= 0)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">Your times are below average except for gate 3's time! Try to do what you did in gate 3 to keep your time above average.</p>
+    }
+    if (TimeSpan.Compare(G1Time, Okay1) >= 0 && TimeSpan.Compare(G2Time, Okay2) >= 0 && TimeSpan.Compare(G3Time, Okay3) >= 0)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">All of your times are below average. Try starting the gate when it first opens and get tips from other players and team members!</p>
+    }
+    if (TimeSpan.Compare(G1Time, Okay1) <= 0 && TimeSpan.Compare(G2Time, Okay2) >= 0 && TimeSpan.Compare(G3Time, Okay3) <= 0)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">You have above average times except for gate 2. Make up for that time by doing well on future gates and see what you might've done that took you more time during gate 2.</p>
+    }
+    if (TimeSpan.Compare(G1Time, Okay1) <= 0 && TimeSpan.Compare(G2Time, Okay2) >= 0 && TimeSpan.Compare(G3Time, Okay3) >= 0)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">Your times are below average except for gate 1's time! See if you did anything different in gate 1 that would decrease your time and start doing the things you find again to help improve your time.</p>
+    }
+    if (TimeSpan.Compare(G1Time, Okay1) <= 0 && TimeSpan.Compare(G2Time, Okay2) <= 0 && TimeSpan.Compare(G3Time, Okay3) >= 0)
+    {
+        <p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center">You have above average times except for gate 3. See what you could've changed during gate 3 that may have increased your time and revert back to strategies in gate 1 and 2.</p>
+    }
+}
+<p style="color:red;font-size:2vw;padding-left:15px;padding-right:15px;text-align:center"></p>
+<div style="text-align:center">
+    <div style="text-align:center;width:100%;display:inline-block">
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+            <a href="@Url.Action("Index")" style="display:inline;padding-right:10px"><input type="button" class="buttonmain buttonmain2" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="Back to Leaderboard" /></a>
+            <a href="@Url.Action("Details", new { id = Model.ID })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="Back to User Details" /></a>
+
+            <br />
+        </div>
+    </div>
+</div>
+<script>
+    function on() {
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible2");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("activeb");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible3");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("activec");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible4");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("actived");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Gate', 'Rank', 'Time (Minutes)'],
+            ['Gate 1', @G1Rank, @G1TimeInt],
+            ['Gate 2', @G2Rank, @G2TimeInt],
+            ['Gate 3', @G3Rank, @G3TimeInt],
+            //['Gate 4', @G4Rank, @G1TimeInt],
+            //['Gate 5', @G5Rank, @G1TimeInt],
+            //['Gate 6', @G6Rank, @G1TimeInt],
+            //['Gate 7', @G7Rank, @G1TimeInt],
+        ]);
+
+        var options = {
+            title: 'Your ARG Stats',
+            legend: { position: 'bottom' },
+            series: {
+                0: { targetAxisIndex: 0 },
+                1: { targetAxisIndex: 1 }
+            },
+            animation: {
+                duration: 2000,
+                easing: 'out',
+                startup: true
+            },
+            vAxes: {
+                // Adds titles to each axis.
+                0: { title: 'Ranking' },
+                1: { title: 'Time in Minutes' }
+            },
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+</script>
+
+</div>

@@ -123,26 +123,7 @@ namespace Gateway.Controllers
             return View(users.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: Students/Details/5
-        public ActionResult Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var user = db.Users.Find(id);
-            var usergates = db.UserGates.Where(u => u.UserID == id);
-            var UserViewModel = new UserViewModel();
-            UserViewModel.ID = user.ID;
-            UserViewModel.TimeForAllGates = user.TimeForAllGates;
-            UserViewModel.Keys = user.Keys;
-            UserViewModel.UserGates = usergates.ToList();
-            UserViewModel.Username = user.Username;
-            UserViewModel.Rank = user.Rank;
-
-            return View(UserViewModel);
-        }
-        public ActionResult Gate1(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Options(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.KeySortParm = sortOrder == "Key" ? "key_desc" : "Key";
@@ -243,54 +224,108 @@ namespace Gateway.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            int pageSize = 200;
+            int pageSize = 100;
             int pageNumber = (page ?? 1);
             return View(users.ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult Gate2()
+        // GET: Students/Details/5
+        public ActionResult Details(Guid? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = db.Users.Find(id);
+            var usergates = db.UserGates.Where(u => u.UserID == id);
+            var UserViewModel = new UserViewModel();
+            UserViewModel.ID = user.ID;
+            UserViewModel.TimeForAllGates = user.TimeForAllGates;
+            UserViewModel.Keys = user.Keys;
+            UserViewModel.UserGates = usergates.ToList();
+            UserViewModel.Username = user.Username;
+            UserViewModel.Rank = user.Rank;
+            UserViewModel.Percentile = user.Percentile;
+            UserViewModel.PrizeStatus = user.PrizeStatus;
+            UserViewModel.Insight1 = user.Insight1;
+            UserViewModel.Insight2 = user.Insight2;
 
-            return View();
+            return View(UserViewModel);
         }
-        public ActionResult Gate3()
+        public ActionResult Compare(Guid? id, Guid? id2)
         {
+            if (id == null || id2 == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = db.Users.Find(id);
+            var usergates = db.UserGates.Where(u => u.UserID == id);
+            var user2 = db.Users.Find(id2);
+            var usergates2 = db.UserGates.Where(u => u.UserID == id2);
+            var UserViewModel = new UserViewModel();
+            UserViewModel.ID = user.ID;
+            UserViewModel.TimeForAllGates = user.TimeForAllGates;
+            UserViewModel.Keys = user.Keys;
+            UserViewModel.UserGates = usergates.ToList();
+            UserViewModel.Username = user.Username;
+            UserViewModel.Rank = user.Rank;
+            UserViewModel.Percentile = user.Percentile;
+            UserViewModel.PrizeStatus = user.PrizeStatus;
+            UserViewModel.Insight1 = user.Insight1;
+            UserViewModel.Insight2 = user.Insight2;
+            UserViewModel.ID2 = user2.ID;
+            UserViewModel.TimeForAllGates2 = user2.TimeForAllGates;
+            UserViewModel.Keys2 = user2.Keys;
+            UserViewModel.UserGates2 = usergates2.ToList();
+            UserViewModel.Username2 = user2.Username;
+            UserViewModel.Rank2 = user2.Rank;
+            UserViewModel.Percentile2 = user2.Percentile;
+            UserViewModel.PrizeStatus2 = user2.PrizeStatus;
+            UserViewModel.Insight12 = user2.Insight1;
+            UserViewModel.Insight22 = user2.Insight2;
 
-            return View();
+            return View(UserViewModel);
         }
-        public ActionResult Gate4()
+        public ActionResult Insights(Guid? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = db.Users.Find(id);
+            var usergates = db.UserGates.Where(u => u.UserID == id);
+            var UserViewModel = new UserViewModel();
+            UserViewModel.ID = user.ID;
+            UserViewModel.TimeForAllGates = user.TimeForAllGates;
+            UserViewModel.Keys = user.Keys;
+            UserViewModel.UserGates = usergates.ToList();
+            UserViewModel.Username = user.Username;
+            UserViewModel.Rank = user.Rank;
+            UserViewModel.Percentile = user.Percentile;
+            UserViewModel.PrizeStatus = user.PrizeStatus;
+            UserViewModel.Insight1 = user.Insight1;
+            UserViewModel.Insight2 = user.Insight2;
 
-            return View();
+            return View(UserViewModel);
         }
-        public ActionResult Gate5()
+        public ActionResult DetailsPlain(Guid? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = db.Users.Find(id);
+            var usergates = db.UserGates.Where(u => u.UserID == id);
+            var UserViewModel = new UserViewModel();
+            UserViewModel.ID = user.ID;
+            UserViewModel.TimeForAllGates = user.TimeForAllGates;
+            UserViewModel.Keys = user.Keys;
+            UserViewModel.UserGates = usergates.ToList();
+            UserViewModel.Username = user.Username;
+            UserViewModel.Rank = user.Rank;
+            UserViewModel.Percentile = user.Percentile;
+            UserViewModel.PrizeStatus = user.PrizeStatus;
 
-            return View();
-        }
-        public ActionResult Gate6()
-        {
-
-            return View();
-        }
-        public ActionResult Gate7()
-        {
-
-            return View();
-        }
-        public ActionResult BGate1()
-        {
-
-            return View();
-        }
-        public ActionResult BGate2()
-        {
-
-            return View();
-        }
-        public ActionResult BGate3()
-        {
-
-            return View();
+            return View(UserViewModel);
         }
         public ActionResult Report()
         {

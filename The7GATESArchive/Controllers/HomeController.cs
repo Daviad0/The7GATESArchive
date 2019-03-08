@@ -19,12 +19,6 @@ namespace Gateway.Controllers
 
             return View();
         }
-        public ActionResult Update()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
 
         public ActionResult Contact()
         {
@@ -47,5 +41,10 @@ namespace Gateway.Controllers
         {
             return View();
         }
+        public ActionResult NekomancerPI()
+        {
+            return View();
+        }
+        
     }
 }

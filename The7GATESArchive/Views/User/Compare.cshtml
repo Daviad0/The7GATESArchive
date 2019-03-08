@@ -1,0 +1,1067 @@
+﻿@model The7GATESArchive.Models.UserViewModel
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Slideshow container */
+    .slideshow-container {
+        position: relative;
+        background: #000000;
+    }
+
+    /* Slides */
+    .mySlides {
+        text-align: center;
+    }
+
+    .responsive {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .gate-1 {
+        background-color: rgba(230, 51, 90, .3);
+        border: 8px solid rgb(230, 51, 90);
+        border-radius: 10px;
+    }
+
+    .gate-c {
+        background-color: rgba(0, 219, 255, .3);
+        border: 8px solid rgb(0, 219, 255);
+        border-radius: 10px;
+    }
+
+    .gate-2 {
+        background-color: rgba(63, 186, 132, .3);
+        border: 8px solid rgb(63, 186, 132);
+        border-radius: 10px
+    }
+
+    .gate-3 {
+        background-color: rgba(52, 169, 246, .3);
+        border: 8px solid rgb(52, 169, 246);
+        border-radius: 10px
+    }
+
+    .gate-4 {
+        background-color: rgba(254, 123, 81, .3);
+        border: 8px solid rgb(254, 123, 81);
+        border-radius: 10px
+    }
+
+    .gate-5 {
+        background-color: rgba(240, 190, 55, .3);
+        border: 8px solid rgb(240, 190, 55);
+        border-radius: 10px
+    }
+
+    .gate-6 {
+        background-color: rgba(167, 76, 193, .3);
+        border: 8px solid rgb(167, 76, 193);
+        border-radius: 10px
+    }
+
+    .gate-7 {
+        background-color: rgba(40, 40, 40, .3);
+        border: 8px solid rgb(40, 40, 40);
+        border-radius: 10px
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -30px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 5px 5px 0;
+        user-select: none;
+        transition: 0.3s;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        position: absolute;
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: black;
+            color: white;
+        }
+
+    /* The dot/bullet/indicator container */
+    .dot-container {
+        text-align: center;
+        padding: 20px;
+        background: #000000;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+        /* Add a background color to the active dot/circle */
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+    /* Add an italic font style to all quotes */
+    q {
+        font-style: italic;
+    }
+
+    /* Add a blue color to the author */
+    .author {
+        color: cornflowerblue;
+    }
+
+    .data {
+        color: white
+    }
+
+    .title {
+        border: 4px solid rgb(0, 219, 255);
+        text-align: center;
+        background-color: rgba(0, 219, 255,0.3);
+        border-radius: 10px
+    }
+
+    .table {
+        border: 2px solid rgba(84, 237, 255,1);
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .notice {
+        border: 2px solid red;
+        background-color: rgba(188, 0, 0,0.35);
+        color: white;
+        text-align: center;
+    }
+
+    .flip-box {
+        background-color: transparent;
+    }
+
+    .flip-box-inner {
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-box:hover .flip-box-inner {
+        transform: rotateX(180deg);
+    }
+
+    .flip-box-front, .flip-box-back {
+        backface-visibility: hidden;
+    }
+
+    .flip-box-front {
+        color: black;
+    }
+
+    .flip-box-back {
+        background-color: rgba(75, 185, 198,0.3);
+        border: 2px solid rgba(84, 237, 255,1);
+        color: white;
+        transform: rotateX(180deg);
+    }
+
+    .top10 {
+        background-color: #ffc3b2;
+        color: black;
+    }
+
+    .n3 {
+        background-color: #db685c;
+        color: white;
+    }
+
+    .n2 {
+        background-color: #d1d1d1;
+        color: black;
+    }
+
+    .n1 {
+        background-color: #f7ef56;
+        color: black;
+    }
+
+    .all {
+        background-color: #ffe1d8;
+        color: black;
+    }
+
+    .top {
+        border: 3px solid white;
+        background-color: #ff3a26;
+        color: white;
+        border-radius: 8px;
+    }
+
+    .topnorm {
+        border: 3px solid white;
+        background-color: rgba(183, 0, 177,0.05);
+        color: white;
+        border-radius: 8px;
+    }
+
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: 'OPEN';
+            color: #5cd67a;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .active:after {
+        content: "OPEN";
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible2 {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .activeb, .collapsible2:hover {
+            background-color: #555;
+        }
+
+        .collapsible2:after {
+            content: '';
+            color: #ff6d6d;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .activeb:after {
+        content: "CLOSED";
+    }
+
+    .content2 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible3 {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .activec, .collapsible3:hover {
+            background-color: #555;
+        }
+
+        .collapsible3:after {
+            content: '';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .activec:after {
+        content: "";
+    }
+
+    .content3 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible4 {
+        background-color: #fcf93c;
+        color: black;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .actived, .collapsible4:hover {
+            background-color: #f2ef26;
+        }
+
+        .collapsible4:after {
+            content: '';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .actived:after {
+        content: "";
+        background-color: #f2ef26;
+    }
+
+    .content4 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .top10 {
+        background-color: #ffc3b2;
+        color: black;
+    }
+
+    .n3 {
+        background-color: #db685c;
+        color: white;
+    }
+
+    .n2 {
+        background-color: #dbdbdb;
+        color: black;
+        border: 4px solid #28e22f;
+        transition-duration: 0.3s;
+    }
+
+    .n1 {
+        background-color: #dbdbdb;
+        color: black;
+        border: 4px solid #dbdbdb;
+        transition-duration: 0.3s;
+    }
+    .n2:active {
+        background-color: #c4c4c4;
+    }
+
+    .n1:active {
+        background-color: #c4c4c4;
+        border: 4px solid #c4c4c4;
+    }
+
+    .all {
+        background-color: #ffe1d8;
+        color: black;
+    }
+
+    .button {
+        border-radius: 6px;
+        background-color: #ff3a26;
+        border: none;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: none;
+        margin: 5px;
+    }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+    .buttonb {
+        border-radius: 6px;
+        background-color: white;
+        border: 4px solid #fc6f3c;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        margin: 5px;
+    }
+
+    .buttonc {
+        border-radius: 6px;
+        background-color: white;
+        border: 4px solid #fcf93c;
+        color: black;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        margin: 5px;
+    }
+
+    #overlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    #box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 50px;
+        color: white;
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+    }
+</style>
+@{
+    string currentclass = "";
+    string currentclass2 = "";
+    string currentclassg1 = "";
+    string currentclassg12 = "";
+    string currentclassg2 = "";
+    string currentclassg22 = "";
+    string currentclassg3 = "";
+    string currentclassg32 = "";
+    string currentclassg4 = "";
+    string currentclassg42 = "";
+    string currentclassg5 = "";
+    string currentclassg52 = "";
+    string currentclassg6 = "";
+    string currentclassg62 = "";
+    string currentclassg7 = "";
+    string currentclassg72 = "";
+    int Ranka1 = 0;
+    int Ranka2 = 0;
+    int Ranka3 = 0;
+    int Ranka4 = 0;
+    int Ranka5 = 0;
+    int Ranka6 = 0;
+    int Ranka7 = 0;
+    int Rankb1 = 0;
+    int Rankb2 = 0;
+    int Rankb3 = 0;
+    int Rankb4 = 0;
+    int Rankb5 = 0;
+    int Rankb6 = 0;
+    int Rankb7 = 0;
+    TimeSpan Timea1 = new TimeSpan(0, 0, 0);
+    TimeSpan Timeb1 = new TimeSpan(0, 0, 0);
+    TimeSpan Timea2 = new TimeSpan(0, 0, 0);
+    TimeSpan Timeb2 = new TimeSpan(0, 0, 0);
+    TimeSpan Timea3 = new TimeSpan(0, 0, 0);
+    TimeSpan Timeb3 = new TimeSpan(0, 0, 0);
+    TimeSpan Timea4 = new TimeSpan(0, 0, 0);
+    TimeSpan Timeb4 = new TimeSpan(0, 0, 0);
+    TimeSpan Timea5 = new TimeSpan(0, 0, 0);
+    TimeSpan Timeb5 = new TimeSpan(0, 0, 0);
+    TimeSpan Timea6 = new TimeSpan(0, 0, 0);
+    TimeSpan Timeb6 = new TimeSpan(0, 0, 0);
+    TimeSpan Timea7 = new TimeSpan(0, 0, 0);
+    TimeSpan Timeb7 = new TimeSpan(0, 0, 0);
+    int Keysa1 = 0;
+    int Keysb1 = 0;
+    int Keysa2 = 0;
+    int Keysb2 = 0;
+    int Keysa3 = 0;
+    int Keysb3 = 0;
+    int Keysa4 = 0;
+    int Keysb4 = 0;
+    int Keysa5 = 0;
+    int Keysb5 = 0;
+    int Keysa6 = 0;
+    int Keysb6 = 0;
+    int Keysa7 = 0;
+    int Keysb7 = 0;
+
+}
+
+@foreach (var item in Model.UserGates)
+{
+    if (item.GateID == 1)
+    {
+        Ranka1 = item.Rank;
+        Timea1 = item.Time;
+        Keysa1 = item.Keys;
+    }
+    if (item.GateID == 2)
+    {
+        Ranka2 = item.Rank;
+        Timea2 = item.Time;
+        Keysa2 = item.Keys;
+    }
+    if (item.GateID == 3)
+    {
+        Ranka3 = item.Rank;
+        Timea3 = item.Time;
+        Keysa3 = item.Keys;
+    }
+    /*if (item.GateID == 4)
+    {
+        Ranka4 = item.Rank;
+        Timea4 = item.Time;
+        Keysa4 = item.Keys;
+    }
+    if (item.GateID == 5)
+    {
+        Ranka5 = item.Rank;
+        Timea5 = item.Time;
+        Keysa5 = item.Keys;
+    }
+    if (item.GateID == 6)
+    {
+        Ranka6 = item.Rank;
+        Timea6 = item.Time;
+        Keysa6 = item.Keys;
+    }
+    if (item.GateID == 7)
+    {
+        Ranka7 = item.Rank;
+        Timea7 = item.Time;
+        Keysa7 = item.Keys;
+    }*/
+}
+@foreach (var item in Model.UserGates2)
+{
+    if (item.GateID == 1)
+    {
+        Rankb1 = item.Rank;
+        Timeb1 = item.Time;
+        Keysb1 = item.Keys;
+    }
+    if (item.GateID == 2)
+    {
+        Rankb2 = item.Rank;
+        Timeb2 = item.Time;
+        Keysb2 = item.Keys;
+    }
+    if (item.GateID == 3)
+    {
+        Rankb3 = item.Rank;
+        Timeb3 = item.Time;
+        Keysb3 = item.Keys;
+    }
+    /*if (item.GateID == 4)
+    {
+        Rankb4 = item.Rank;
+        Timeb4 = item.Time;
+        Keysb4 = item.Keys;
+    }
+    if (item.GateID == 5)
+    {
+        Rankb5 = item.Rank;
+        Timeb5 = item.Time;
+        Keysb5 = item.Keys;
+    }
+    if (item.GateID == 6)
+    {
+        Rankb6 = item.Rank;
+        Timeb6 = item.Time;
+        Keysb6 = item.Keys;
+    }
+    if (item.GateID == 7)
+    {
+        Rankb7 = item.Rank;
+        Timeb7 = item.Time;
+        Keysb7 = item.Keys;
+    }*/
+}
+
+<div>
+    <br />
+    <div>
+        <br />
+        <h2 style="font-size:40px;color:black;float:left;display:inline-block;padding-left:10vw"><strong>@Html.DisplayFor(model => model.Username)'s Details</strong></h2>
+        <h2 style="font-size:40px;color:black;float:right;display:inline-block;padding-right:10vw"><strong>@Html.DisplayFor(model => model.Username2)'s Details</strong></h2>
+
+        <br />
+        <br />
+        <button class="collapsible3">Current Information</button>
+        <div class="content3">
+            <br />
+            <div style="text-align:center">
+                @{
+                    float percent = (float)Model.Keys / 14;
+                    percent = percent * 100;
+                    float percentb = (float)Model.Keys2 / 14;
+                    percentb = percentb * 100;
+                    if (Model.Rank < Model.Rank2)
+                    {
+                        currentclass = "n2";
+                        currentclass2 = "n1";
+                    }
+                    else
+                    {
+                        currentclass = "n1";
+                        currentclass2 = "n2";
+                    }
+                }
+                <div style="float:left;display:inline-block;padding-left:8vw">
+                    <div class="@currentclass" style="width:25vw;border-radius:6px;text-align:center">
+                        @if (currentclass == "n2")
+                        {
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">stars</i></p>
+                        }
+                        else
+                        {
+                            <p style="font-size:6vw">#@Html.DisplayFor(model => model.Rank)</p>
+                        }
+                        <p style="font-size:3vw">@Html.DisplayFor(modelItem => percent)%</p>
+                        <p style="font-size:3vw">@Html.DisplayFor(model => model.Keys)</p>
+                        <p style="font-size:3vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
+                        @if (Model.PrizeStatus == "0")
+                        {
+                            <p style="font-size:3vw;margin-bottom:10px">No Prize</p>
+                        }
+                        @if (Model.PrizeStatus == "2")
+                        {
+                            <p style="font-size:3vw;margin-bottom:10px">Small Prize</p>
+                        }
+                        @if (Model.PrizeStatus == "1")
+                        {
+                            <p style="font-size:3vw;margin-bottom:10px">Big Prize</p>
+                        }
+                    </div>
+                </div>
+                <div style="float:right;display:inline-block;padding-right:8vw">
+                    <div class="@currentclass2" style="width:25vw;border-radius:6px;text-align:center">
+
+                        @if (currentclass2 == "n2")
+                        {
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank2) <i class="material-icons" style="font-size:4vw">stars</i></p>
+                        }
+                        else
+                        {
+                            <p style="font-size:6vw">#@Html.DisplayFor(model => model.Rank2)</p>
+                        }
+                        <p style="font-size:3vw">@Html.DisplayFor(modelItem => percentb)%</p>
+                        <p style="font-size:3vw">@Html.DisplayFor(model => model.Keys2)</p>
+                        <p style="font-size:3vw">@Html.DisplayFor(model => model.TimeForAllGates2)</p>
+                        @if (Model.PrizeStatus2 == "0")
+                        {
+                            <p style="font-size:3vw;margin-bottom:10px">No Prize</p>
+                        }
+                        @if (Model.PrizeStatus2 == "2")
+                        {
+                            <p style="font-size:3vw;margin-bottom:10px">Small Prize</p>
+                        }
+                        @if (Model.PrizeStatus2 == "1")
+                        {
+                            <p style="font-size:3vw;margin-bottom:10px">Big Prize</p>
+                        }
+                    </div>
+                    <br />
+                </div>
+
+                <br />
+                <br />
+            </div>
+        </div>
+        @{
+            if (TimeSpan.Compare(Timea1, Timeb1) == -1)
+            {
+                currentclassg1 = "n2";
+                currentclassg12 = "n1";
+            }
+            else if (TimeSpan.Compare(Timea1, Timeb1) == 1){
+                currentclassg1 = "n1";
+                currentclassg12 = "n2";
+            }
+            else if (TimeSpan.Compare(Timea1, Timeb1) == 0)
+            {
+                if(Ranka1 > Rankb1) {
+                    currentclassg1 = "n1";
+                    currentclassg12 = "n2";
+                }
+                else
+                {
+                    currentclassg1 = "n2";
+                    currentclassg12 = "n1";
+                }
+            }
+            if (TimeSpan.Compare(Timea2, Timeb2) == -1)
+            {
+                currentclassg2 = "n2";
+                currentclassg22 = "n1";
+            }
+            else if (TimeSpan.Compare(Timea2, Timeb2) == 1)
+            {
+                currentclassg2 = "n1";
+                currentclassg22 = "n2";
+            }
+            else if (TimeSpan.Compare(Timea2, Timeb2) == 0)
+            {
+                if (Ranka2 > Rankb2)
+                {
+                    currentclassg2 = "n1";
+                    currentclassg22 = "n2";
+                }
+                else
+                {
+                    currentclassg2 = "n2";
+                    currentclassg22 = "n1";
+                }
+            }
+            if (TimeSpan.Compare(Timea3, Timeb3) == -1)
+            {
+                currentclassg3 = "n2";
+                currentclassg32 = "n1";
+            }
+            else if (TimeSpan.Compare(Timea3, Timeb3) == 1)
+            {
+                currentclassg3 = "n1";
+                currentclassg32 = "n2";
+            }
+            else if (TimeSpan.Compare(Timea3, Timeb3) == 0)
+            {
+                if (Ranka3 > Rankb3)
+                {
+                    currentclassg3 = "n1";
+                    currentclassg32 = "n2";
+                }
+                else
+                {
+                    currentclassg3 = "n2";
+                    currentclassg32 = "n1";
+                }
+            }
+
+        }
+        <button class="collapsible2">Gate 1</button>
+        <div class="content2">
+            <br />
+            <div style="float:left;display:inline-block;padding-left:8vw">
+                <div class="@currentclassg1" style="width:25vw;border-radius:6px;text-align:center">
+                    @if (currentclassg1 == "n2")
+                    {
+                    <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka1 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Ranka1</p>
+                    }
+                    <p style="font-size:3vw">@Keysa1 Keys</p>
+                    <p style="font-size:3vw">@Timea1</p>
+                </div>
+            </div>
+            <div style="float:right;display:inline-block;padding-right:8vw">
+                <div class="@currentclassg12" style="width:25vw;border-radius:6px;text-align:center">
+
+                    @if (currentclassg12 == "n2")
+                    {
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank2) <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Rankb1</p>
+                    }
+                        <p style="font-size:3vw">@Keysb1 Keys</p>
+                    <p style="font-size:3vw">@Timeb1</p>
+                </div>
+                <br />
+            </div>
+
+        </div>
+        <button class="collapsible2">Gate 2</button>
+        <div class="content2">
+            <br />
+            <div style="float:left;display:inline-block;padding-left:8vw">
+                <div class="@currentclassg2" style="width:25vw;border-radius:6px;text-align:center">
+                    @if (currentclassg2 == "n2")
+                    {
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka1 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Ranka2</p>
+                    }
+                        <p style="font-size:3vw">@Keysa2 Keys</p>
+                    <p style="font-size:3vw">@Timea2</p>
+                </div>
+            </div>
+            <div style="float:right;display:inline-block;padding-right:8vw">
+                <div class="@currentclassg22" style="width:25vw;border-radius:6px;text-align:center">
+
+                    @if (currentclassg22 == "n2")
+                    {
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Rankb2 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Rankb2</p>
+                    }
+                    <p style="font-size:3vw">@Keysb2 Keys</p>
+                    <p style="font-size:3vw">@Timeb2</p>
+                </div>
+                <br />
+            </div>
+        </div>
+        <button class="collapsible2">Gate 3</button>
+        <div class="content2">
+            <br />
+            <div style="float:left;display:inline-block;padding-left:8vw">
+                <div class="@currentclassg3" style="width:25vw;border-radius:6px;text-align:center">
+                    @if (currentclassg3 == "n2")
+                    {
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka3 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Ranka3</p>
+                    }
+                        <p style="font-size:3vw">@Keysa3 Keys</p>
+                    <p style="font-size:3vw">@Timea3</p>
+                </div>
+            </div>
+            <div style="float:right;display:inline-block;padding-right:8vw">
+                <div class="@currentclassg32" style="width:25vw;border-radius:6px;text-align:center">
+
+                    @if (currentclassg32 == "n2")
+                    {
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Rankb3 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Rankb3</p>
+                    }
+                    <p style="font-size:3vw">@Keysb3 Keys</p>
+                    <p style="font-size:3vw">@Timeb3</p>
+                </div>
+                <br />
+            </div>
+        </div>
+        <button class="collapsible2">Gate 4</button>
+        <div class="content2">
+            <br />
+            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
+            <br />
+            <br />
+        </div>
+        <button class="collapsible2">Gate 5</button>
+        <div class="content2">
+            <br />
+            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
+            <br />
+            <br />
+        </div>
+        <button class="collapsible2">Gate 6</button>
+        <div class="content2">
+            <br />
+            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
+            <br />
+            <br />
+        </div>
+        <button class="collapsible2">Gate 7</button>
+        <div class="content2">
+            <br />
+            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
+            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
+            <br />
+            <br />
+        </div>
+    </div>
+    <br />
+    <div style="text-align:center">
+        <div style="text-align:center;width:100%;display:inline-block">
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+                <a href="@Url.Action("Details", new { id = Model.ID })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="@Model.Username's Details" /></a>
+                <a href="@Url.Action("Index")" style="display:inline;padding-right:10px;padding-left:10px"><input type="button" class="buttonmain buttonmain2" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="Back to Leaderboard" /></a>
+                <a href="@Url.Action("Details", new { id = Model.ID2 })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="@Model.Username2's Details" /></a>
+
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<script>
+    function on() {
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible2");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("activeb");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible3");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("activec");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script>
+    var coll = document.getElementsByClassName("collapsible4");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("actived");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+    </div>
