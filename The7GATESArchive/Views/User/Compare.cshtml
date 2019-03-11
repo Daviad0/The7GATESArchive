@@ -1,4 +1,4 @@
-﻿@model The7GATESArchive.Models.UserViewModel
+﻿@model IList<The7GATESArchive.Models.UserViewModel>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     /* Slideshow container */
@@ -396,6 +396,7 @@
         border: 4px solid #dbdbdb;
         transition-duration: 0.3s;
     }
+
     .n2:active {
         background-color: #c4c4c4;
     }
@@ -559,9 +560,10 @@
     int Keysa7 = 0;
     int Keysb7 = 0;
 
+
 }
 
-@foreach (var item in Model.UserGates)
+@foreach (var item in Model[0].UserGates)
 {
     if (item.GateID == 1)
     {
@@ -581,13 +583,13 @@
         Timea3 = item.Time;
         Keysa3 = item.Keys;
     }
-    /*if (item.GateID == 4)
+    if (item.GateID == 4)
     {
         Ranka4 = item.Rank;
         Timea4 = item.Time;
         Keysa4 = item.Keys;
     }
-    if (item.GateID == 5)
+    /*if (item.GateID == 5)
     {
         Ranka5 = item.Rank;
         Timea5 = item.Time;
@@ -606,7 +608,7 @@
         Keysa7 = item.Keys;
     }*/
 }
-@foreach (var item in Model.UserGates2)
+@foreach (var item in Model[1].UserGates)
 {
     if (item.GateID == 1)
     {
@@ -626,13 +628,13 @@
         Timeb3 = item.Time;
         Keysb3 = item.Keys;
     }
-    /*if (item.GateID == 4)
+    if (item.GateID == 4)
     {
         Rankb4 = item.Rank;
         Timeb4 = item.Time;
         Keysb4 = item.Keys;
     }
-    if (item.GateID == 5)
+    /*if (item.GateID == 5)
     {
         Rankb5 = item.Rank;
         Timeb5 = item.Time;
@@ -651,13 +653,41 @@
         Keysb7 = item.Keys;
     }*/
 }
+@{ 
+    int MTimea1 = (int)Timea1.TotalMinutes;
+    int MTimea2 = (int)Timea2.TotalMinutes;
+    int MTimea3 = (int)Timea3.TotalMinutes;
+    int MTimea4 = (int)Timea4.TotalMinutes;
+    int MTimea5 = (int)Timea5.TotalMinutes;
+    int MTimea6 = (int)Timea6.TotalMinutes;
+    int MTimea7 = (int)Timea7.TotalMinutes;
+    int MTimeb1 = (int)Timeb1.TotalMinutes;
+    int MTimeb2 = (int)Timeb2.TotalMinutes;
+    int MTimeb3 = (int)Timeb3.TotalMinutes;
+    int MTimeb4 = (int)Timeb4.TotalMinutes;
+    int MTimeb5 = (int)Timeb5.TotalMinutes;
+    int MTimeb6 = (int)Timeb6.TotalMinutes;
+    int MTimeb7 = (int)Timeb7.TotalMinutes;
+    int MTimeac = (int)Model[0].TimeForAllGates.TotalMinutes;
+    int MTimebc = (int)Model[1].TimeForAllGates.TotalMinutes;
+    int Rankac = Model[0].Rank;
+    int Rankbc = Model[1].Rank;
+    double DiffC = System.Math.Abs(Model[0].TimeForAllGates.TotalMinutes - Model[1].TimeForAllGates.TotalMinutes);
+    double Diff1 = System.Math.Abs(Timea1.TotalMinutes - Timeb1.TotalMinutes);
+    double Diff2 = System.Math.Abs(Timea2.TotalMinutes - Timeb2.TotalMinutes);
+    double Diff3 = System.Math.Abs(Timea3.TotalMinutes - Timeb3.TotalMinutes);
+    double Diff4 = System.Math.Abs(Timea4.TotalMinutes - Timeb4.TotalMinutes);
+    double Diff5 = System.Math.Abs(Timea5.TotalMinutes - Timeb5.TotalMinutes);
+    double Diff6 = System.Math.Abs(Timea6.TotalMinutes - Timeb6.TotalMinutes);
+    double Diff7 = System.Math.Abs(Timea7.TotalMinutes - Timeb7.TotalMinutes);
+}
 
 <div>
     <br />
     <div>
         <br />
-        <h2 style="font-size:40px;color:black;float:left;display:inline-block;padding-left:10vw"><strong>@Html.DisplayFor(model => model.Username)'s Details</strong></h2>
-        <h2 style="font-size:40px;color:black;float:right;display:inline-block;padding-right:10vw"><strong>@Html.DisplayFor(model => model.Username2)'s Details</strong></h2>
+        <h2 style="font-size:40px;color:#4286f4;float:left;display:inline-block"><strong>@Html.DisplayFor(model => model[0].Username)'s Details</strong></h2>
+        <h2 style="font-size:40px;color:#ff3a26;float:right;display:inline-block"><strong>@Html.DisplayFor(model => model[1].Username)'s Details</strong></h2>
 
         <br />
         <br />
@@ -666,11 +696,11 @@
             <br />
             <div style="text-align:center">
                 @{
-                    float percent = (float)Model.Keys / 14;
+                    float percent = (float)Model[0].Keys / 14;
                     percent = percent * 100;
-                    float percentb = (float)Model.Keys2 / 14;
+                    float percentb = (float)Model[1].Keys / 14;
                     percentb = percentb * 100;
-                    if (Model.Rank < Model.Rank2)
+                    if (Model[0].Rank < Model[1].Rank)
                     {
                         currentclass = "n2";
                         currentclass2 = "n1";
@@ -682,64 +712,67 @@
                     }
                 }
                 <div style="float:left;display:inline-block;padding-left:8vw">
-                    <div class="@currentclass" style="width:25vw;border-radius:6px;text-align:center">
+                    <div class="@currentclass" style="width:25vw;border-radius:6px;text-align:center;background-color:#a9c1e8">
                         @if (currentclass == "n2")
                         {
-                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank) <i class="material-icons" style="font-size:4vw">stars</i></p>
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model[0].Rank) <i class="material-icons" style="font-size:4vw">stars</i></p>
                         }
                         else
                         {
-                            <p style="font-size:6vw">#@Html.DisplayFor(model => model.Rank)</p>
+                            <p style="font-size:6vw">#@Html.DisplayFor(model => model[0].Rank)</p>
                         }
                         <p style="font-size:3vw">@Html.DisplayFor(modelItem => percent)%</p>
-                        <p style="font-size:3vw">@Html.DisplayFor(model => model.Keys)</p>
-                        <p style="font-size:3vw">@Html.DisplayFor(model => model.TimeForAllGates)</p>
-                        @if (Model.PrizeStatus == "0")
+                        <p style="font-size:3vw">@Html.DisplayFor(model => model[0].Keys)</p>
+                        <p style="font-size:3vw">@Html.DisplayFor(model => model[0].TimeForAllGates)</p>
+                        @if (Model[0].PrizeStatus == "0")
                         {
                             <p style="font-size:3vw;margin-bottom:10px">No Prize</p>
                         }
-                        @if (Model.PrizeStatus == "2")
+                        @if (Model[0].PrizeStatus == "2")
                         {
                             <p style="font-size:3vw;margin-bottom:10px">Small Prize</p>
                         }
-                        @if (Model.PrizeStatus == "1")
+                        @if (Model[0].PrizeStatus == "1")
                         {
                             <p style="font-size:3vw;margin-bottom:10px">Big Prize</p>
                         }
                     </div>
                 </div>
                 <div style="float:right;display:inline-block;padding-right:8vw">
-                    <div class="@currentclass2" style="width:25vw;border-radius:6px;text-align:center">
+                    <div class="@currentclass2" style="width:25vw;border-radius:6px;text-align:center;background-color:#edaaa3">
 
                         @if (currentclass2 == "n2")
                         {
-                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank2) <i class="material-icons" style="font-size:4vw">stars</i></p>
+                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model[1].Rank) <i class="material-icons" style="font-size:4vw">stars</i></p>
                         }
                         else
                         {
-                            <p style="font-size:6vw">#@Html.DisplayFor(model => model.Rank2)</p>
+                            <p style="font-size:6vw">#@Html.DisplayFor(model => model[1].Rank)</p>
                         }
                         <p style="font-size:3vw">@Html.DisplayFor(modelItem => percentb)%</p>
-                        <p style="font-size:3vw">@Html.DisplayFor(model => model.Keys2)</p>
-                        <p style="font-size:3vw">@Html.DisplayFor(model => model.TimeForAllGates2)</p>
-                        @if (Model.PrizeStatus2 == "0")
+                        <p style="font-size:3vw">@Html.DisplayFor(model => model[1].Keys)</p>
+                        <p style="font-size:3vw">@Html.DisplayFor(model => model[1].TimeForAllGates)</p>
+                        @if (Model[1].PrizeStatus == "0")
                         {
                             <p style="font-size:3vw;margin-bottom:10px">No Prize</p>
                         }
-                        @if (Model.PrizeStatus2 == "2")
+                        @if (Model[1].PrizeStatus == "2")
                         {
                             <p style="font-size:3vw;margin-bottom:10px">Small Prize</p>
                         }
-                        @if (Model.PrizeStatus2 == "1")
+                        @if (Model[1].PrizeStatus == "1")
                         {
                             <p style="font-size:3vw;margin-bottom:10px">Big Prize</p>
                         }
                     </div>
                     <br />
+
                 </div>
 
                 <br />
                 <br />
+                <br />
+
             </div>
         </div>
         @{
@@ -748,13 +781,15 @@
                 currentclassg1 = "n2";
                 currentclassg12 = "n1";
             }
-            else if (TimeSpan.Compare(Timea1, Timeb1) == 1){
+            else if (TimeSpan.Compare(Timea1, Timeb1) == 1)
+            {
                 currentclassg1 = "n1";
                 currentclassg12 = "n2";
             }
             else if (TimeSpan.Compare(Timea1, Timeb1) == 0)
             {
-                if(Ranka1 > Rankb1) {
+                if (Ranka1 > Rankb1)
+                {
                     currentclassg1 = "n1";
                     currentclassg12 = "n2";
                 }
@@ -810,16 +845,39 @@
                     currentclassg32 = "n1";
                 }
             }
+            if (TimeSpan.Compare(Timea4, Timeb4) == -1)
+            {
+                currentclassg4 = "n2";
+                currentclassg42 = "n1";
+            }
+            else if (TimeSpan.Compare(Timea4, Timeb4) == 1)
+            {
+                currentclassg4 = "n1";
+                currentclassg42 = "n2";
+            }
+            else if (TimeSpan.Compare(Timea4, Timeb4) == 0)
+            {
+                if (Ranka4 > Rankb4)
+                {
+                    currentclassg4 = "n1";
+                    currentclassg42 = "n2";
+                }
+                else
+                {
+                    currentclassg4 = "n2";
+                    currentclassg42 = "n1";
+                }
+            }
 
         }
         <button class="collapsible2">Gate 1</button>
         <div class="content2">
             <br />
             <div style="float:left;display:inline-block;padding-left:8vw">
-                <div class="@currentclassg1" style="width:25vw;border-radius:6px;text-align:center">
+                <div class="@currentclassg1" style="width:25vw;border-radius:6px;text-align:center;background-color:#a9c1e8">
                     @if (currentclassg1 == "n2")
                     {
-                    <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka1 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka1 <i class="material-icons" style="font-size:4vw">stars</i></p>
                     }
                     else
                     {
@@ -830,17 +888,17 @@
                 </div>
             </div>
             <div style="float:right;display:inline-block;padding-right:8vw">
-                <div class="@currentclassg12" style="width:25vw;border-radius:6px;text-align:center">
+                <div class="@currentclassg12" style="width:25vw;border-radius:6px;text-align:center;background-color:#edaaa3">
 
                     @if (currentclassg12 == "n2")
                     {
-                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Html.DisplayFor(model => model.Rank2) <i class="material-icons" style="font-size:4vw">stars</i></p>
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Rankb1 <i class="material-icons" style="font-size:4vw">stars</i></p>
                     }
                     else
                     {
                         <p style="font-size:6vw">#@Rankb1</p>
                     }
-                        <p style="font-size:3vw">@Keysb1 Keys</p>
+                    <p style="font-size:3vw">@Keysb1 Keys</p>
                     <p style="font-size:3vw">@Timeb1</p>
                 </div>
                 <br />
@@ -851,21 +909,21 @@
         <div class="content2">
             <br />
             <div style="float:left;display:inline-block;padding-left:8vw">
-                <div class="@currentclassg2" style="width:25vw;border-radius:6px;text-align:center">
+                <div class="@currentclassg2" style="width:25vw;border-radius:6px;text-align:center;background-color:#a9c1e8">
                     @if (currentclassg2 == "n2")
                     {
-                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka1 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka2 <i class="material-icons" style="font-size:4vw">stars</i></p>
                     }
                     else
                     {
                         <p style="font-size:6vw">#@Ranka2</p>
                     }
-                        <p style="font-size:3vw">@Keysa2 Keys</p>
+                    <p style="font-size:3vw">@Keysa2 Keys</p>
                     <p style="font-size:3vw">@Timea2</p>
                 </div>
             </div>
             <div style="float:right;display:inline-block;padding-right:8vw">
-                <div class="@currentclassg22" style="width:25vw;border-radius:6px;text-align:center">
+                <div class="@currentclassg22" style="width:25vw;border-radius:6px;text-align:center;background-color:#edaaa3">
 
                     @if (currentclassg22 == "n2")
                     {
@@ -885,7 +943,7 @@
         <div class="content2">
             <br />
             <div style="float:left;display:inline-block;padding-left:8vw">
-                <div class="@currentclassg3" style="width:25vw;border-radius:6px;text-align:center">
+                <div class="@currentclassg3" style="width:25vw;border-radius:6px;text-align:center;background-color:#a9c1e8">
                     @if (currentclassg3 == "n2")
                     {
                         <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka3 <i class="material-icons" style="font-size:4vw">stars</i></p>
@@ -894,12 +952,12 @@
                     {
                         <p style="font-size:6vw">#@Ranka3</p>
                     }
-                        <p style="font-size:3vw">@Keysa3 Keys</p>
+                    <p style="font-size:3vw">@Keysa3 Keys</p>
                     <p style="font-size:3vw">@Timea3</p>
                 </div>
             </div>
             <div style="float:right;display:inline-block;padding-right:8vw">
-                <div class="@currentclassg32" style="width:25vw;border-radius:6px;text-align:center">
+                <div class="@currentclassg32" style="width:25vw;border-radius:6px;text-align:center;background-color:#edaaa3">
 
                     @if (currentclassg32 == "n2")
                     {
@@ -918,16 +976,41 @@
         <button class="collapsible2">Gate 4</button>
         <div class="content2">
             <br />
-            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
-            <br />
-            <br />
+            <div style="float:left;display:inline-block;padding-left:8vw">
+                <div class="@currentclassg4" style="width:25vw;border-radius:6px;text-align:center;background-color:#a9c1e8">
+                    @if (currentclassg4 == "n2")
+                    {
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka4 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Ranka4</p>
+                    }
+                    <p style="font-size:3vw">@Keysa4 Keys</p>
+                    <p style="font-size:3vw">@Timea4</p>
+                </div>
+            </div>
+            <div style="float:right;display:inline-block;padding-right:8vw">
+                <div class="@currentclassg42" style="width:25vw;border-radius:6px;text-align:center;background-color:#edaaa3">
+
+                    @if (currentclassg42 == "n2")
+                    {
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Rankb4 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Rankb4</p>
+                    }
+                    <p style="font-size:3vw">@Keysb4 Keys</p>
+                    <p style="font-size:3vw">@Timeb4</p>
+                </div>
+                <br />
+            </div>
         </div>
         <button class="collapsible2">Gate 5</button>
         <div class="content2">
             <br />
             <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
             <br />
             <br />
         </div>
@@ -935,7 +1018,6 @@
         <div class="content2">
             <br />
             <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
             <br />
             <br />
         </div>
@@ -943,18 +1025,41 @@
         <div class="content2">
             <br />
             <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
             <br />
             <br />
         </div>
+        <button class="collapsible2">Differences</button>
+        <div class="content2">
+            <p style="font-size:3vw;color:black">Time Differences:</p>
+            <div style="background-color:#dbdbdb;border-radius:8px;width:100%;text-align:center;color:black">
+                <p style="font-size:2vw;margin-bottom:10px">Currently: Difference of @DiffC Minutes</p>
+                <p style="font-size:2vw;margin-bottom:10px">Gate 1: Difference of @Diff1 Minutes</p>
+                <p style="font-size:2vw;margin-bottom:10px">Gate 2: Difference of @Diff2 Minutes</p>
+                <p style="font-size:2vw;margin-bottom:10px">Gate 3: Difference of @Diff3 Minutes</p>
+                <p style="font-size:2vw;margin-bottom:10px">Gate 4: Difference of @Diff4 Minutes</p>
+                <!--<p style="font-size:2vw;margin-bottom:10px">Gate 5: Difference of @Diff5 Minutes</p>
+    <p style="font-size:2vw;margin-bottom:10px">Gate 6: Difference of @Diff6 Minutes</p>
+    <p style="font-size:2vw;margin-bottom:10px">Gate 7: Difference of @Diff7 Minutes</p>-->
+            </div>
+        </div>
     </div>
+    <br />
+    
+    
+    <body style="text-align:center">
+        <div id="rank_chart_div" style="display:block;margin:0 auto;"></div>
+    </body>
+    <body style="text-align:center">
+        <div id="time_chart_div" style="display:block;margin:0 auto;"></div>
+    </body>
+    <br />
     <br />
     <div style="text-align:center">
         <div style="text-align:center;width:100%;display:inline-block">
             <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
-                <a href="@Url.Action("Details", new { id = Model.ID })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="@Model.Username's Details" /></a>
+                <a href="@Url.Action("Details", new { id = Model[0].ID })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:7vw;font-size:1vw;display:inline-block;font-family:Calibri;background-color:#a9c1e8" value="@Model[0].Username's Details" /></a>
                 <a href="@Url.Action("Index")" style="display:inline;padding-right:10px;padding-left:10px"><input type="button" class="buttonmain buttonmain2" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="Back to Leaderboard" /></a>
-                <a href="@Url.Action("Details", new { id = Model.ID2 })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="@Model.Username2's Details" /></a>
+                <a href="@Url.Action("Details", new { id = Model[1].ID })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:7vw;font-size:1vw;display:inline-block;font-family:Calibri;background-color:#edaaa3" value="@Model[1].Username's Details" /></a>
 
                 <br />
             </div>
@@ -1062,6 +1167,83 @@
                 content.style.maxHeight = content.scrollHeight + "px";
             }
         });
+    }
+</script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawRankChart);
+    google.charts.setOnLoadCallback(drawTimeChart);
+
+    function drawRankChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Gate', 'Theorist 1 Ranking', 'Theorist 2 Ranking'],
+            ['Gate 1', @Ranka1, @Rankb1],
+            ['Gate 2', @Ranka2, @Rankb2],
+            ['Gate 3', @Ranka3, @Rankb3],
+            //['Gate 4', @Ranka4, @Rankb4],
+            //['Gate 5', @Ranka5, @Rankb5],
+            //['Gate 6', @Ranka6, @Rankb6],
+            //['Gate 7', @Ranka7, @Rankb7],
+            ['Currently', @Rankac, @Rankbc],
+        ]);
+
+        var options = {
+            title: 'Theorist 1 VS Theorist 2 Ranking',
+            legend: { position: 'bottom' },
+            series: {
+                0: { targetAxisIndex: 0, color: '#4286f4' },
+                1: { targetAxisIndex: 0, color: '#ff3a26' },
+            },
+            animation: {
+                duration: 2000,
+                easing: 'out',
+                startup: true
+            },
+            vAxes: {
+                // Adds titles to each axis.
+                0: { title: 'Ranking' },
+            },
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('rank_chart_div'));
+
+        chart.draw(data, options);
+    }
+    function drawTimeChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Gate', 'Theorist 1 Time', 'Theorist 2 Time'],
+            ['Gate 1', @MTimea1, @MTimeb1],
+            ['Gate 2', @MTimea2, @MTimeb2],
+            ['Gate 3', @MTimea3, @MTimeb3],
+            ['Gate 4', @MTimea4, @MTimeb4],
+            //['Gate 5', @MTimea5, @MTimeb5],
+            //['Gate 6', @MTimea6, @MTimeb6],
+            //['Gate 7', @MTimea7, @MTimeb7],
+            ['Currently', @MTimeac, @MTimebc],
+        ]);
+
+        var options = {
+            title: 'Theorist 1 VS Theorist 2 Time',
+            legend: { position: 'bottom' },
+            series: {
+                0: { targetAxisIndex: 0, color: '#4286f4' },
+                1: { targetAxisIndex: 0, color: '#ff3a26' },
+            },
+            animation: {
+                duration: 2000,
+                easing: 'out',
+                startup: true
+            },
+            vAxes: {
+                // Adds titles to each axis.
+                0: { title: 'Time' },
+            },
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('time_chart_div'));
+
+        chart.draw(data, options);
     }
 </script>
     </div>

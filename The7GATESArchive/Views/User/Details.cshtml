@@ -1126,14 +1126,6 @@
                 }
             </div>
         }
-        <button class="collapsible2">Gate 4</button>
-        <div class="content2">
-            <br />
-            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
-            <br />
-            <br />
-        </div>
         <button class="collapsible2">Gate 5</button>
         <div class="content2">
             <br />
@@ -1164,6 +1156,7 @@
         <div style="text-align:center;width:100%;display:inline-block">
             <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
                 <a href="@Url.Action("Index")" style="display:inline;padding-right:10px"><input type="button" class="buttonmain buttonmain2" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="Back to Leaderboard" /></a>
+                <a href="@Url.Action("Options", new { id = Model.ID })" style="display:inline;padding-right:10px"><input type="button" class="buttonmain buttonmain2" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri;background-color:#ff3a26" value="Compare" /></a>
                 <a href="@Url.Action("Insights", new { id = Model.ID })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri;background-color:#fcf93c;color:black" value="Insights" /></a>
 
                 <br />

@@ -17,18 +17,7 @@ namespace The7GATESArchive.Models
         public int Insight1 { get; set; }
         public int Insight2 { get; set; }
         public int Insight3 { get; set; }
-        public string Username2;
-        public int Keys2;
-        public TimeSpan TimeForAllGates2;
-        public Guid ID2;
-        public int Rank2;
-        public double? Percentile2;
-        public string PrizeStatus2;
-        public int Insight12 { get; set; }
-        public int Insight22 { get; set; }
-        public int Insight32 { get; set; }
 
         public ICollection<UserGate> UserGates { get; set; }
-        public ICollection<UserGate> UserGates2 { get; set; }
     }
 }

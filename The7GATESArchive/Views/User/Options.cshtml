@@ -350,6 +350,7 @@
         width: 70%;
         align-content: center;
     }
+
 </style>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
 <body style="background-color:black;font-family:Courier New, Courier, monospace">
@@ -361,17 +362,17 @@
             </div>
         </div>
     </div>
-    <h1 class="title" style="font-size:6vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">Experimental Area</h1>
 
-    <br />
-    <br />
+    <h1 class="title" style="font-size:4vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">Select a User to Compare With</h1>
+
+
     <div>
         <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
             @using (Html.BeginForm())
             {
                 <p style="text-align:center;color:red">
                 <p style="color:#ff3a26;font-size:2vw">Find by Username:</p> <p style="color:red">@Html.Editor("SearchString", ViewBag.CurrentFilter as string, new { @class = "textbox" })</p>
-                <button class="buttonmain buttonmain2" style="color:white">Search</button><a href="@Url.Action("Index")" style="display:inline"><input type="button" class="buttonmain buttonmain2" value="Clear" /></a>
+                <button class="buttonmain buttonmain2" style="color:white">Search</button><a href="@Url.Action("Options")" style="display:inline"><input type="button" class="buttonmain buttonmain2" value="Clear" /></a>
                 </p>
             }
         </div>
@@ -382,205 +383,54 @@
             <a href="@Url.Action("Index", new { sortOrder = ViewBag.KeySortParm })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:10vw;height:4vw;font-size:1.5vw;display:inline-block;font-family:Calibri" value="By Keys" /></a>
             <a href="@Url.Action("Index")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:10vw;height:4vw;font-size:1.5vw;display:inline-block;font-family:Calibri" value="Reset Sort" /></a>
         </div>
-        <div style="text-align:center">
-            <a href="@Url.Action("Index")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:4vw;font-size:1.5vw;display:inline-block;font-family:Calibri;text-align:center" value="Compare Selected Users" /></a>
+        @using (Html.BeginForm())
+        {
+            <input value="@ViewBag.CompareUser" name="CompareUser" type="hidden" />
+            <div style="text-align:center">
+                <button type="submit" class="buttonmain buttonmain2" style="color:white;background-color:#ff3a26">Compare Selected User</button>
             </div>
             <br />
+
             <table align="center" class="table table-condensed" style="color:red;padding-top:10px;width:80%;border:0px red solid">
                 <tr class="top" style="align-content:center;height:60px;font-size:24px;border-radius:8px">
-                    <th style="border-radius:16px 0px 0px 16px">
-                        <p class="top2"><strong>Rank <i class="fa fa-trophy"></i></strong></p>
+                    <th>
+                        <p class="top2"><strong>Rank <i class="fa fa-user-circle-o"></i></strong></p>
                     </th>
                     <th>
                         <p class="top2"><strong>Username <i class="fa fa-user-circle-o"></i></strong></p>
                     </th>
                     <th>
-                        <p class="top2"><strong>Keys <i class="fa fa-key"></i></strong></p>
-                    </th>
-                    <th>
-                        <p class="top2" style="text-align:left"><strong>Time</strong> <i class="fa fa-clock-o"></i></p>
-                    </th>
-                    <th style="border-radius:0px 16px 16px 0px">
-                        <p class="top2" style="text-align:left"><strong>Options</strong> <i class="fa fa-info-circle"></i></p>
+                        <p class="top2"><strong>Select <i class="fa fa-user-circle-o"></i></strong></p>
                     </th>
                 </tr>
 
-                @{
-                    int i = 0;
-                }
                 @foreach (var item in Model)
                 {
 
-                    i++;
-                    if (item.Rank > 6510)
-                    {
-                        <div style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="all" style="border-radius:16px 0px 0px 16px">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="all">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="all">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="all">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                                <td class="all" style="border-radius:0px 16px 16px 0px">
-                                    <input type="checkbox" name="vehicle" value="id">Compare User
-                                </td>
-                            </tr>
-                        </div>
-                    }
-                    <!--THIS VALUE CHANGES-->
-                    if (item.Rank > 10 && item.Rank < 6511)
-                    {
-                        <div style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="all" style="border-radius:16px 0px 0px 16px">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="all">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="all">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="all">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                                <td class="all" style="border-radius:0px 16px 16px 0px">
-                                    <input type="checkbox" name="vehicle" value="id">Compare User
-                                </td>
-                            </tr>
-                        </div>
-                    }
-                    if (item.Rank > 3 && item.Rank < 11)
-                    {
-                        <div class="top10" style="overflow:auto;border-radius:8px">
-                            <tr class="topnorm" style="width:80%;border-radius:8px">
-                                <td class="top10" style="border-radius:16px 0px 0px 16px">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="top10">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="top10">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="top10">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                                <td class="top10" style="border-radius:0px 16px 16px 0px">
-                                    <input type="checkbox" name="vehicle" value="id">Compare User
-                                </td>
-                            </tr>
-                        </div>
-                    }
-                    if (item.Rank == 3)
-                    {
-                        <div class="n3" style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="n3" style="border-radius:16px 0px 0px 16px">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="n3">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="n3">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="n3">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                                <td class="n3" style="border-radius:0px 16px 16px 0px">
-                                    <input type="checkbox" name="vehicle" value="id">Compare User
-                                </td>
-                            </tr>
-                        </div>
-                    }
-                    if (item.Rank == 2)
-                    {
-                        <div class="n2" style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="n2" style="border-radius:16px 0px 0px 16px">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="n2">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="n2">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="n2">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                                <td class="n2" style="border-radius:0px 16px 16px 0px">
-                                    <input type="checkbox" name="vehicle" value="id">Compare User
-                                </td>
-                            </tr>
-                        </div>
-                                        }
-                                        if (item.Rank == 1)
-                                        {
-                        <div class="n1" style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="n1" style="border-radius:16px 0px 0px 16px">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="n1">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="n1">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="n1">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                                <td class="n1" style="border-radius:0px 16px 16px 0px">
-                                    @Html.ActionLink(item.Username, "Compare", new { id2 = item.ID, id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-
-</tr>
-
-</div>
-                    }
+                    <div style="overflow:auto">
+                        <tr class="topnorm" style="width:80%">
+                            <td class="all">
+                                @item.Rank
+                            </td>
+                            <td class="all">
+                                @item.Username
+                            </td>
+                            <td class="all">
+                                <input type="radio" name="compare" value="@item.ID"> Compare User
+                            </td>
+                        </tr>
+                    </div>
                 }
 
             </table>
-            <div style="text-align:center">
-                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        }
+        <div style="text-align:center">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                @Html.PagedListPager(Model, page => Url.Action("Index",
-                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-            </div>
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
         </div>
+    </div>
 
         <br />
         <!--<div style="text-align:center;font-size:small">
@@ -592,6 +442,7 @@
                 @Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
                 @Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })
     -->
+
 </body>
 <style>
     .alert {
@@ -639,9 +490,9 @@
 </script>
 <script>
     $('input[type=checkbox]').change(function (e) {
-        if ($('input[type=checkbox]:checked').length > 2) {
+        if ($('input[type=checkbox]:checked').length > 1) {
             $(this).prop('checked', false)
-            alert("You can only compare 2 users!");
+            alert("You can only add 1 user to this compare page... for now...");
         }
     })
 </script>

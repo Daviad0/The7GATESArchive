@@ -123,12 +123,59 @@ namespace Gateway.Controllers
             return View(users.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Options(string sortOrder, string currentFilter, string searchString, int? page)
+        
+        [HttpPost]
+        public ActionResult Options()
+        {
+            var compareUser = Request["CompareUser"];
+            var compareUser2 = Request["compare"];
+            Guid User1 = new Guid(compareUser);
+            Guid User2 = new Guid(compareUser2);
+
+            if (compareUser == null || compareUser2 == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = db.Users.Find(User1);
+            var usergates = db.UserGates.Where(u => u.UserID == User1);
+            var user2 = db.Users.Find(User2);
+            var usergates2 = db.UserGates.Where(u => u.UserID == User2);
+            var UserViewModel = new UserViewModel();
+            UserViewModel.ID = user.ID;
+            UserViewModel.TimeForAllGates = user.TimeForAllGates;
+            UserViewModel.Keys = user.Keys;
+            UserViewModel.UserGates = usergates.ToList();
+            UserViewModel.Username = user.Username;
+            UserViewModel.Rank = user.Rank;
+            UserViewModel.Percentile = user.Percentile;
+            UserViewModel.PrizeStatus = user.PrizeStatus;
+            UserViewModel.Insight1 = user.Insight1;
+            UserViewModel.Insight2 = user.Insight2;
+            var UserViewModel2 = new UserViewModel();
+            UserViewModel2.ID = user2.ID;
+            UserViewModel2.TimeForAllGates = user2.TimeForAllGates;
+            UserViewModel2.Keys = user2.Keys;
+            UserViewModel2.UserGates = usergates2.ToList();
+            UserViewModel2.Username = user2.Username;
+            UserViewModel2.Rank = user2.Rank;
+            UserViewModel2.Percentile = user2.Percentile;
+            UserViewModel2.PrizeStatus = user2.PrizeStatus;
+            UserViewModel2.Insight1 = user2.Insight1;
+            UserViewModel2.Insight2 = user2.Insight2;
+            var UserViewModelList = new List<UserViewModel>();
+            UserViewModelList.Add(UserViewModel);
+            UserViewModelList.Add(UserViewModel2);
+
+            return View("Compare", UserViewModelList);
+        }
+
+        public ActionResult Options(string sortOrder, string currentFilter, string searchString, int? page, Guid? id)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.KeySortParm = sortOrder == "Key" ? "key_desc" : "Key";
             ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
             ViewBag.RankSortParm = sortOrder == "Rank" ? "rank_desc" : "Rank";
+           
 
             //First filter the results from the database
             if (searchString != null)
@@ -223,6 +270,7 @@ namespace Gateway.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
+            ViewBag.CompareUser = id;
 
             int pageSize = 100;
             int pageNumber = (page ?? 1);
@@ -272,18 +320,22 @@ namespace Gateway.Controllers
             UserViewModel.PrizeStatus = user.PrizeStatus;
             UserViewModel.Insight1 = user.Insight1;
             UserViewModel.Insight2 = user.Insight2;
-            UserViewModel.ID2 = user2.ID;
-            UserViewModel.TimeForAllGates2 = user2.TimeForAllGates;
-            UserViewModel.Keys2 = user2.Keys;
-            UserViewModel.UserGates2 = usergates2.ToList();
-            UserViewModel.Username2 = user2.Username;
-            UserViewModel.Rank2 = user2.Rank;
-            UserViewModel.Percentile2 = user2.Percentile;
-            UserViewModel.PrizeStatus2 = user2.PrizeStatus;
-            UserViewModel.Insight12 = user2.Insight1;
-            UserViewModel.Insight22 = user2.Insight2;
+            var UserViewModel2 = new UserViewModel();
+            UserViewModel2.ID = user2.ID;
+            UserViewModel2.TimeForAllGates = user2.TimeForAllGates;
+            UserViewModel2.Keys = user2.Keys;
+            UserViewModel2.UserGates = usergates2.ToList();
+            UserViewModel2.Username = user2.Username;
+            UserViewModel2.Rank = user2.Rank;
+            UserViewModel2.Percentile = user2.Percentile;
+            UserViewModel2.PrizeStatus = user2.PrizeStatus;
+            UserViewModel2.Insight1 = user2.Insight1;
+            UserViewModel2.Insight2 = user2.Insight2;
+            var UserViewModelList = new List<UserViewModel>();
+            UserViewModelList.Add(UserViewModel);
+            UserViewModelList.Add(UserViewModel2);
 
-            return View(UserViewModel);
+            return View(UserViewModelList);
         }
         public ActionResult Insights(Guid? id)
         {

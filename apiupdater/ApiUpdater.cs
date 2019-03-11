@@ -13,7 +13,7 @@ namespace The7GATESArchive
 {
     public class ApiUpdater
     {
-        private int CurrentGate = 3;
+        private int CurrentGate = 4;
         public void CreateGates(GatewayContext context)
         {
 
@@ -21,8 +21,8 @@ namespace The7GATESArchive
             {
             new Gate{GateID=1,Theme="Nintendo",Keys=5},
             new Gate{GateID=2,Theme="Indie Games",Keys=4},
-            new Gate{GateID=3,Theme="Unknown",Keys=0},
-            new Gate{GateID=4,Theme="Unknown",Keys=0},
+            new Gate{GateID=3,Theme="Unknown",Keys=5},
+            new Gate{GateID=4,Theme="Unknown",Keys=4},
             new Gate{GateID=5,Theme="Unknown",Keys=0},
             new Gate{GateID=6,Theme="Unknown",Keys=0},
             new Gate{GateID=7,Theme="Unknown",Keys=0},
