@@ -13,7 +13,11 @@ namespace The7GATESArchive
 {
     public class ApiUpdater
     {
+        //WARNING:
+        //DO NOT CHANGE UNLESS GATE IS CHANGING
+        //MAKE SURE TO CHANGE KEY AMOUNTS IN TOTAL KEY CALCULATIONS!
         private int CurrentGate = 4;
+        //DANGER ZONE
         public void CreateGates(GatewayContext context)
         {
 
@@ -161,6 +165,7 @@ namespace The7GATESArchive
                         var CollectiveTime = new TimeSpan(0, 0, 0, 0, result.total_time);
                         var TotalTime = CollectiveTime;
                         var TotalKeys = result.total_keys;
+                        bool Complete = false;
                         float PercentFinished = 0;
                         bool Participate = true;
                         PercentFinished = (float)rank / (float)numPages;
@@ -182,7 +187,7 @@ namespace The7GATESArchive
                         {
                             PrizeQM = "2";
                         }
-                        for (int i = 1; i < CurrentGate; i++)
+                        /*for (int i = 1; i < CurrentGate; i++)
                         {
                             var PreviousGate = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == i).FirstOrDefault();
                             var PreviousKeys = context.Gates.Where(u => u.GateID == i && u.Keys >= 0).FirstOrDefault();
@@ -199,6 +204,47 @@ namespace The7GATESArchive
                                 TotalKeys = TotalKeys - PreviousKeys.Keys;
                             }
 
+                        }*/
+                        var ThisGateKeys = 0;
+                        var NewTimePrev = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 3).FirstOrDefault();
+                        var KeysG1 = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 1 && u.Keys >= 0).FirstOrDefault();
+                        var KeysG2 = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 2 && u.Keys >= 0).FirstOrDefault();
+                        var KeysG3 = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 3 && u.Keys >= 0).FirstOrDefault();
+                        var PrevAllKeys = 0;
+                        //CHANGE ABOVE VALUE TO DEFAULT KEY SET
+                        if (KeysG1 != null && KeysG2 != null && KeysG3 != null) { 
+                            PrevAllKeys = KeysG1.Keys + KeysG2.Keys + KeysG3.Keys;
+                        }
+                        if (NewTimePrev != null) { 
+                        if (TimeSpan.Compare(NewTimePrev.CollectiveTime, TotalTime) == 0)
+                        {
+                            TotalTime = NewTimePrev.CollectiveTime - TotalTime;
+                        }
+                        else
+                        {
+                            TotalTime = TotalTime - NewTimePrev.CollectiveTime;
+                        }
+                        //BE READY TO CHANGE ON GATE CHANGE
+                        if (System.Math.Abs(TotalKeys - PrevAllKeys) == 4)
+                        {
+                            ThisGateKeys = 4;
+                        }
+                        else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 3)
+                        {
+                            ThisGateKeys = 3;
+                        }
+                        else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 2)
+                        {
+                            ThisGateKeys = 2;
+                        }
+                        else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 1)
+                        {
+                            ThisGateKeys = 1;
+                        }
+                        else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 0)
+                        {
+                            ThisGateKeys = 0;
+                        }
                         }
                         var user = new User
                         {
@@ -219,9 +265,10 @@ namespace The7GATESArchive
                             Rank = rank,
                             UserID = result.uuid,
                             Time = TotalTime,
-                            Keys = TotalKeys,
+                            Keys = ThisGateKeys,
                             CollectiveTime = CollectiveTime,
-                            Percentile = PercentFinished
+                            Percentile = PercentFinished,
+                            Finished = Complete
                     };
 
                         users.Add(user);

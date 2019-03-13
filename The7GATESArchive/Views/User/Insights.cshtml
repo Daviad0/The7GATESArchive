@@ -623,28 +623,28 @@
             G4Rank = item.Rank;
             G4TimeInt = (int)item.Time.TotalMinutes;
             G4Time = item.Time;
-
+            KeysP4 = ((double)item.Keys / 5) * 100;
         }
         if (item.GateID == 5)
         {
             G5Rank = item.Rank;
             G5TimeInt = (int)item.Time.TotalMinutes;
             G5Time = item.Time;
-
+            KeysP5 = ((double)item.Keys / 5) * 100;
         }
         if (item.GateID == 6)
         {
             G6Rank = item.Rank;
             G6TimeInt = (int)item.Time.TotalMinutes;
             G6Time = item.Time;
-
+            KeysP6 = ((double)item.Keys / 5) * 100;
         }
         if (item.GateID == 7)
         {
             G7Rank = item.Rank;
             G7TimeInt = (int)item.Time.TotalMinutes;
             G7Time = item.Time;
-
+            KeysP7 = ((double)item.Keys / 5) * 100;
         }
     }
 
@@ -852,7 +852,7 @@ else
             ['Gate 1', @G1Rank, @G1TimeInt],
             ['Gate 2', @G2Rank, @G2TimeInt],
             ['Gate 3', @G3Rank, @G3TimeInt],
-            //['Gate 4', @G4Rank, @G1TimeInt],
+            ['Gate 4', @G4Rank, @G4TimeInt],
             //['Gate 5', @G5Rank, @G1TimeInt],
             //['Gate 6', @G6Rank, @G1TimeInt],
             //['Gate 7', @G7Rank, @G1TimeInt],

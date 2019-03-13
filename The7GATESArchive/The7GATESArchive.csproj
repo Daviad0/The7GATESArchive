@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201902252152253_Insights2.Designer.cs">
       <DependentUpon>201902252152253_Insights2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903122032448_FinishedBool.cs" />
+    <Compile Include="Migrations\201903122032448_FinishedBool.Designer.cs">
+      <DependentUpon>201903122032448_FinishedBool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -370,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902252152253_Insights2.resx">
       <DependentUpon>201902252152253_Insights2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903122032448_FinishedBool.resx">
+      <DependentUpon>201903122032448_FinishedBool.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

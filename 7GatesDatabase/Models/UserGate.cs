@@ -18,6 +18,7 @@ namespace The7GATESArchive.Models
         public int Keys { get; set; }
         public TimeSpan CollectiveTime { get; set; }
         public float? Percentile { get; set; }
+        public bool Finished { get; set; }
 
 
         public virtual Gate Gate { get; set; }
