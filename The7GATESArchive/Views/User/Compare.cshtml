@@ -499,6 +499,31 @@
         transform: translate(-50%,-50%);
         -ms-transform: translate(-50%,-50%);
     }
+    .alert {
+        padding: 20px;
+        background-color: #4286f4;
+        color: white;
+    }
+    .alert2 {
+        padding: 20px;
+        background-color: #ff3a26;
+        color: white;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .closebtn:hover {
+            color: black;
+        }
 </style>
 @{
     string currentclass = "";
@@ -685,6 +710,20 @@
 <div>
     <br />
     <div>
+        @if (Model[0].GateError == true)
+        {
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong>NOTICE: </strong> The gate specific times of @Model[0].Username are broken as an error has been found in calculating them. Some gate specific times are still functional, and there may just be one broken entry!
+            </div>
+        }
+        @if (Model[1].GateError == true)
+        {
+            <div class="alert2">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong>NOTICE: </strong> The gate specific times of @Model[1].Username are broken as an error has been found in calculating them. Some gate specific times are still functional, and there may just be one broken entry!
+            </div>
+        }
         <br />
         <h2 style="font-size:40px;color:#4286f4;float:left;display:inline-block"><strong>@Html.DisplayFor(model => model[0].Username)'s Details</strong></h2>
         <h2 style="font-size:40px;color:#ff3a26;float:right;display:inline-block"><strong>@Html.DisplayFor(model => model[1].Username)'s Details</strong></h2>
@@ -1038,8 +1077,8 @@
                 <p style="font-size:2vw;margin-bottom:10px">Gate 3: Difference of @Diff3 Minutes</p>
                 <p style="font-size:2vw;margin-bottom:10px">Gate 4: Difference of @Diff4 Minutes</p>
                 <!--<p style="font-size:2vw;margin-bottom:10px">Gate 5: Difference of @Diff5 Minutes</p>
-    <p style="font-size:2vw;margin-bottom:10px">Gate 6: Difference of @Diff6 Minutes</p>
-    <p style="font-size:2vw;margin-bottom:10px">Gate 7: Difference of @Diff7 Minutes</p>-->
+            <p style="font-size:2vw;margin-bottom:10px">Gate 6: Difference of @Diff6 Minutes</p>
+            <p style="font-size:2vw;margin-bottom:10px">Gate 7: Difference of @Diff7 Minutes</p>-->
             </div>
         </div>
     </div>

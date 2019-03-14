@@ -460,7 +460,26 @@
         transition: all 0.5s;
         margin: 5px;
     }
+    .alert {
+        padding: 20px;
+        background-color: #ff3a26;
+        color: white;
+    }
 
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .closebtn:hover {
+            color: black;
+        }
     #overlay {
         position: fixed;
         display: none;
@@ -484,6 +503,7 @@
         transform: translate(-50%,-50%);
         -ms-transform: translate(-50%,-50%);
     }
+
 </style>
 
 <div>
@@ -491,7 +511,12 @@
     <div>
         <br />
         <h1 style="font-size:60px;color:black;text-align:center"><strong>@Html.DisplayFor(model => model.Username)'s Theorist Page</strong></h1>
-
+        @if (Model.GateError == true) {
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>NOTICE: </strong> The gate specific times of @Model.Username are broken as an error has been found in calculating them. Some gate specific times are still functional, and there may just be one broken entry!
+        </div>
+        }
         <br />
         <br />
         <button class="collapsible3">Current Information</button>
@@ -938,193 +963,196 @@
                 percent2 = (float)Model.Keys / 14;
                 percent2 = percent2 * 100;
             }
-            <button class="collapsible">Gate @item.GateID</button>
-            <div class="content">
-                @if (item.Rank == 1)
-                {
-                    <br />
-                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+            if (item.GateID < 8)
+            {
+                <button class="collapsible">Gate @item.GateID</button>
+                <div class="content">
+                    @if (item.Rank == 1)
+                    {
+                        <br />
+                        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
 
-                        <div class="n1" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+                            <div class="n1" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
 
-                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
+                                <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
 
-                        </div>
-
-                    </div>
-                    <h4></h4>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Keys Keys</p>
-
-                    </div>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Time</p>
-
-                    </div>
-                    <br />
-                    <br />
-
-
-                }
-                @if (item.Rank == 2)
-                {
-                    <br />
-                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
-
-                        <div class="n2" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
-
-                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
+                            </div>
 
                         </div>
+                        <h4></h4>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
 
-                    </div>
-                    <h4></h4>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Keys Keys</p>
-
-                    </div>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Time</p>
-
-                    </div>
-                    <br />
-                    <br />
-                }
-                @if (item.Rank == 3)
-                {
-                    <br />
-                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
-
-                        <div class="n3" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
-
-                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
+                            <p style="font-size:2.7vw">@item.Keys Keys</p>
 
                         </div>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
 
-                    </div>
-                    <h4></h4>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Keys Keys</p>
-
-                    </div>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Time</p>
-
-                    </div>
-                    <br />
-                    <br />
-                }
-                @if (item.Rank > 3 && item.Rank < 11)
-                {
-                    <br />
-                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
-
-                        <div class="top10" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
-
-                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
+                            <p style="font-size:2.7vw">@item.Time</p>
 
                         </div>
+                        <br />
+                        <br />
 
-                    </div>
-                    <h4></h4>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
 
-                        <p style="font-size:2.7vw">@item.Keys Keys</p>
+                    }
+                    @if (item.Rank == 2)
+                    {
+                        <br />
+                        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
 
-                    </div>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+                            <div class="n2" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
 
-                        <p style="font-size:2.7vw">@item.Time</p>
+                                <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
 
-                    </div>
-                    <br />
-                    <br />
-                }
-                @if (item.Rank > 10 && item.Rank < 100)
-                {
-                    <br />
-                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
-
-                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
-
-                            <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+                            </div>
 
                         </div>
+                        <h4></h4>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
 
-                    </div>
-                    <h4></h4>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Keys Keys</p>
-
-                    </div>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Time</p>
-
-                    </div>
-                    <br />
-                    <br />
-                }
-                @if (item.Rank > 99 && item.Rank < 1000)
-                {
-                    <br />
-                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
-
-                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
-
-                            <p style="font-size:5vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+                            <p style="font-size:2.7vw">@item.Keys Keys</p>
 
                         </div>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
 
-                    </div>
-                    <h4></h4>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Keys Keys</p>
-
-                    </div>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
-
-                        <p style="font-size:2.7vw">@item.Time</p>
-
-                    </div>
-                    <br />
-                    <br />
-                }
-                @if (item.Rank > 999)
-                {
-                    <br />
-                    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
-
-                        <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
-
-                            <p style="font-size:4vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+                            <p style="font-size:2.7vw">@item.Time</p>
 
                         </div>
+                        <br />
+                        <br />
+                    }
+                    @if (item.Rank == 3)
+                    {
+                        <br />
+                        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
 
-                    </div>
-                    <h4></h4>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+                            <div class="n3" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
 
-                        <p style="font-size:2.7vw">@item.Keys Keys</p>
+                                <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
 
-                    </div>
-                    <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+                            </div>
 
-                        <p style="font-size:2.7vw">@item.Time</p>
+                        </div>
+                        <h4></h4>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
 
-                    </div>
-                    <br />
-                    <br />
-                }
-            </div>
+                            <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                        </div>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">@item.Time</p>
+
+                        </div>
+                        <br />
+                        <br />
+                    }
+                    @if (item.Rank > 3 && item.Rank < 11)
+                    {
+                        <br />
+                        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                            <div class="top10" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                                <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@item.Rank <i class="material-icons" style="font-size:4vw">stars</i></p>
+
+                            </div>
+
+                        </div>
+                        <h4></h4>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                        </div>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">@item.Time</p>
+
+                        </div>
+                        <br />
+                        <br />
+                    }
+                    @if (item.Rank > 10 && item.Rank < 100)
+                    {
+                        <br />
+                        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                            <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                                <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                            </div>
+
+                        </div>
+                        <h4></h4>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                        </div>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">@item.Time</p>
+
+                        </div>
+                        <br />
+                        <br />
+                    }
+                    @if (item.Rank > 99 && item.Rank < 1000)
+                    {
+                        <br />
+                        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                            <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                                <p style="font-size:5vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                            </div>
+
+                        </div>
+                        <h4></h4>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                        </div>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">@item.Time</p>
+
+                        </div>
+                        <br />
+                        <br />
+                    }
+                    @if (item.Rank > 999)
+                    {
+                        <br />
+                        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+
+                            <div class="all" style="width:25vw;height:9vw;border-radius:6px;text-align:center;display:inline-block">
+
+                                <p style="font-size:4vw"><i class="material-icons" style="font-size:4vw">thumb_up</i> #@item.Rank <i class="material-icons" style="font-size:4vw">thumb_up</i></p>
+
+                            </div>
+
+                        </div>
+                        <h4></h4>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">@item.Keys Keys</p>
+
+                        </div>
+                        <div style="width:25vw;height:4vw;border-radius:6px;text-align:center;display:inline-block;background-color:#d8d8d8;color:white">
+
+                            <p style="font-size:2.7vw">@item.Time</p>
+
+                        </div>
+                        <br />
+                        <br />
+                    }
+                </div>
+            }
         }
         <button class="collapsible2">Gate 5</button>
         <div class="content2">

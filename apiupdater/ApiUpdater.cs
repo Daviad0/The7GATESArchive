@@ -42,19 +42,25 @@ namespace The7GATESArchive
 
             var searchPages = 1000;
 
-            for (int i = 0; i < searchPages; i++)
+            for (int i = 8; i < searchPages; i++)
             {
                 Console.WriteLine("Loading Page " + i);
                 var usergates = new List<UserGate>();
                 var users = new List<User>();
+                Console.ResetColor();
                 searchPages = ProcessApiUsers(context, i, users, usergates);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("All Data for Page " + i + " Loaded Successfully. Updating");
                 users.ForEach(s => context.Users.AddOrUpdate(s));
                 usergates.ForEach(s => context.UserGates.AddOrUpdate(s));
                 context.SaveChanges();
                 Console.WriteLine("Loaded page " + i + " successfully");
+
             }
-            Console.WriteLine("Leaderboard update has successfully completed! There was about " + searchPages*100 + " users processed");
+            Console.WriteLine("Leaderboard update has successfully completed! There was about " + searchPages * 100 + " users processed");
+            Console.Write("Finished");
+            var ready = Console.ReadLine();
+
             
 
         }
@@ -207,44 +213,143 @@ namespace The7GATESArchive
                         }*/
                         var ThisGateKeys = 0;
                         var NewTimePrev = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 3).FirstOrDefault();
+                        var GoBackInfo = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 4).FirstOrDefault();
+                        var G1Complete = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 1).FirstOrDefault();
+                        var G2Complete = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 2).FirstOrDefault();
+                        var G3Complete = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 3).FirstOrDefault();
                         var KeysG1 = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 1 && u.Keys >= 0).FirstOrDefault();
                         var KeysG2 = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 2 && u.Keys >= 0).FirstOrDefault();
                         var KeysG3 = context.UserGates.Where(u => u.UserID == result.uuid && u.GateID == 3 && u.Keys >= 0).FirstOrDefault();
                         var PrevAllKeys = 0;
+                        var ErrorGate = false;
+                        var G1STime = new TimeSpan(0, 0, 0);
+                        var G2STime = new TimeSpan(0, 0, 0);
+                        var G3STime = new TimeSpan(0, 0, 0);
+                        var ChangePrevTime = 0;
+                        bool FirstEntry = true;
+                        var userGatePrev = new UserGate
+                        {
+                            GateID = 9,
+                            Rank = 1,
+                            UserID = result.uuid,
+                            Time = new TimeSpan(0,0,0),
+                            Keys = 0,
+                            CollectiveTime = new TimeSpan(0, 0, 0),
+                            Percentile = 4,
+                            Finished = true,
+                            FirstTime = true
+                        };
                         //CHANGE ABOVE VALUE TO DEFAULT KEY SET
-                        if (KeysG1 != null && KeysG2 != null && KeysG3 != null) { 
-                            PrevAllKeys = KeysG1.Keys + KeysG2.Keys + KeysG3.Keys;
-                        }
-                        if (NewTimePrev != null) { 
-                        if (TimeSpan.Compare(NewTimePrev.CollectiveTime, TotalTime) == 0)
+                        if (GoBackInfo != null && GoBackInfo.CollectiveTime == TotalTime && (G1Complete != null && G2Complete != null && G3Complete != null))
                         {
-                            TotalTime = NewTimePrev.CollectiveTime - TotalTime;
+                            FirstEntry = false;
+                            if (KeysG1 != null && KeysG2 != null && KeysG3 != null) { 
+                                PrevAllKeys = KeysG1.Keys + KeysG2.Keys + KeysG3.Keys;
+                            }
+                            if (NewTimePrev != null) { 
+                                if (TimeSpan.Compare(NewTimePrev.CollectiveTime, TotalTime) == 0)
+                                {
+                                    TotalTime = NewTimePrev.CollectiveTime - TotalTime;
+                                }
+                                else
+                                {
+                                    TotalTime = TotalTime - NewTimePrev.CollectiveTime;
+                                }
+                                //BE READY TO CHANGE ON GATE CHANGE
+                                if (System.Math.Abs(TotalKeys - PrevAllKeys) > 3)
+                                {
+                                    ThisGateKeys = 4;
+                                }
+                                else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 3)
+                                {
+                                    ThisGateKeys = 3;
+                                }
+                                else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 2)
+                                {
+                                    ThisGateKeys = 2;
+                                }
+                                else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 1)
+                                {
+                                    ThisGateKeys = 1;
+                                }
+                                else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 0)
+                                {
+                                    ThisGateKeys = 0;
+                                }
+                            }
                         }
-                        else
+                        else if (GoBackInfo != null && TimeSpan.Compare(GoBackInfo.CollectiveTime, TotalTime) == -1)
                         {
-                            TotalTime = TotalTime - NewTimePrev.CollectiveTime;
+                            if (G1Complete != null && G2Complete != null && G3Complete != null) { 
+                                FirstEntry = false;
+                                if (G1Complete.CollectiveTime == new TimeSpan(0, 0, 0) && G1Complete != null)
+                                {
+                                    ChangePrevTime = 1;
+                                    G1STime = TotalTime - GoBackInfo.CollectiveTime;
+                                }
+                                else if (G2Complete.CollectiveTime == new TimeSpan(0, 0, 0) && G2Complete != null)
+                                {
+                                    ChangePrevTime = 2;
+                                    G2STime = TotalTime - GoBackInfo.CollectiveTime;
+                                }
+                                else if (G3Complete.CollectiveTime == new TimeSpan(0, 0, 0) && G3Complete != null)
+                                {
+                                    ChangePrevTime = 3;
+                                    G3STime = TotalTime - GoBackInfo.CollectiveTime;
+                                }
+                            }
                         }
-                        //BE READY TO CHANGE ON GATE CHANGE
-                        if (System.Math.Abs(TotalKeys - PrevAllKeys) == 4)
+                        else if (NewTimePrev != null)
                         {
-                            ThisGateKeys = 4;
+                            if (KeysG1 != null && KeysG2 != null && KeysG3 != null)
+                            {
+                                PrevAllKeys = KeysG1.Keys + KeysG2.Keys + KeysG3.Keys;
+                            }
+                            if (NewTimePrev != null)
+                            {
+                                if (TimeSpan.Compare(NewTimePrev.CollectiveTime, TotalTime) == 0)
+                                {
+                                    TotalTime = NewTimePrev.CollectiveTime - TotalTime;
+                                }
+                                else
+                                {
+                                    TotalTime = TotalTime - NewTimePrev.CollectiveTime;
+                                }
+                                //BE READY TO CHANGE ON GATE CHANGE
+                                if (System.Math.Abs(TotalKeys - PrevAllKeys) > 4)
+                                {
+                                    ThisGateKeys = 4;
+                                }
+                                else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 3)
+                                {
+                                    ThisGateKeys = 3;
+                                }
+                                else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 2)
+                                {
+                                    ThisGateKeys = 2;
+                                }
+                                else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 1)
+                                {
+                                    ThisGateKeys = 1;
+                                }
+                                else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 0)
+                                {
+                                    ThisGateKeys = 0;
+                                }
+                            }
                         }
-                        else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 3)
+                        else if (NewTimePrev == null)
                         {
-                            ThisGateKeys = 3;
+                            if (KeysG1 != null && KeysG2 != null && KeysG3 != null)
+                            {
+                                PrevAllKeys = KeysG1.Keys + KeysG2.Keys + KeysG3.Keys;
+                            }
+                            TotalTime = CollectiveTime;
+                            ThisGateKeys = result.total_keys;
                         }
-                        else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 2)
+                        if (TimeSpan.Compare(TotalTime, new TimeSpan(0,55,0)) == 1)
                         {
-                            ThisGateKeys = 2;
-                        }
-                        else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 1)
-                        {
-                            ThisGateKeys = 1;
-                        }
-                        else if (System.Math.Abs(TotalKeys - PrevAllKeys) == 0)
-                        {
-                            ThisGateKeys = 0;
-                        }
+                            ErrorGate = true;
                         }
                         var user = new User
                         {
@@ -258,6 +363,7 @@ namespace The7GATESArchive
                             Insight1 = I1,
                             Insight2 = I2,
                             Insight3 = I3,
+                            GateError = ErrorGate
                         };
                         var userGate = new UserGate
                         {
@@ -268,11 +374,76 @@ namespace The7GATESArchive
                             Keys = ThisGateKeys,
                             CollectiveTime = CollectiveTime,
                             Percentile = PercentFinished,
-                            Finished = Complete
-                    };
+                            Finished = Complete,
+                            FirstTime = FirstEntry,
 
+                    };
+                        if (ChangePrevTime != 0)
+                        {
+                            if (ChangePrevTime == 1 && G1Complete != null)
+                            {
+                                userGatePrev = new UserGate
+                                {
+                                    GateID = G1Complete.GateID,
+                                    Rank = G1Complete.Rank,
+                                    UserID = G1Complete.UserID,
+                                    Time = G1STime,
+                                    Keys = G1Complete.Keys,
+                                    CollectiveTime = G1Complete.CollectiveTime + G1STime,
+                                    Percentile = G1Complete.Percentile,
+                                    Finished = G1Complete.Finished,
+                                    FirstTime = G1Complete.FirstTime
+                                };
+                            }
+                            if (ChangePrevTime == 2 && G2Complete != null)
+                            {
+                                userGatePrev = new UserGate
+                                {
+                                    GateID = G2Complete.GateID,
+                                    Rank = G2Complete.Rank,
+                                    UserID = G2Complete.UserID,
+                                    Time = G2STime,
+                                    Keys = G2Complete.Keys,
+                                    CollectiveTime = G2Complete.CollectiveTime + G1STime,
+                                    Percentile = G2Complete.Percentile,
+                                    Finished = G2Complete.Finished,
+                                    FirstTime = G2Complete.FirstTime
+                                };
+                            }
+                            if (ChangePrevTime == 3 && G3Complete != null)
+                            {
+                                userGatePrev = new UserGate
+                                {
+                                    GateID = G3Complete.GateID,
+                                    Rank = G3Complete.Rank,
+                                    UserID = G3Complete.UserID,
+                                    Time = G3STime,
+                                    Keys = G3Complete.Keys,
+                                    CollectiveTime = G3Complete.CollectiveTime + G1STime,
+                                    Percentile = G3Complete.Percentile,
+                                    Finished = G3Complete.Finished,
+                                    FirstTime = G3Complete.FirstTime
+                                };
+                            }
+
+                        }
+                        Console.WriteLine("COMPLETE: " + result.username_raw);
+                        if (ErrorGate == true)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("FAILURE: Gate specific data produced an error");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("NORMAL: Gate specific data successfully calculated");
+                            Console.ResetColor();
+                        }
+                        System.Threading.Thread.Sleep(200);
                         users.Add(user);
                         usergates.Add(userGate);
+                        usergates.Add(userGatePrev);
                     }
                 }
             }

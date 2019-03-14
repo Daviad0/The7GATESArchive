@@ -195,6 +195,22 @@
     <Compile Include="Migrations\201903122032448_FinishedBool.Designer.cs">
       <DependentUpon>201903122032448_FinishedBool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903131805373_PreviousGates.cs" />
+    <Compile Include="Migrations\201903131805373_PreviousGates.Designer.cs">
+      <DependentUpon>201903131805373_PreviousGates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903141913251_NewInfo.cs" />
+    <Compile Include="Migrations\201903141913251_NewInfo.Designer.cs">
+      <DependentUpon>201903141913251_NewInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903141937383_MainKey.cs" />
+    <Compile Include="Migrations\201903141937383_MainKey.Designer.cs">
+      <DependentUpon>201903141937383_MainKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903142117103_ErrorMessage.cs" />
+    <Compile Include="Migrations\201903142117103_ErrorMessage.Designer.cs">
+      <DependentUpon>201903142117103_ErrorMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -377,6 +393,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903122032448_FinishedBool.resx">
       <DependentUpon>201903122032448_FinishedBool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903131805373_PreviousGates.resx">
+      <DependentUpon>201903131805373_PreviousGates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903141913251_NewInfo.resx">
+      <DependentUpon>201903141913251_NewInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903141937383_MainKey.resx">
+      <DependentUpon>201903141937383_MainKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903142117103_ErrorMessage.resx">
+      <DependentUpon>201903142117103_ErrorMessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

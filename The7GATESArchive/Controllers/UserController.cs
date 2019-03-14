@@ -151,6 +151,7 @@ namespace Gateway.Controllers
             UserViewModel.PrizeStatus = user.PrizeStatus;
             UserViewModel.Insight1 = user.Insight1;
             UserViewModel.Insight2 = user.Insight2;
+            UserViewModel.GateError = user.GateError;
             var UserViewModel2 = new UserViewModel();
             UserViewModel2.ID = user2.ID;
             UserViewModel2.TimeForAllGates = user2.TimeForAllGates;
@@ -162,6 +163,7 @@ namespace Gateway.Controllers
             UserViewModel2.PrizeStatus = user2.PrizeStatus;
             UserViewModel2.Insight1 = user2.Insight1;
             UserViewModel2.Insight2 = user2.Insight2;
+            UserViewModel2.GateError = user2.GateError;
             var UserViewModelList = new List<UserViewModel>();
             UserViewModelList.Add(UserViewModel);
             UserViewModelList.Add(UserViewModel2);
@@ -296,6 +298,7 @@ namespace Gateway.Controllers
             UserViewModel.PrizeStatus = user.PrizeStatus;
             UserViewModel.Insight1 = user.Insight1;
             UserViewModel.Insight2 = user.Insight2;
+            UserViewModel.GateError = user.GateError;
 
             return View(UserViewModel);
         }
