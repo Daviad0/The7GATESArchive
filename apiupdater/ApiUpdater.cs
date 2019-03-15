@@ -42,7 +42,7 @@ namespace The7GATESArchive
 
             var searchPages = 1000;
 
-            for (int i = 8; i < searchPages; i++)
+            for (int i = 0; i < searchPages; i++)
             {
                 Console.WriteLine("Loading Page " + i);
                 var usergates = new List<UserGate>();
@@ -440,7 +440,6 @@ namespace The7GATESArchive
                             Console.WriteLine("NORMAL: Gate specific data successfully calculated");
                             Console.ResetColor();
                         }
-                        System.Threading.Thread.Sleep(200);
                         users.Add(user);
                         usergates.Add(userGate);
                         usergates.Add(userGatePrev);
