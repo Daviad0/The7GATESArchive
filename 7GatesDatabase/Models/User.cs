@@ -16,6 +16,8 @@ namespace The7GATESArchive.Models
         public int Insight2 { get; set; }
         public int Insight3 { get; set; }
         public bool GateError { get; set; }
+        public bool Unsupported { get; set; }
+        public bool Realtime { get; set; }
 
         public virtual ICollection<UserGate> UserGates { get; set; }
     }

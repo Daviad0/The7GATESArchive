@@ -354,14 +354,6 @@
 </style>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
 <body style="background-color:black;font-family:Courier New, Courier, monospace">
-    <div class="navbar navbar-inverse navbar-fixed-top" style="color:white">
-        <div class="navbar-inner">
-            <div class="container">
-                <a style="color:white">@Html.ActionLink("ALL THEORISTS - Go Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
-
-            </div>
-        </div>
-    </div>
 
     <h1 class="title" style="font-size:4vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">Select a User to Compare With</h1>
 
@@ -416,7 +408,7 @@
                                 @item.Username
                             </td>
                             <td class="all">
-                                <input type="radio" name="compare" value="@item.ID"> Compare User
+                                <input type="checkbox" name="compare" value="@item.ID"> Compare User
                             </td>
                         </tr>
                     </div>
@@ -427,8 +419,8 @@
         <div style="text-align:center">
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-            @Html.PagedListPager(Model, page => Url.Action("Index",
-            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            @Html.PagedListPager(Model, page => Url.Action("Options",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter}))
         </div>
     </div>
 
@@ -436,11 +428,11 @@
         <!--<div style="text-align:center;font-size:small">
                 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                @Html.PagedListPager(Model, page => Url.Action("Index",
+                @Html.PagedListPager(Model, page => Url.Action("Compare",
                 new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-                @Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm, currentFilter = ViewBag.CurrentFilter })
-                @Html.ActionLink("Username", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-                @Html.ActionLink("Keys", "Index", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Rank", "Compare", new { sortOrder = ViewBag.RankSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Username", "Compare", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Keys", "Compare", new { sortOrder = ViewBag.KeySortParm, currentFilter = ViewBag.CurrentFilter })
     -->
 
 </body>
@@ -490,9 +482,9 @@
 </script>
 <script>
     $('input[type=checkbox]').change(function (e) {
-        if ($('input[type=checkbox]:checked').length > 1) {
+        if ($('input[type=checkbox]:checked').length > 5) {
             $(this).prop('checked', false)
-            alert("You can only add 1 user to this compare page... for now...");
+            alert("You can only add 5 users to this compare page... for now...");
         }
     })
 </script>

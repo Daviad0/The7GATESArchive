@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Status";
 }
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     .down {
         background-color: rgba(175, 0, 0, 0.25);
@@ -12,15 +13,17 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
+
     .up {
         background-color: rgba(0, 181, 135, 0.25);
         color: white;
         text-align: center;
         border: 2px solid #00ffbf;
         border-radius: 4px;
-        padding-top:10px;
-        padding-bottom:10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
+
     .between {
         background-color: rgba(186, 145, 0, 0.25);
         color: white;
@@ -30,6 +33,7 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
+
     .known {
         color: white;
         text-align: center;
@@ -38,6 +42,7 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
+
     .info {
         background-color: #ff3a26;
         color: white;
@@ -46,6 +51,7 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
+
     .button {
         border-radius: 6px;
         background-color: #ff3a26;
@@ -57,6 +63,94 @@
         width: 200px;
         transition: all 0.5s;
         margin: 5px;
+    }
+    .spinclass {
+        animation-name: spin;
+        animation-duration: 4000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        /* transform: rotate(3deg); */
+        /* transform: rotate(0.3rad);/ */
+        /* transform: rotate(3grad); */
+        /* transform: rotate(.03turn);  */
+    }
+    .spinclass2 {
+        animation-name: spin2;
+        animation-duration: 5000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        /* transform: rotate(3deg); */
+        /* transform: rotate(0.3rad);/ */
+        /* transform: rotate(3grad); */
+        /* transform: rotate(.03turn);  */
+    }
+    @@keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    @@keyframes spin2 {
+        from {
+            transform: rotate(360deg);
+        }
+
+        to {
+            transform: rotate(0deg);
+        }
+    }
+    .container {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+
+    .bottom-left {
+        position: absolute;
+        bottom: 8px;
+        left: 16px;
+    }
+
+    .top-left {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+    }
+
+    .top-right {
+        position: absolute;
+        top: 8px;
+        right: 16px;
+    }
+
+    .bottom-right {
+        position: absolute;
+        bottom: 8px;
+        right: 16px;
+    }
+
+    .centered {
+        position: absolute;
+        top: 30%;
+        left: 37%;
+    }
+    .lower {
+        position: absolute;
+        top: 80%;
+        left: 41%;
+    }
+    .lower2 {
+        position: absolute;
+        top: 83%;
+        left: 39.8%;
+    }
+    .upper {
+        position: absolute;
+        top: 10%;
+        left: 42.1%;
     }
 </style>
 <body style="text-align:center">
@@ -113,7 +207,17 @@
         <h2 style="padding-left:10px;font-family:Calibri">Uh Oh</h2>
         <i class="	fa fa-exclamation-triangle"></i>
         <h4 style="padding-bottom:7px;font-family:Calibri">This page is not ready to be seen yet due to time constraints. Please refer to <a href="">The7GATESArchive Twitter</a> for statuses and updates!</h4>
-
+        <h1>Spinning Elements</h1>
+        <p>Use the w3-spin class to spin an element 360 degrees:</p>
+        <p><i class="fa fa-spinner w3-spin" style="font-size:64px"></i></p>
+        <div class="container" width="496px" height="723px">
+            <img src="~/Assets/c0b22da3-ff81-4181-902c-0993bd992968 (16).png" />
+            <img class="centered spinclass" src="~/Assets/c0b22da3-ff81-4181-902c-0993bd992968 (15).png" height="300px" width="300px" />
+            <img class="centered spinclass2" src="~/Assets/c0b22da3-ff81-4181-902c-0993bd992968 (18).png" height="300px" width="300px" />
+            <h3 class="lower" style="font-family:'Courier New';color:white">DESIGN CONTEST</h3>
+            <h3 class="lower2" style="font-family:'Courier New';color:lightcoral">March 29th, 2019</h3>
+            <h3 class="upper" style="font-family:'Courier New';color:lightskyblue">#GTARGDESIGN</h3>
+        </div>
     </div>
     <div style="text-align:center">
         <button class="button" onclick="window.location.href = 'http://the7gatesarchive.tacocatsoftware.com/the7gatesarchive/User/" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Go Back to Working Pages", "Index", "User")</span></button>

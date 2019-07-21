@@ -20,7 +20,8 @@ namespace The7GATESArchive.Models
         public float? Percentile { get; set; }
         public bool Finished { get; set; }
         public bool FirstTime { get; set; }
-
+        public bool Stacked { get; set; }
+        
 
         public virtual Gate Gate { get; set; }
         public virtual User User { get; set; }

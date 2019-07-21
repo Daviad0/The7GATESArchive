@@ -46,7 +46,7 @@
         color: red;
         border: 2px solid red
     }
-
+    ti
     .notice {
         border: 2px solid red;
         background-color: rgba(188, 0, 0,0.35);
@@ -356,6 +356,16 @@
     <h1 class="title" style="font-size:6vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">Leaderboard</h1>
 
     <br />
+    <div style="text-align:center">
+        <a href="@Url.Action("Gate1")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 1" /></a>
+        <a href="@Url.Action("Gate2")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 2" /></a>
+        <a href="@Url.Action("Gate3")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 3" /></a>
+        <a href="@Url.Action("Gate4")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 4" /></a>
+        <a href="@Url.Action("Gate5")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 5" /></a>
+        <a href="@Url.Action("Gate6")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 6" /></a>
+        <a href="@Url.Action("Index")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Current" /></a>
+
+    </div>
     <br />
     <div>
         <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
@@ -375,186 +385,186 @@
             <a href="@Url.Action("Index")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:10vw;height:4vw;font-size:1.5vw;display:inline-block;font-family:Calibri" value="Reset Sort" /></a>
         </div>
         <div style="text-align:center">
-           
-            </div>
-            <br />
-            <table align="center" class="table table-condensed" style="color:red;padding-top:10px;width:80%;border:0px red solid">
-                <tr class="top" style="align-content:center;height:60px;font-size:24px">
-                    <th>
-                        <p class="top2"><strong>Rank <i class="fa fa-trophy"></i></strong></p>
-                    </th>
-                    <th>
-                        <p class="top2"><strong>Username <i class="fa fa-user-circle-o"></i></strong></p>
-                    </th>
-                    <th>
-                        <p class="top2"><strong>Keys <i class="fa fa-key"></i></strong></p>
-                    </th>
-                    <th>
-                        <p class="top2" style="text-align:left"><strong>Time</strong> <i class="fa fa-clock-o"></i></p>
-                    </th>
-                </tr>
 
-                @{
-                    int i = 0;
-                }
-                @foreach (var item in Model)
-                {
-
-                    i++;
-                    if (item.Rank > 6510)
-                    {
-                        <div style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="all">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="all">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="all">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="all">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                            </tr>
-                        </div>
-                    }
-                    <!--THIS VALUE CHANGES-->
-                    if (item.Rank > 10 && item.Rank < 6511)
-                    {
-                        <div style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="all">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="all">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="all">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="all">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                            </tr>
-                        </div>
-                    }
-                    if (item.Rank > 3 && item.Rank < 11)
-                    {
-                        <div class="top10" style="overflow:auto;border-radius:8px">
-                            <tr class="topnorm" style="width:80%;border-radius:8px">
-                                <td class="top10">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="top10">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="top10">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="top10">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                            </tr>
-                        </div>
-                    }
-                    if (item.Rank == 3)
-                    {
-                        <div class="n3" style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="n3">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="n3">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="n3">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="n3">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                            </tr>
-                        </div>
-                    }
-                    if (item.Rank == 2)
-                    {
-                        <div class="n2" style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="n2">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="n2">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="n2">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="n2">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-                            </tr>
-                        </div>
-                                        }
-                                        if (item.Rank == 1)
-                                        {
-                        <div class="n1" style="overflow:auto">
-                            <tr class="topnorm" style="width:80%">
-                                <td class="n1">
-                                    <p>@Html.DisplayFor(modelItem => item.Rank)</p>
-                                </td>
-                                <td class="n1">
-                                    @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
-                                </td>
-                                <td class="n1">
-                                    @Html.DisplayFor(modelItem => item.Keys)
-                                </td>
-                                <td class="n1">
-                                    @{
-                                        string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
-                                    }
-
-                                    @Html.DisplayFor(modelItem => timeValue)
-                                </td>
-
-</tr>
-
-</div>
-                    }
-                }
-
-            </table>
-            <div style="text-align:center">
-                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-                @Html.PagedListPager(Model, page => Url.Action("Index",
-                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-            </div>
         </div>
-
         <br />
-        <!--<div style="text-align:center;font-size:small">
+        <table align="center" class="table table-condensed" style="color:red;padding-top:10px;width:80%;border:0px red solid">
+            <tr class="top" style="align-content:center;height:60px;font-size:24px">
+                <th>
+                    <p class="top2"><strong>Rank <i class="fa fa-trophy"></i></strong></p>
+                </th>
+                <th>
+                    <p class="top2"><strong>Username <i class="fa fa-user-circle-o"></i></strong></p>
+                </th>
+                <th>
+                    <p class="top2"><strong>Keys <i class="fa fa-key"></i></strong></p>
+                </th>
+                <th>
+                    <p class="top2" style="text-align:left"><strong>Time</strong> <i class="fa fa-clock-o"></i></p>
+                </th>
+            </tr>
+
+            @{
+                int i = 0;
+            }
+            @foreach (var item in Model)
+            {
+
+                i++;
+                if (item.Rank > 6510)
+                {
+                    <div style="overflow:auto">
+                        <tr class="topnorm" style="width:80%">
+                            <td class="all">
+                                <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                            </td>
+                            <td class="all">
+                                @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                            </td>
+                            <td class="all">
+                                @Html.DisplayFor(modelItem => item.Keys)
+                            </td>
+                            <td class="all">
+                                @{
+                                    string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                }
+
+                                @Html.DisplayFor(modelItem => timeValue)
+                            </td>
+                        </tr>
+                    </div>
+                }
+                <!--THIS VALUE CHANGES-->
+                if (item.Rank > 10 && item.Rank < 6511)
+                {
+                    <div style="overflow:auto">
+                        <tr class="topnorm" style="width:80%">
+                            <td class="all">
+                                <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                            </td>
+                            <td class="all">
+                                @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                            </td>
+                            <td class="all">
+                                @Html.DisplayFor(modelItem => item.Keys)
+                            </td>
+                            <td class="all">
+                                @{
+                                    string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                }
+
+                                @Html.DisplayFor(modelItem => timeValue)
+                            </td>
+                        </tr>
+                    </div>
+                }
+                if (item.Rank > 3 && item.Rank < 11)
+                {
+                    <div class="top10" style="overflow:auto;border-radius:8px">
+                        <tr class="topnorm" style="width:80%;border-radius:8px">
+                            <td class="top10">
+                                <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                            </td>
+                            <td class="top10">
+                                @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                            </td>
+                            <td class="top10">
+                                @Html.DisplayFor(modelItem => item.Keys)
+                            </td>
+                            <td class="top10">
+                                @{
+                                    string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                }
+
+                                @Html.DisplayFor(modelItem => timeValue)
+                            </td>
+                        </tr>
+                    </div>
+                }
+                if (item.Rank == 3)
+                {
+                    <div class="n3" style="overflow:auto">
+                        <tr class="topnorm" style="width:80%">
+                            <td class="n3">
+                                <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                            </td>
+                            <td class="n3">
+                                @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                            </td>
+                            <td class="n3">
+                                @Html.DisplayFor(modelItem => item.Keys)
+                            </td>
+                            <td class="n3">
+                                @{
+                                    string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                }
+
+                                @Html.DisplayFor(modelItem => timeValue)
+                            </td>
+                        </tr>
+                    </div>
+                }
+                if (item.Rank == 2)
+                {
+                    <div class="n2" style="overflow:auto">
+                        <tr class="topnorm" style="width:80%">
+                            <td class="n2">
+                                <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                            </td>
+                            <td class="n2">
+                                @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                            </td>
+                            <td class="n2">
+                                @Html.DisplayFor(modelItem => item.Keys)
+                            </td>
+                            <td class="n2">
+                                @{
+                                    string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                }
+
+                                @Html.DisplayFor(modelItem => timeValue)
+                            </td>
+                        </tr>
+                    </div>
+                }
+                if (item.Rank == 1)
+                {
+                    <div class="n1" style="overflow:auto">
+                        <tr class="topnorm" style="width:80%">
+                            <td class="n1">
+                                <p>@Html.DisplayFor(modelItem => item.Rank)</p>
+                            </td>
+                            <td class="n1">
+                                @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                            </td>
+                            <td class="n1">
+                                @Html.DisplayFor(modelItem => item.Keys)
+                            </td>
+                            <td class="n1">
+                                @{
+                                    string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                                }
+
+                                @Html.DisplayFor(modelItem => timeValue)
+                            </td>
+
+                        </tr>
+
+                    </div>
+                }
+            }
+
+        </table>
+        <div style="text-align:center">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+    </div>
+
+    <br />
+    <!--<div style="text-align:center;font-size:small">
                 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
                 @Html.PagedListPager(Model, page => Url.Action("Index",

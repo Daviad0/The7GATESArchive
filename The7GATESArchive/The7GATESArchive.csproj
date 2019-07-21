@@ -211,11 +211,39 @@
     <Compile Include="Migrations\201903142117103_ErrorMessage.Designer.cs">
       <DependentUpon>201903142117103_ErrorMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903160019120_IgNoUpdate.cs" />
+    <Compile Include="Migrations\201903160019120_IgNoUpdate.Designer.cs">
+      <DependentUpon>201903160019120_IgNoUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904100022534_Unsupported.cs" />
+    <Compile Include="Migrations\201904100022534_Unsupported.Designer.cs">
+      <DependentUpon>201904100022534_Unsupported.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904141819533_Stacked.cs" />
+    <Compile Include="Migrations\201904141819533_Stacked.Designer.cs">
+      <DependentUpon>201904141819533_Stacked.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907192150056_Realtime.cs" />
+    <Compile Include="Migrations\201907192150056_Realtime.Designer.cs">
+      <DependentUpon>201907192150056_Realtime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\GateTopModel.cs" />
+    <Compile Include="Models\TestValuesModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\7GAMainLogo.png" />
+    <Content Include="Assets\7GAError.png" />
+    <Content Include="Assets\c0b22da3-ff81-4181-902c-0993bd992968 %2811%29.png" />
+    <Content Include="Assets\c0b22da3-ff81-4181-902c-0993bd992968 %2812%29.png" />
+    <Content Include="Assets\c0b22da3-ff81-4181-902c-0993bd992968 %2813%29.png" />
+    <Content Include="Assets\c0b22da3-ff81-4181-902c-0993bd992968 %2814%29.png" />
+    <Content Include="Assets\c0b22da3-ff81-4181-902c-0993bd992968 %2815%29.png" />
+    <Content Include="Assets\c0b22da3-ff81-4181-902c-0993bd992968 %2816%29.png" />
+    <Content Include="Assets\c0b22da3-ff81-4181-902c-0993bd992968 %2817%29.png" />
+    <Content Include="Assets\c0b22da3-ff81-4181-902c-0993bd992968 %2818%29.png" />
     <Content Include="Assets\CardGate-1-1.png" />
     <Content Include="Assets\CardGate-2-1.png" />
     <Content Include="Assets\CardGate-3-1.png" />
@@ -297,7 +325,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -336,6 +366,14 @@
     <Content Include="Views\User\Insights.cshtml" />
     <Content Include="Views\User\Compare.cshtml" />
     <Content Include="Views\User\Options.cshtml" />
+    <Content Include="Views\User\Gate5.cshtml" />
+    <Content Include="Views\User\Gate4.cshtml" />
+    <Content Include="Views\User\Gate1.cshtml" />
+    <Content Include="Views\User\Gate2.cshtml" />
+    <Content Include="Views\User\Gate3.cshtml" />
+    <Content Include="Views\User\Group.cshtml" />
+    <Content Include="Views\User\TestValues.cshtml" />
+    <Content Include="Views\User\Gate6.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -405,6 +443,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903142117103_ErrorMessage.resx">
       <DependentUpon>201903142117103_ErrorMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903160019120_IgNoUpdate.resx">
+      <DependentUpon>201903160019120_IgNoUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904100022534_Unsupported.resx">
+      <DependentUpon>201904100022534_Unsupported.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904141819533_Stacked.resx">
+      <DependentUpon>201904141819533_Stacked.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907192150056_Realtime.resx">
+      <DependentUpon>201907192150056_Realtime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

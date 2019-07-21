@@ -18,7 +18,6 @@ namespace The7GATESArchive.DAL
         public DbSet<User> Users { get; set; }
         public DbSet<UserGate> UserGates { get; set; }
         public DbSet<Gate> Gates { get; set; }
-        public DbSet<Update> Updates { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -33,7 +33,10 @@ namespace apiupdater
                 context.Configuration.AutoDetectChangesEnabled = false;
 
                 updater.CreateGates(context);
-                updater.UpdateFromApi(context);
+                while (true) { 
+                    updater.UpdateFromApi(context);
+                    System.Threading.Thread.Sleep(3000);
+                }
             }
         }
     }

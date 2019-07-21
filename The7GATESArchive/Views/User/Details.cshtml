@@ -511,20 +511,26 @@
     <div>
         <br />
         <h1 style="font-size:60px;color:black;text-align:center"><strong>@Html.DisplayFor(model => model.Username)'s Theorist Page</strong></h1>
-        @if (Model.GateError == true) {
-        <div class="alert">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>NOTICE: </strong> The gate specific times of @Model.Username are broken as an error has been found in calculating them. Some gate specific times are still functional, and there may just be one broken entry!
-        </div>
+        @if (Model.GateError == true)
+        {
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong>NOTICE: </strong> The gate specific times of @Model.Username are broken as an error has been found in calculating them. Some gate specific times are still functional, and there may just be one broken entry!
+            </div>
         }
         <br />
+        @{ 
+            var TimeLeft = new TimeSpan(7, 7, 30);
+            var ToBeat = Model.TimeForAllGates - TimeLeft;
+        }
+        <p style="text-align:center">Psst! Hey you, Gate 7 is coming up, so you have to be ready to get @ToBeat.ToString() ahead of everyone on this next gate!</p>
         <br />
         <button class="collapsible3">Current Information</button>
         <div class="content3">
             <br />
             <div style="text-align:center">
                 @{
-                    float percent = (float)Model.Keys / 14;
+                    float percent = (float)Model.Keys / 23;
                     percent = percent * 100;
                 }
                 @if (Model.Rank == 1)
@@ -1154,22 +1160,6 @@
                 </div>
             }
         }
-        <button class="collapsible2">Gate 5</button>
-        <div class="content2">
-            <br />
-            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
-            <br />
-            <br />
-        </div>
-        <button class="collapsible2">Gate 6</button>
-        <div class="content2">
-            <br />
-            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <button class="button" style="width:45vw;height:8vw;font-size:3vw;display:inline-block;font-family:Calibri"><span style="cursor: none">@Html.ActionLink("Check When the Gate Opens", "Index", "Gates")</span></button>
-            <br />
-            <br />
-        </div>
         <button class="collapsible2">Gate 7</button>
         <div class="content2">
             <br />
@@ -1191,6 +1181,7 @@
             </div>
         </div>
     </div>
+
 </div>
 <br />
 

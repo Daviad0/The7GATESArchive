@@ -614,13 +614,13 @@
         Timea4 = item.Time;
         Keysa4 = item.Keys;
     }
-    /*if (item.GateID == 5)
+    if (item.GateID == 5)
     {
         Ranka5 = item.Rank;
         Timea5 = item.Time;
         Keysa5 = item.Keys;
     }
-    if (item.GateID == 6)
+    /*if (item.GateID == 6)
     {
         Ranka6 = item.Rank;
         Timea6 = item.Time;
@@ -659,13 +659,13 @@
         Timeb4 = item.Time;
         Keysb4 = item.Keys;
     }
-    /*if (item.GateID == 5)
+    if (item.GateID == 5)
     {
         Rankb5 = item.Rank;
         Timeb5 = item.Time;
         Keysb5 = item.Keys;
     }
-    if (item.GateID == 6)
+    /*if (item.GateID == 6)
     {
         Rankb6 = item.Rank;
         Timeb6 = item.Time;
@@ -907,6 +907,29 @@
                     currentclassg42 = "n1";
                 }
             }
+            if (TimeSpan.Compare(Timea5, Timeb5) == -1)
+            {
+                currentclassg5 = "n2";
+                currentclassg52 = "n1";
+            }
+            else if (TimeSpan.Compare(Timea5, Timeb5) == 1)
+            {
+                currentclassg5 = "n1";
+                currentclassg52 = "n2";
+            }
+            else if (TimeSpan.Compare(Timea5, Timeb5) == 0)
+            {
+                if (Ranka5 > Rankb5)
+                {
+                    currentclassg5 = "n1";
+                    currentclassg52 = "n2";
+                }
+                else
+                {
+                    currentclassg5 = "n2";
+                    currentclassg52 = "n1";
+                }
+            }
 
         }
         <button class="collapsible2">Gate 1</button>
@@ -1049,9 +1072,36 @@
         <button class="collapsible2">Gate 5</button>
         <div class="content2">
             <br />
-            <p style="font-size:2.7vw">No Information. The Gate is Closed!</p>
-            <br />
-            <br />
+            <div style="float:left;display:inline-block;padding-left:8vw">
+                <div class="@currentclassg5" style="width:25vw;border-radius:6px;text-align:center;background-color:#a9c1e8">
+                    @if (currentclassg5 == "n2")
+                    {
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Ranka5 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Ranka5</p>
+                    }
+                    <p style="font-size:3vw">@Keysa5 Keys</p>
+                    <p style="font-size:3vw">@Timea5</p>
+                </div>
+            </div>
+            <div style="float:right;display:inline-block;padding-right:8vw">
+                <div class="@currentclassg52" style="width:25vw;border-radius:6px;text-align:center;background-color:#edaaa3">
+
+                    @if (currentclassg52 == "n2")
+                    {
+                        <p style="font-size:6vw"><i class="material-icons" style="font-size:4vw">stars</i> #@Rankb5 <i class="material-icons" style="font-size:4vw">stars</i></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:6vw">#@Rankb5</p>
+                    }
+                    <p style="font-size:3vw">@Keysb5 Keys</p>
+                    <p style="font-size:3vw">@Timeb5</p>
+                </div>
+                <br />
+            </div>
         </div>
         <button class="collapsible2">Gate 6</button>
         <div class="content2">
@@ -1076,9 +1126,9 @@
                 <p style="font-size:2vw;margin-bottom:10px">Gate 2: Difference of @Diff2 Minutes</p>
                 <p style="font-size:2vw;margin-bottom:10px">Gate 3: Difference of @Diff3 Minutes</p>
                 <p style="font-size:2vw;margin-bottom:10px">Gate 4: Difference of @Diff4 Minutes</p>
-                <!--<p style="font-size:2vw;margin-bottom:10px">Gate 5: Difference of @Diff5 Minutes</p>
-            <p style="font-size:2vw;margin-bottom:10px">Gate 6: Difference of @Diff6 Minutes</p>
-            <p style="font-size:2vw;margin-bottom:10px">Gate 7: Difference of @Diff7 Minutes</p>-->
+                <p style="font-size:2vw;margin-bottom:10px">Gate 5: Difference of @Diff5 Minutes</p>
+                <!--<p style="font-size:2vw;margin-bottom:10px">Gate 6: Difference of @Diff6 Minutes</p>
+    <p style="font-size:2vw;margin-bottom:10px">Gate 7: Difference of @Diff7 Minutes</p>-->
             </div>
         </div>
     </div>
@@ -1220,8 +1270,8 @@
             ['Gate 1', @Ranka1, @Rankb1],
             ['Gate 2', @Ranka2, @Rankb2],
             ['Gate 3', @Ranka3, @Rankb3],
-            //['Gate 4', @Ranka4, @Rankb4],
-            //['Gate 5', @Ranka5, @Rankb5],
+            ['Gate 4', @Ranka4, @Rankb4],
+            ['Gate 5', @Ranka5, @Rankb5],
             //['Gate 6', @Ranka6, @Rankb6],
             //['Gate 7', @Ranka7, @Rankb7],
             ['Currently', @Rankac, @Rankbc],
@@ -1256,7 +1306,7 @@
             ['Gate 2', @MTimea2, @MTimeb2],
             ['Gate 3', @MTimea3, @MTimeb3],
             ['Gate 4', @MTimea4, @MTimeb4],
-            //['Gate 5', @MTimea5, @MTimeb5],
+            ['Gate 5', @MTimea5, @MTimeb5],
             //['Gate 6', @MTimea6, @MTimeb6],
             //['Gate 7', @MTimea7, @MTimeb7],
             ['Currently', @MTimeac, @MTimebc],

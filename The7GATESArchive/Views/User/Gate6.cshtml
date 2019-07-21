@@ -1,0 +1,431 @@
+﻿@model ICollection<The7GATESArchive.Models.GateTopModel>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Leaderboard";
+}
+<head>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 12%;
+    }
+
+    .top {
+        border: 3px solid white;
+        background-color: rgb(167, 76, 193);
+        color: white;
+        border-radius: 8px;
+        transition-duration: 0.3s;
+    }
+        .top:hover {
+            background-color: rgb(193, 152, 42);
+        }
+        .top:active {
+            background-color: rgb(175, 138, 36);
+        }
+
+    .topnorm {
+        border: 3px solid white;
+        background-color: #eee;
+        color: white;
+        border-radius: 8px;
+    }
+
+
+    .top2 {
+        color: white;
+    }
+
+    .form {
+        background-color: black;
+        color: red;
+        border: 2px solid red
+    }
+
+    .notice {
+        border: 2px solid red;
+        background-color: rgba(188, 0, 0,0.35);
+        color: white;
+        text-align: center;
+    }
+
+    .btn {
+        color: white;
+        background-color: rgba(183, 0, 177,0);
+        border: 2px solid rgba(255, 76, 249,1);
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+        .btn:hover {
+            background: rgba(255, 76, 249,1)
+        }
+
+        .btn:disabled {
+            color: black;
+            background-color: lightgray;
+            border: 2px solid lightgray;
+            border-radius: 8px;
+        }
+
+    .clear {
+        color: white;
+        background-color: rgba(183, 0, 177,0);
+        border: 2px solid rgba(255, 76, 249,1);
+        border-radius: 8px;
+    }
+
+        .clear:hover {
+            color: white;
+            background-color: red;
+            border: 2px solid red;
+            border-radius: 8px;
+        }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Style the search field */
+    form.example input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none; /* Prevent double borders */
+        cursor: pointer;
+    }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+    /* Clear floats */
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    a.my-class {
+        color: #ffffff;
+        text-align:center;
+    }
+
+        a.my-class:active {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        a.my-class:link {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        a.my-class:visited {
+            color: #ffffff;
+            text-align: center;
+        }
+    /* The alert message box */
+    .alert {
+        padding: 20px;
+        background-color: #f44336; /* Red */
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    /* The close button */
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        /* When moving the mouse over the close button */
+        .closebtn:hover {
+            color: black;
+        }
+    .textbox{
+        border: 2px solid red;
+        border-radius: 4px;
+
+    }.textbox:focus{
+         border: 2px solid black;
+     }
+    .navbar-collapse {
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+.navbar-collapse.in {
+  overflow-y: auto;
+}
+@@media (min-width: 768px) {
+  .navbar-collapse2 {
+    width: auto;
+    border-top: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-collapse2.collapse2 {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar-collapse2.in {
+    overflow-y: visible;
+  }
+  .navbar-fixed-top .navbar-collapse2,
+  .navbar-static-top .navbar-collapse2,
+  .navbar-fixed-bottom .navbar-collapse2 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.navbar-fixed-top .navbar-collapse2,
+.navbar-fixed-bottom .navbar-collapse2 {
+  max-height: 340px;
+}
+@@media (max-device-width: 480px) and (orientation: landscape) {
+  .navbar-fixed-top .navbar-collapse2,
+  .navbar-fixed-bottom .navbar-collapse2 {
+    max-height: 200px;
+  }
+}
+.container > .navbar-header,
+.container-fluid > .navbar-header,
+.container > .navbar-collapse2,
+.container-fluid > .navbar-collapse2 {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@@media (min-width: 768px) {
+  .container > .navbar-header,
+  .container-fluid > .navbar-header,
+  .container > .navbar-collapse2,
+  .container-fluid > .navbar-collapse2 {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.center{
+    text-align:left;
+}
+    .top10 {
+        background-color: #eee;
+        color: black;
+        transition-duration:0.3s;
+    }
+    .n3 {
+        background-color: #eee;
+        color: black;
+        transition-duration: 0.3s;
+    }
+    .n2 {
+        background-color: #eee;
+        color: black;
+        transition-duration: 0.3s;
+    }
+    .n1 {
+        background-color: #eee;
+        color: black;
+        transition-duration: 0.3s;
+    }
+    .all {
+        background-color: #eee;
+        color: black;
+        transition-duration: 0.3s;
+    }
+    .top10:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+
+    .n3:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+
+    .n2:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+
+    .n1:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+
+    .all:hover {
+        background-color: #dbdbdb;
+        color: black;
+    }
+    .top10:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+
+    .n3:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+
+    .n2:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+
+    .n1:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+
+    .all:active {
+        background-color: #c4c4c4;
+        color: black;
+    }
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 70%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: '';
+            color: #5cd67a;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .active:after {
+        content: "OPEN";
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+        width: 70%;
+        align-content: center;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
+<body style="background-color:black;font-family:Courier New, Courier, monospace">
+    <br />
+    <h1 class="title" style="font-size:5.5vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:rgb(167, 76, 193)">Top Gate 6 Finishers</h1>
+
+    <br />
+    <div style="text-align:center">
+        <a href="@Url.Action("Gate1")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 1" /></a>
+        <a href="@Url.Action("Gate2")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 2" /></a>
+        <a href="@Url.Action("Gate3")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 3" /></a>
+        <a href="@Url.Action("Gate4")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 4" /></a>
+        <a href="@Url.Action("Gate5")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 5" /></a>
+        <a href="@Url.Action("Gate6")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Gate 6" /></a>
+        <a href="@Url.Action("Index")" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="width:6vw;height:3vw;font-size:1vw;display:inline-block;font-family:Calibri" value="Current" /></a>
+
+    </div>
+    <br />
+    <div>
+        <div style="text-align:center">
+
+        </div>
+        <br />
+        <table align="center" class="table table-condensed" style="color:red;padding-top:10px;width:80%;border:0px red solid">
+            <tr class="top" style="align-content:center;height:60px;font-size:24px">
+                <th>
+                    <p class="top2"><strong>Rank <i class="fa fa-trophy"></i></strong></p>
+                </th>
+                <th>
+                    <p class="top2"><strong>Username <i class="fa fa-user-circle-o"></i></strong></p>
+                </th>
+                <th>
+                    <p class="top2"><strong>Keys <i class="fa fa-key"></i></strong></p>
+                </th>
+                <th>
+                    <p class="top2" style="text-align:left"><strong>Time</strong> <i class="fa fa-clock-o"></i></p>
+                </th>
+            </tr>
+
+            @{
+                int i = 0;
+            }
+            @foreach (var item in Model)
+            {
+
+                i++;
+                <div style="overflow:auto">
+                    <tr class="topnorm" style="width:80%">
+                        <td class="all">
+                            <p>@i</p>
+                        </td>
+                        <td class="all">
+                            @Html.ActionLink(item.Username, "Details", new { id = item.ID }, new { @style = "color:#000000" })
+                        </td>
+                        <td class="all">
+                            @Html.DisplayFor(modelItem => item.Keys)
+                        </td>
+                        <td class="all">
+                            @{
+                                string timeValue = item.Time.ToString(@"hh\:mm\:ss\.ff");
+                            }
+
+                            @Html.DisplayFor(modelItem => timeValue)
+                        </td>
+                    </tr>
+                </div>
+                <!--THIS VALUE CHANGES-->
+            }
+
+        </table>
+    </div>
+
+    <br />
+</body>
+<style>
+    .alert {
+        opacity: 1;
+        transition: opacity 0.6s; /* 600ms to fade out */
+    }
+</style>

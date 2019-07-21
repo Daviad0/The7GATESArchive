@@ -1,0 +1,1447 @@
+﻿@model IList<The7GATESArchive.Models.UserViewModel>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Slideshow container */
+    .slideshow-container {
+        position: relative;
+        background: #000000;
+    }
+
+    /* Slides */
+    .mySlides {
+        text-align: center;
+    }
+
+    .responsive {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .gate-1 {
+        background-color: rgba(230, 51, 90, .3);
+        border: 8px solid rgb(230, 51, 90);
+        border-radius: 10px;
+    }
+
+    .gate-c {
+        background-color: rgba(0, 219, 255, .3);
+        border: 8px solid rgb(0, 219, 255);
+        border-radius: 10px;
+    }
+
+    .gate-2 {
+        background-color: rgba(63, 186, 132, .3);
+        border: 8px solid rgb(63, 186, 132);
+        border-radius: 10px
+    }
+
+    .gate-3 {
+        background-color: rgba(52, 169, 246, .3);
+        border: 8px solid rgb(52, 169, 246);
+        border-radius: 10px
+    }
+
+    .gate-4 {
+        background-color: rgba(254, 123, 81, .3);
+        border: 8px solid rgb(254, 123, 81);
+        border-radius: 10px
+    }
+
+    .gate-5 {
+        background-color: rgba(240, 190, 55, .3);
+        border: 8px solid rgb(240, 190, 55);
+        border-radius: 10px
+    }
+
+    .gate-6 {
+        background-color: rgba(167, 76, 193, .3);
+        border: 8px solid rgb(167, 76, 193);
+        border-radius: 10px
+    }
+
+    .gate-7 {
+        background-color: rgba(40, 40, 40, .3);
+        border: 8px solid rgb(40, 40, 40);
+        border-radius: 10px
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -30px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 5px 5px 0;
+        user-select: none;
+        transition: 0.3s;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        position: absolute;
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: black;
+            color: white;
+        }
+
+    /* The dot/bullet/indicator container */
+    .dot-container {
+        text-align: center;
+        padding: 20px;
+        background: #000000;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+        /* Add a background color to the active dot/circle */
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+    /* Add an italic font style to all quotes */
+    q {
+        font-style: italic;
+    }
+
+    /* Add a blue color to the author */
+    .author {
+        color: cornflowerblue;
+    }
+
+    .data {
+        color: white
+    }
+
+    .title {
+        border: 4px solid rgb(0, 219, 255);
+        text-align: center;
+        background-color: rgba(0, 219, 255,0.3);
+        border-radius: 10px
+    }
+
+    .table {
+        border: 2px solid rgba(84, 237, 255,1);
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .notice {
+        border: 2px solid red;
+        background-color: rgba(188, 0, 0,0.35);
+        color: white;
+        text-align: center;
+    }
+
+    .flip-box {
+        background-color: transparent;
+    }
+
+    .flip-box-inner {
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-box:hover .flip-box-inner {
+        transform: rotateX(180deg);
+    }
+
+    .flip-box-front, .flip-box-back {
+        backface-visibility: hidden;
+    }
+
+    .flip-box-front {
+        color: black;
+    }
+
+    .flip-box-back {
+        background-color: rgba(75, 185, 198,0.3);
+        border: 2px solid rgba(84, 237, 255,1);
+        color: white;
+        transform: rotateX(180deg);
+    }
+
+    .top10 {
+        background-color: #ffc3b2;
+        color: black;
+    }
+
+    .n3 {
+        background-color: #db685c;
+        color: white;
+    }
+
+    .n2 {
+        background-color: #d1d1d1;
+        color: black;
+    }
+
+    .n1 {
+        background-color: #f7ef56;
+        color: black;
+    }
+
+    .all {
+        background-color: #ffe1d8;
+    }
+
+    .top {
+        border: 3px solid white;
+        border-radius: 8px;
+        text-align: left;
+    }
+
+    .topnorm {
+        border: 3px solid white;
+        background-color: rgba(183, 0, 177,0.05);
+        color: white;
+        border-radius: 8px;
+    }
+
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: 'OPEN';
+            color: #5cd67a;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .active:after {
+        content: "OPEN";
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible2 {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .activeb, .collapsible2:hover {
+            background-color: #555;
+        }
+
+        .collapsible2:after {
+            content: '';
+            color: #ff6d6d;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .activeb:after {
+        content: "CLOSED";
+    }
+
+    .content2 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible3 {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .activec, .collapsible3:hover {
+            background-color: #555;
+        }
+
+        .collapsible3:after {
+            content: '';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .activec:after {
+        content: "";
+    }
+
+    .content3 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .collapsible4 {
+        background-color: #fcf93c;
+        color: black;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition-duration: 0.3s;
+    }
+
+        .actived, .collapsible4:hover {
+            background-color: #f2ef26;
+        }
+
+        .collapsible4:after {
+            content: '';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+    .actived:after {
+        content: "";
+        background-color: #f2ef26;
+    }
+
+    .content4 {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .top10 {
+        background-color: #ffc3b2;
+        color: black;
+    }
+
+    .n3 {
+        background-color: #db685c;
+        color: white;
+    }
+
+    .n2 {
+        background-color: #dbdbdb;
+        color: black;
+        border: 4px solid #28e22f;
+        transition-duration: 0.3s;
+    }
+
+    .n1 {
+        background-color: #dbdbdb;
+        color: black;
+        border: 4px solid #dbdbdb;
+        transition-duration: 0.3s;
+    }
+
+    .n2:active {
+        background-color: #c4c4c4;
+    }
+
+    .n1:active {
+        background-color: #c4c4c4;
+        border: 4px solid #c4c4c4;
+    }
+
+    .all {
+        background-color: #ffe1d8;
+        color: black;
+    }
+
+    .button {
+        border-radius: 6px;
+        background-color: #ff3a26;
+        border: none;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: none;
+        margin: 5px;
+    }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+    .buttonb {
+        border-radius: 6px;
+        background-color: white;
+        border: 4px solid #fc6f3c;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        margin: 5px;
+    }
+
+    .buttonc {
+        border-radius: 6px;
+        background-color: white;
+        border: 4px solid #fcf93c;
+        color: black;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        margin: 5px;
+    }
+
+    #overlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    #box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 50px;
+        color: white;
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+    }
+
+    .alert {
+        padding: 20px;
+        background-color: #4286f4;
+        color: white;
+    }
+
+    .alert2 {
+        padding: 20px;
+        background-color: #ff3a26;
+        color: white;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .closebtn:hover {
+            color: black;
+        }
+    .theorist1 {
+        background-color: #4286f4;
+        border: 5px solid #4286f4;
+        color: white;
+    }
+    .theorist2 {
+        background-color: #ff3a26;
+        border: 5px solid #ff3a26;
+        color: white;
+    }
+    .theorist3 {
+        background-color: #1fbc1a;
+        border: 5px solid #1fbc1a;
+        color: white;
+    }
+    .theorist4 {
+        background-color: #f2eb30;
+        border: 5px solid #f2eb30;
+        color: gray;
+    }
+    .theorist5 {
+        background-color: #dc1df2;
+        border: 5px solid #dc1df2;
+        color: white;
+    }
+    .theorist6 {
+        background-color: #878787;
+        border: 5px solid #878787;
+        color: white;
+    }
+</style>
+@{
+    int user = 0;
+    int graph = 0;
+    int RankM0G0 = 0;
+    int RankM0G1 = 0;
+    int RankM0G2 = 0;
+    int RankM0G3 = 0;
+    int RankM0G4 = 0;
+    int RankM0G5 = 0;
+    int RankM0G6 = 0;
+    int RankM0G7 = 0;
+
+    int RankM1G0 = 0;
+    int RankM1G1 = 0;
+    int RankM1G2 = 0;
+    int RankM1G3 = 0;
+    int RankM1G4 = 0;
+    int RankM1G5 = 0;
+    int RankM1G6 = 0;
+    int RankM1G7 = 0;
+
+    int RankM2G0 = 0;
+    int RankM2G1 = 0;
+    int RankM2G2 = 0;
+    int RankM2G3 = 0;
+    int RankM2G4 = 0;
+    int RankM2G5 = 0;
+    int RankM2G6 = 0;
+    int RankM2G7 = 0;
+
+    int RankM3G0 = 0;
+    int RankM3G1 = 0;
+    int RankM3G2 = 0;
+    int RankM3G3 = 0;
+    int RankM3G4 = 0;
+    int RankM3G5 = 0;
+    int RankM3G6 = 0;
+    int RankM3G7 = 0;
+
+    int RankM4G0 = 0;
+    int RankM4G1 = 0;
+    int RankM4G2 = 0;
+    int RankM4G3 = 0;
+    int RankM4G4 = 0;
+    int RankM4G5 = 0;
+    int RankM4G6 = 0;
+    int RankM4G7 = 0;
+
+    int RankM5G0 = 0;
+    int RankM5G1 = 0;
+    int RankM5G2 = 0;
+    int RankM5G3 = 0;
+    int RankM5G4 = 0;
+    int RankM5G5 = 0;
+    int RankM5G6 = 0;
+    int RankM5G7 = 0;
+
+    int TimeM0G0 = 99999;
+    int TimeM0G1 = 99999;
+    int TimeM0G2 = 99999;
+    int TimeM0G3 = 99999;
+    int TimeM0G4 = 99999;
+    int TimeM0G5 = 99999;
+    int TimeM0G6 = 99999;
+    int TimeM0G7 = 99999;
+                   
+    int TimeM1G0 = 99999;
+    int TimeM1G1 = 99999;
+    int TimeM1G2 = 99999;
+    int TimeM1G3 = 99999;
+    int TimeM1G4 = 99999;
+    int TimeM1G5 = 99999;
+    int TimeM1G6 = 99999;
+    int TimeM1G7 = 99999;
+                   
+    int TimeM2G0 = 99999;
+    int TimeM2G1 = 99999;
+    int TimeM2G2 = 99999;
+    int TimeM2G3 = 99999;
+    int TimeM2G4 = 99999;
+    int TimeM2G5 = 99999;
+    int TimeM2G6 = 99999;
+    int TimeM2G7 = 99999;
+                   
+    int TimeM3G0 = 99999;
+    int TimeM3G1 = 99999;
+    int TimeM3G2 = 99999;
+    int TimeM3G3 = 99999;
+    int TimeM3G4 = 99999;
+    int TimeM3G5 = 99999;
+    int TimeM3G6 = 99999;
+    int TimeM3G7 = 99999;
+                   
+    int TimeM4G0 = 99999;
+    int TimeM4G1 = 99999;
+    int TimeM4G2 = 99999;
+    int TimeM4G3 = 99999;
+    int TimeM4G4 = 99999;
+    int TimeM4G5 = 99999;
+    int TimeM4G6 = 99999;
+    int TimeM4G7 = 99999;
+
+    int TimeM5G0 = 99999;
+    int TimeM5G1 = 99999;
+    int TimeM5G2 = 99999;
+    int TimeM5G3 = 99999;
+    int TimeM5G4 = 99999;
+    int TimeM5G5 = 99999;
+    int TimeM5G6 = 99999;
+    int TimeM5G7 = 99999;
+
+    string UsernameM0 = "";
+    string UsernameM1 = "";
+    string UsernameM2 = "";
+    string UsernameM3 = "";
+    string UsernameM4 = "";
+    string UsernameM5 = "";
+}
+
+
+@foreach (var item in Model)
+{
+    //MODEL 0
+    if (graph == 0)
+    {
+        RankM0G0 = item.Rank;
+        TimeM0G0 = (int)item.TimeForAllGates.TotalMinutes;
+        foreach (var gate in Model[graph].UserGates)
+        {
+            if (gate.GateID == 1)
+            {
+                RankM0G1 = gate.Rank;
+                TimeM0G1 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 2)
+            {
+                RankM0G2 = gate.Rank;
+                TimeM0G2 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 3)
+            {
+                RankM0G3 = gate.Rank;
+                TimeM0G3 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 4)
+            {
+                RankM0G4 = gate.Rank;
+                TimeM0G4 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 5)
+            {
+                RankM0G5 = gate.Rank;
+                TimeM0G5 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 6)
+            {
+                RankM0G6 = gate.Rank;
+                TimeM0G6 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 7)
+            {
+                RankM0G7 = gate.Rank;
+                TimeM0G7 = (int)gate.Time.TotalMinutes;
+            }
+        }
+        UsernameM0 = item.Username;
+    }
+    //MODEL 1
+    else if (graph == 1)
+    {
+        RankM1G0 = item.Rank;
+        TimeM1G0 = (int)item.TimeForAllGates.TotalMinutes;
+        foreach (var gate in Model[graph].UserGates)
+        {
+            if (gate.GateID == 1)
+            {
+                RankM1G1 = gate.Rank;
+                TimeM1G1 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 2)
+            {
+                RankM1G2 = gate.Rank;
+                TimeM1G2 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 3)
+            {
+                RankM1G3 = gate.Rank;
+                TimeM1G3 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 4)
+            {
+                RankM1G4 = gate.Rank;
+                TimeM1G4 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 5)
+            {
+                RankM1G5 = gate.Rank;
+                TimeM1G5 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 6)
+            {
+                RankM1G6 = gate.Rank;
+                TimeM1G6 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 7)
+            {
+                RankM1G7 = gate.Rank;
+                TimeM1G7 = (int)gate.Time.TotalMinutes;
+            }
+        }
+        UsernameM1 = item.Username;
+    }
+    //MODEL 2
+    else if (graph == 2)
+    {
+        RankM2G0 = item.Rank;
+        TimeM2G0 = (int)item.TimeForAllGates.TotalMinutes;
+        foreach (var gate in Model[graph].UserGates)
+        {
+            if (gate.GateID == 1)
+            {
+                RankM2G1 = gate.Rank;
+                TimeM2G1 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 2)
+            {
+                RankM2G2 = gate.Rank;
+                TimeM2G2 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 3)
+            {
+                RankM2G3 = gate.Rank;
+                TimeM2G3 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 4)
+            {
+                RankM2G4 = gate.Rank;
+                TimeM2G4 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 5)
+            {
+                RankM2G5 = gate.Rank;
+                TimeM2G5 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 6)
+            {
+                RankM2G6 = gate.Rank;
+                TimeM2G6 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 7)
+            {
+                RankM2G7 = gate.Rank;
+                TimeM2G7 = (int)gate.Time.TotalMinutes;
+            }
+        }
+        UsernameM2 = item.Username;
+    }
+    //MODEL 3
+    else if (graph == 3)
+    {
+        RankM3G0 = item.Rank;
+        TimeM3G0 = (int)item.TimeForAllGates.TotalMinutes;
+        foreach (var gate in Model[graph].UserGates)
+        {
+            if (gate.GateID == 1)
+            {
+                RankM3G1 = gate.Rank;
+                TimeM3G1 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 2)
+            {
+                RankM3G2 = gate.Rank;
+                TimeM3G2 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 3)
+            {
+                RankM3G3 = gate.Rank;
+                TimeM3G3 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 4)
+            {
+                RankM3G4 = gate.Rank;
+                TimeM3G4 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 5)
+            {
+                RankM3G5 = gate.Rank;
+                TimeM3G5 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 6)
+            {
+                RankM3G6 = gate.Rank;
+                TimeM3G6 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 7)
+            {
+                RankM3G7 = gate.Rank;
+                TimeM3G7 = (int)gate.Time.TotalMinutes;
+            }
+        }
+        UsernameM3 = item.Username;
+    }
+    //MODEL 4
+    else if (graph == 4)
+    {
+        RankM4G0 = item.Rank;
+        TimeM4G0 = (int)item.TimeForAllGates.TotalMinutes;
+        foreach (var gate in Model[graph].UserGates)
+        {
+            if (gate.GateID == 1)
+            {
+                RankM4G1 = gate.Rank;
+                TimeM4G1 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 2)
+            {
+                RankM4G2 = gate.Rank;
+                TimeM4G2 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 3)
+            {
+                RankM4G3 = gate.Rank;
+                TimeM4G3 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 4)
+            {
+                RankM4G4 = gate.Rank;
+                TimeM4G4 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 5)
+            {
+                RankM4G5 = gate.Rank;
+                TimeM4G5 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 6)
+            {
+                RankM4G6 = gate.Rank;
+                TimeM4G6 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 7)
+            {
+                RankM4G7 = gate.Rank;
+                TimeM4G7 = (int)gate.Time.TotalMinutes;
+            }
+        }
+        UsernameM5 = item.Username;
+    }
+    //MODEL 5
+    else if (graph == 5)
+    {
+        RankM5G0 = item.Rank;
+        TimeM5G0 = (int)item.TimeForAllGates.TotalMinutes;
+        foreach (var gate in Model[graph].UserGates)
+        {
+            if (gate.GateID == 1)
+            {
+                RankM5G1 = gate.Rank;
+                TimeM5G1 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 2)
+            {
+                RankM5G2 = gate.Rank;
+                TimeM5G2 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 3)
+            {
+                RankM5G3 = gate.Rank;
+                TimeM5G3 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 4)
+            {
+                RankM5G4 = gate.Rank;
+                TimeM5G4 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 5)
+            {
+                RankM5G5 = gate.Rank;
+                TimeM5G5 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 6)
+            {
+                RankM5G6 = gate.Rank;
+                TimeM5G6 = (int)gate.Time.TotalMinutes;
+            }
+            else if (gate.GateID == 7)
+            {
+                RankM5G7 = gate.Rank;
+                TimeM5G7 = (int)gate.Time.TotalMinutes;
+            }
+        }
+        UsernameM5 = item.Username;
+    }
+    graph++;
+}
+ @{ 
+     var Gate1L = new List<int> { TimeM0G1 , TimeM1G1 , TimeM2G1, TimeM3G1, TimeM4G1, TimeM5G1 };
+     var Gate2L = new List<int> { TimeM0G2, TimeM1G2, TimeM2G2, TimeM3G2, TimeM4G2, TimeM5G2 };
+     var Gate3L = new List<int> { TimeM0G3, TimeM1G3, TimeM2G3, TimeM3G3, TimeM4G3, TimeM5G3 };
+     var Gate4L = new List<int> { TimeM0G4, TimeM1G4, TimeM2G4, TimeM3G4, TimeM4G4, TimeM5G4 };
+     var Gate5L = new List<int> { TimeM0G5, TimeM1G5, TimeM2G5, TimeM3G5, TimeM4G5, TimeM5G5 };
+     var Gate6L = new List<int> { TimeM0G6, TimeM1G6, TimeM2G6, TimeM3G6, TimeM4G6, TimeM5G6 };
+     var Gate7L = new List<int> { TimeM0G7, TimeM1G7, TimeM2G7, TimeM3G7, TimeM4G7, TimeM5G7 };
+     var CurrentL = new List<int> { TimeM0G0, TimeM1G0, TimeM2G0, TimeM3G0, TimeM4G0, TimeM5G0 };
+
+     double G1BT = Gate1L.Min();
+     double G2BT = Gate2L.Min();
+     double G3BT = Gate3L.Min();
+     double G4BT = Gate4L.Min();
+     double G5BT = Gate5L.Min();
+     double G6BT = Gate6L.Min();
+     double G7BT = Gate7L.Min();
+     double CBT = CurrentL.Min();
+
+     int BestTimeTracker = 0;
+     double BestTimeGate = 0;
+
+     string T1ID = "X-";
+     string T2ID = "X-";
+     string T3ID = "X-";
+     string T4ID = "X-";
+     string T5ID = "X-";
+     string T6ID = "X-";
+
+     if (TimeM0G0 < 99999) {
+         T1ID = Model[0].ID.ToString();
+     }
+     else
+     {
+         TimeM0G0 = 0;
+         TimeM0G1 = 0;
+         TimeM0G2 = 0;
+         TimeM0G3 = 0;
+         TimeM0G4 = 0;
+         TimeM0G5 = 0;
+     }
+     if (TimeM1G0 < 99999)
+     {
+         T2ID = Model[1].ID.ToString();
+     }
+     else
+     {
+         TimeM1G0 = 0;
+         TimeM1G1 = 0;
+         TimeM1G2 = 0;
+         TimeM1G3 = 0;
+         TimeM1G4 = 0;
+         TimeM1G5 = 0;
+     }
+     if (TimeM2G0 < 99999)
+     {
+         T3ID = Model[2].ID.ToString();
+     }
+     else
+     {
+         TimeM2G0 = 0;
+         TimeM2G1 = 0;
+         TimeM2G2 = 0;
+         TimeM2G3 = 0;
+         TimeM2G4 = 0;
+         TimeM2G5 = 0;
+     }
+     if (TimeM3G0 < 99999)
+     {
+         T4ID = Model[3].ID.ToString();
+     }
+     else
+     {
+         TimeM3G0 = 0;
+         TimeM3G1 = 0;
+         TimeM3G2 = 0;
+         TimeM3G3 = 0;
+         TimeM3G4 = 0;
+         TimeM3G5 = 0;
+     }
+     if (TimeM4G0 < 99999)
+     {
+         T5ID = Model[4].ID.ToString();
+     }
+     else
+     {
+         TimeM4G0 = 0;
+         TimeM4G1 = 0;
+         TimeM4G2 = 0;
+         TimeM4G3 = 0;
+         TimeM4G4 = 0;
+         TimeM4G5 = 0;
+     }
+     if (TimeM5G0 < 99999)
+     {
+         T6ID = Model[5].ID.ToString();
+     }
+     else
+     {
+         TimeM5G0 = 0;
+         TimeM5G1 = 0;
+         TimeM5G2 = 0;
+         TimeM5G3 = 0;
+         TimeM5G4 = 0;
+         TimeM5G5 = 0;
+     }
+
+     string identifyP1 = T1ID.Substring(0, T1ID.IndexOf("-")).Trim();
+     string identifyP2 = T2ID.Substring(0, T2ID.IndexOf("-")).Trim();
+     string identifyP3 = T3ID.Substring(0, T3ID.IndexOf("-")).Trim();
+     string identifyP4 = T4ID.Substring(0, T4ID.IndexOf("-")).Trim();
+     string identifyP5 = T5ID.Substring(0, T5ID.IndexOf("-")).Trim();
+     string identifyP6 = T6ID.Substring(0, T6ID.IndexOf("-")).Trim();
+
+     string identifier = identifyP1 + "-" + identifyP2 + "-" + identifyP3 + "-" + identifyP4 + "-" + identifyP5 + "-" + identifyP6;
+
+     double Difference = 0;
+
+     string[] parts = identifier.Split('-');
+ }
+
+<div>
+
+    <br />
+    @{int classchoose = 0;
+        string colorclass = "";
+    }
+    <h1 style="font-size:6vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">Compare Users</h1>
+    <h4 style="font-size:2vw;font-family:Arial Black, Gadget, sans-serif, sans-serif;padding-left:10px;text-align:center;color:#ff3a26">@graph Users Compared</h4>
+    <br />
+    <div style="background-color:white;text-align:center;border: 5px solid black">
+        <h3 style="color:black;padding-bottom:5px">Unique Group Identifier: <span style="font-family:Courier New, Courier, monospace;background-color:black;color:white">@identifier</span></h3>
+        <h4 style="color:black;padding-bottom:5px">Use this identifier when trying to get back to your group page!</h4>
+        <a href="http://twitter.com/home?status=My%20Unique%20Identifier%20for%20the7GATESArchive%20is% @identifier! Check my group page out at the7gatesarchive.tacocatsoftware.com/the7gatesarchive!">Tweet Your Unique Identifier</a>
+    </div>
+
+    <br />
+    <div>
+        @foreach (var item in Model)
+        {
+            if (classchoose == 0)
+            {
+                colorclass = "theorist1";
+            }
+            else if (classchoose == 1)
+            {
+                colorclass = "theorist2";
+            }
+            else if (classchoose == 2)
+            {
+                colorclass = "theorist3";
+            }
+            else if (classchoose == 3)
+            {
+                colorclass = "theorist4";
+            }
+            else if (classchoose == 4)
+            {
+                colorclass = "theorist5";
+            }
+            else if (classchoose == 5)
+            {
+                colorclass = "theorist6";
+            }
+            classchoose++;
+            <table align="center" class="table table-condensed" style="color:white;padding-top:10px;width:100%;border:2px #777777 solid;align-content:center">
+                <caption>
+                    <div class="@colorclass" style="background-color:white;text-align:center">
+                        <h1 style="color:black;padding-bottom:6px">@item.Username</h1>
+                    </div>
+                </caption>
+                <tr class="top @colorclass" style="height:60px;font-size:24px">
+                    <th width="20%">
+                        <p class="top2">Gate #</p>
+                    </th>
+                    <th width="20%">
+                        <p class="top2">Rank</p>
+                    </th>
+                    <th width="20%">
+                        <p class="top2">Keys</p>
+                    </th>
+                    <th width="20%">
+                        <p class="top2">Time</p>
+                    </th>
+                    <th width="20%">
+                        <p class="top2">Minutes Behind Best</p>
+                    </th>
+                </tr>
+                <tr class="top @colorclass" style="background-color:#ff3a26;color:white">
+                    <td class="@colorclass" width="20%">
+                        Currently
+                    </td>
+                    <td class="@colorclass" width="20%">
+                        @item.Rank
+                    </td>
+                    <td class="@colorclass" width="20%">
+                        @item.Keys
+                    </td>
+                    <td class="@colorclass" width="20%">
+                        @{
+                            string timeValue = item.TimeForAllGates.ToString(@"hh\:mm\:ss\.ff");
+                        }
+
+                        @Html.DisplayFor(modelItem => timeValue)
+                    </td>
+                    <td class="@colorclass" width="20%">
+                        @{Difference = item.TimeForAllGates.TotalMinutes - CBT;
+                            Difference = Math.Floor(Difference);
+                        }
+                        @Difference
+
+                    </td>
+                </tr>
+                @foreach (var gate in Model[user].UserGates)
+                {
+                    BestTimeTracker++;
+                    if (gate.GateID == 1)
+                    {
+                        BestTimeGate = G1BT;
+                    }
+                    else if (gate.GateID == 2)
+                    {
+                        BestTimeGate = G2BT;
+                    }
+                    else if (gate.GateID == 3)
+                    {
+                        BestTimeGate = G3BT;
+                    }
+                    else if (gate.GateID == 4)
+                    {
+                        BestTimeGate = G4BT;
+                    }
+                    else if (gate.GateID == 5)
+                    {
+                        BestTimeGate = G5BT;
+                    }
+                    else if (gate.GateID == 6)
+                    {
+                        BestTimeGate = G6BT;
+                    }
+                    else if (gate.GateID == 7)
+                    {
+                        BestTimeGate = G7BT;
+                    }
+                    if (gate.GateID < 8)
+                    {
+                        <tr class="top" style="background-color:white">
+                            <td class="all" style="background-color:white" width="20%">
+                                Gate @gate.GateID
+                            </td>
+                            <td class="all" style="background-color:white" width="20%">
+                                @gate.Rank
+                            </td>
+                            <td class="all" style="background-color:white" width="20%">
+                                @gate.Keys
+                            </td>
+                            <td class="all" style="background-color:white" width="20%">
+                                @{
+                                    string timeValue2 = gate.Time.ToString(@"hh\:mm\:ss\.ff");
+                                }
+
+                                @Html.DisplayFor(modelItem => timeValue2)
+                            </td>
+                            <td class="all" style="background-color:white" width="20%">
+                                @{Difference = gate.Time.TotalMinutes - BestTimeGate;
+                                    Difference = Math.Floor(Difference);
+                                }
+                                @Difference
+                            </td>
+                        </tr>
+                    }
+                }
+                @{user++;
+                }
+            </table>
+        }
+        <div id="rank" align="center"></div>
+        <div id="time" align="center"></div>
+
+        <!--<body style="text-align:center">
+        <div id="rank_chart_div" style="display:block;margin:0 auto;"></div>
+    </body>
+    <body style="text-align:center">
+        <div id="time_chart_div" style="display:block;margin:0 auto;"></div>
+    </body>
+    <br />
+    <br />
+    <div style="text-align:center">
+        <div style="text-align:center;width:100%;display:inline-block">
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;text-align:center">
+                <a href="@Url.Action("Details", new { id = Model[0].ID })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:7vw;font-size:1vw;display:inline-block;font-family:Calibri;background-color:#a9c1e8" value="@Model[0].Username's Details" /></a>
+                <a href="@Url.Action("Index")" style="display:inline;padding-right:10px;padding-left:10px"><input type="button" class="buttonmain buttonmain2" style="width:30vw;height:7vw;font-size:2vw;display:inline-block;font-family:Calibri" value="Back to Leaderboard" /></a>
+                <a href="@Url.Action("Details", new { id = Model[1].ID })" style="display:inline"><input type="button" class="buttonmain buttonmain2" onclick="on()" style="height:7vw;font-size:1vw;display:inline-block;font-family:Calibri;background-color:#edaaa3" value="@Model[1].Username's Details" /></a>
+
+                <br />
+            </div>
+        </div>
+    </div>-->
+    </div>
+    <br />
+
+    <!--<script>
+            function on() {
+                document.getElementById("overlay").style.display = "block";
+            }
+
+            function off() {
+                document.getElementById("overlay").style.display = "none";
+            }
+        </script>
+        <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+                if (n > slides.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = slides.length }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+            }
+        </script>
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        </script>
+        <script>
+            var coll = document.getElementsByClassName("collapsible2");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("activeb");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        </script>
+        <script>
+            var coll = document.getElementsByClassName("collapsible3");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("activec");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        </script>
+        <script>
+            var coll = document.getElementsByClassName("collapsible4");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("actived");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        </script>-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['line'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Gate');
+            data.addColumn('number', 'Theorist 1 Rank');
+            data.addColumn('number', 'Theorist 2 Rank');
+            data.addColumn('number', 'Theorist 3 Rank');
+            data.addColumn('number', 'Theorist 4 Rank');
+            data.addColumn('number', 'Theorist 5 Rank');
+            data.addColumn('number', 'Theorist 6 Rank');
+
+            data.addRows([
+                ['Gate 1', @RankM0G1, @RankM1G1, @RankM2G1, @RankM3G1, @RankM4G1, @RankM5G1],
+                ['Gate 2', @RankM0G2, @RankM1G2, @RankM2G2, @RankM3G2, @RankM4G2, @RankM5G2],
+                ['Gate 3', @RankM0G3, @RankM1G3, @RankM2G3, @RankM3G3, @RankM4G3, @RankM5G3],
+                ['Gate 4', @RankM0G4, @RankM1G4, @RankM2G4, @RankM3G4, @RankM4G4, @RankM5G4],
+                ['Gate 5', @RankM0G5, @RankM1G5, @RankM2G5, @RankM3G5, @RankM4G5, @RankM5G5],
+                ['Currently', @RankM0G0, @RankM1G0, @RankM2G0, @RankM3G0, @RankM4G0, @RankM5G0],
+            ]);
+
+            var data2 = new google.visualization.DataTable();
+            data2.addColumn('string', 'Gate');
+            data2.addColumn('number', 'Theorist 1 Time');
+            data2.addColumn('number', 'Theorist 2 Time');
+            data2.addColumn('number', 'Theorist 3 Time');
+            data2.addColumn('number', 'Theorist 4 Time');
+            data2.addColumn('number', 'Theorist 5 Time');
+            data2.addColumn('number', 'Theorist 6 Time');
+
+            data2.addRows([
+                ['Gate 1', @TimeM0G1, @TimeM1G1, @TimeM2G1, @TimeM3G1, @TimeM4G1, @TimeM5G1],
+                ['Gate 2', @TimeM0G2, @TimeM1G2, @TimeM2G2, @TimeM3G2, @TimeM4G2, @TimeM5G2],
+                ['Gate 3', @TimeM0G3, @TimeM1G3, @TimeM2G3, @TimeM3G3, @TimeM4G3, @TimeM5G3],
+                ['Gate 4', @TimeM0G4, @TimeM1G4, @TimeM2G4, @TimeM3G4, @TimeM4G4, @TimeM5G4],
+                ['Gate 5', @TimeM0G5, @TimeM1G5, @TimeM2G5, @TimeM3G5, @TimeM4G5, @TimeM5G5],
+                ['Currently', @TimeM0G0, @TimeM1G0, @TimeM2G0, @TimeM3G0, @TimeM4G0, @TimeM5G0],
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Theorist Rankings',
+                    subtitle: 'Lowest ranking being the best'
+                },
+                width: 900,
+                height: 500,
+                axes: {
+                    x: {
+                        0: { side: 'top' }
+                    }
+                },
+                series: {
+                    0: { color: '#4286f4' },
+                    1: { color: '#ff3a26' },
+                    2: { color: '#1fbc1a' },
+                    3: { color: '#f2eb30' },
+                    4: { color: '#dc1df2' },
+                    5: { color: '#878787' },
+                }
+            };
+            var options2 = {
+                chart: {
+                    title: 'Theorist Times',
+                    subtitle: 'Lowest time being the best'
+                },
+                width: 900,
+                height: 500,
+                axes: {
+                    x: {
+                        0: { side: 'top' }
+                    }
+                },
+                series: {
+                    0: { color: '#4286f4' },
+                    1: { color: '#ff3a26' },
+                    2: { color: '#1fbc1a' },
+                    3: { color: '#f2eb30' },
+                    4: { color: '#dc1df2' },
+                    5: { color: '#878787' },
+                }
+            };
+
+            var chart = new google.charts.Line(document.getElementById('rank'));
+            chart.draw(data, google.charts.Line.convertOptions(options));
+            var chart2 = new google.charts.Line(document.getElementById('time'));
+            chart2.draw(data2, google.charts.Line.convertOptions(options2));
+        }
+    </script>
+    
+</div>
